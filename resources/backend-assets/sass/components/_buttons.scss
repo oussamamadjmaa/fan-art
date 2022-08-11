@@ -1,0 +1,68 @@
+.sidebar-btn1{
+    font-size: 12px;
+    border: solid 1px #ffffff63;
+    padding: 2px 7px;
+    color: #fff;
+    text-decoration: unset;
+    font-weight: 100;
+    border-radius: 29px;
+    background: #121d2f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+
+    .ltr &{
+        i {
+            transform: rotate(180deg);
+        }
+    }
+}
+
+.button {
+    border: unset;
+    background-color: var(--thm-primary-color);
+    color: #fff;
+    padding: .4rem 1rem;
+    border-radius: 21px;
+    transition: all .27s ease;
+    &:hover{
+        color: #fff;
+        opacity: .95;
+        box-shadow: -5px 4px 13px 0px #3fceba4a;
+    }
+    &:active{
+        opacity: .85;
+        box-shadow: -5px 4px 8px 0px #3fceba4a;
+    }
+    &:disabled {
+        opacity: .9;
+        cursor: not-allowed;
+    }
+}
+
+.icon-button{
+    @extend .button;
+    & > i {
+        background-color: #c75217a3;
+        border-radius: 50%;
+        width: 23px;
+        height: 23px;
+        vertical-align: middle;
+        line-height: 24px;
+        font-size: 14px;
+        &::after {
+            vertical-align: text-bottom;
+        }
+    }
+}
+
+.goToWebsite-btn{
+    font-size: 13px;
+    background-color: $bg-color1;
+    display: block;
+    width: max-content;
+    margin: 0 auto;
+    padding: 3px 6px;
+    border-radius: 17px;
+}

@@ -1,0 +1,105 @@
+.mnav{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: var(--navbar-height);
+    display: flex;
+    z-index: 1001;
+    left: 0;
+    &-header{
+        width: var(--sidebar-width);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1rem;
+        background-color: $bg-color1;
+        & >* {
+            flex: 1;
+        }
+        @media (max-width: 768px) {
+            width: 100%;
+            flex-grow: 1;
+        }
+    }
+
+    &__phone-bars{
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        @media (min-width: 769px) {
+            display: none;
+        }
+        & > span{
+            width: 24px;
+            height: 2px;
+            border-radius: 33px;
+            display: block;
+            background-color: #fff;
+            margin-bottom: 6px;
+            transition: all .3s ease;
+            transform-origin: right;
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+
+        &.active >span{
+            &:first-child, &:nth-child(3) {
+                height: 3px;
+            }
+            &:first-child {
+                transform: rotate(-43deg);
+            }
+            &:nth-child(3) {
+                transform: rotate(43deg);
+
+            }
+            &:nth-child(2) {
+                opacity:0;
+            }
+        }
+
+
+    }
+    &__logo{
+        height: 100%;
+        padding: 6px 0;
+        text-align: center;
+        img{
+            max-height: 100%;
+            max-width: 100%;
+        }
+    }
+
+    &-content{
+        flex-grow: 1;
+        background-color: #fff;
+        display: flex;
+        padding: 0 2rem;
+        @media (max-width: 768px) {
+            display: none;
+        }
+    }
+    &__right-content{
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+    }
+    &__left-content{
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+
+        .rtl &{
+            margin-left: unset;
+            margin-right: auto;
+        }
+    }
+    .user-dropdown-menu {
+        height: 100%;
+        transition: all .3s ease-in;
+        &:hover, &:focus{
+            background: #ebebeb9e;
+        }
+    }
+}

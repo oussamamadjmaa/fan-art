@@ -1,0 +1,5 @@
+@each $size in $pic_sizes {
+    .pic-w#{$size} {
+        width: #{$size+"px"};
+    }
+}

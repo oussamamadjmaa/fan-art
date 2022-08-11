@@ -1,0 +1,36 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body::after{
+    content: "";
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: url("../images/bg/auth.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.btn-primary{
+    &:hover, &:active, &:focus{
+        background-color: #35cbb5;
+        border-color: #35cbb5;
+        box-shadow: unset!important;
+    }
+    &:hover{
+        opacity: .95;
+    }
+
+}
+
+a{
+    text-decoration: none;
+}
+
+@import 'partials/error_page';

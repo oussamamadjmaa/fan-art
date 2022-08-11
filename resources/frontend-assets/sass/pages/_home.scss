@@ -1,0 +1,141 @@
+
+#heroSlider {
+    position: relative;
+    .owl-dots .owl-dot span {
+        height: 25px;
+        width: 4px;
+        border-radius: 0;
+        opacity: .6;
+        transition: all .27s ease-in;
+    }
+
+    .owl-dots .owl-dot.active span {
+        height: 50px;
+        opacity: 1;
+        background-color: var(--thm-primary-color);
+    }
+    .owl-dots {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .hero-carousel-item {
+        height: 768px;
+        max-height: 76vh;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        &.carousel-cover::after{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: transparentize(#000, .7);
+            z-index: 1;
+        }
+        .carousel-content{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #000;
+            >h1 {
+                font-size: 60px;
+                color: #fff;
+            }
+            >h3 {
+                color: #fff;
+            }
+        }
+    }
+
+}
+
+//Countdown
+.countdown-timer {
+    direction: ltr;
+    margin-top: 2rem;
+
+    .countdown_item{
+        text-align: center;
+        .number {
+            color: #000;
+            font-size: 60px;
+            margin-bottom: 0;
+        }
+    }
+
+    .seperator{
+        margin-top: 9px;
+    }
+
+}
+
+.painting-border {
+    position: relative;
+    &::after{
+        content: "";
+        position: absolute;
+        height: 1.8rem;
+        width: 100%;
+        background: linear-gradient(to left, #f26822, #034ea2);
+        z-index: 0;
+        top: calc(100% + -1.75rem);
+        border-radius: 47px;
+        background: url("../assets/images/bgs/paint.png");
+        background-position: 87px 185px;
+        background-size: 180px;
+        transform: rotate(180deg);
+    }
+    &::before{
+        content: "";
+        position: absolute;
+        height: 1.8rem;
+        width: 100%;
+        background: linear-gradient(to left, #f26822, #034ea2);
+        z-index: 0;
+        top: 100%;
+        border-radius: 47px;
+        background: url("../assets/images/bgs/paint.png");
+        background-position: 87px 185px;
+        background-size: 180px;
+    }
+}
+.artwork-showcase_ {
+    position: relative;
+    &-image{
+        position: relative;
+        width: 100%;
+        padding-top: 67%;
+        >.img_ {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        .oimg{
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+        }
+    }
+}

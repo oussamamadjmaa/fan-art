@@ -1,0 +1,19 @@
+label.file-label {
+    width: 100%;
+    border: dashed 2px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    margin-top: 32px;
+
+    input {
+        display: none;
+    }
+}
+
+.input_image_showcase img {
+    max-height: 170px;
+    max-width: 100%;
+}

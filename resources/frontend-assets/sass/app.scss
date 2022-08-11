@@ -1,0 +1,26 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+/* Helpers */
+@import 'helpers/general';
+
+/* Components */
+@import 'components/pic';
+@import 'components/avatar';
+@import 'components/buttons';
+// @import 'components/input';
+
+/* Partials */
+@import 'partials/navbar';
+// @import 'partials/content';
+// @import 'partials/error_page';
+
+/* Pages */
+@import 'pages/home';
+@import 'pages/auth';
+@import 'pages/artist-profile';
+
+// @import 'sweetalert2';

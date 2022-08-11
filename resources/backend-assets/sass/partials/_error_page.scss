@@ -1,0 +1,16 @@
+.error-page {
+    text-align: center;
+    padding: 5rem 0;
+    .error-code  {
+       h1{
+        font-size: 110px;
+        color: red;
+       }
+    }
+
+    .error-text {
+        font-size: 20px;
+        color: #bd2020;
+    }
+}
+
