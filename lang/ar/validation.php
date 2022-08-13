@@ -193,5 +193,9 @@ return [
         "countdown"             => "عد تنازلي",
         "image_description"     => "وصف الصورة",
         "cv"                    => 'السيرة الذاتية',
+        "website"               => 'رابط الموقع',
+        "logo"                  => 'الشعار',
+        "registration_url"      => 'رابط التسجيل',
+        "sponsor_id"            => 'الراعي'
     ],
 ];

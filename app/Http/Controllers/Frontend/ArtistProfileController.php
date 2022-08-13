@@ -23,6 +23,9 @@ class ArtistProfileController extends Controller
 
         if($profile_page == "artworks") {
             $artist_artworks = $artist->artworks()->latest()->paginate(12);
+            if($artist_artworks->currentPage() > $artist_artworks->lastPage()) {
+                return redirect(request()->fullUrlWithQuery(['page' => $artist_artworks->lastPage()]));
+            }
         }
 
         return view('Frontend.Artist.profile', compact('artist', 'artist_artworks', 'profile_page'));

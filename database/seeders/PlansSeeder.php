@@ -30,7 +30,7 @@ class PlansSeeder extends Seeder
                 'short_description' => 'الباقة الأساسية',
                 'description' => 'الباقة الأساسية',
                 'features' => [],
-                'price' => 2300*100,
+                'price' => 250*100,
             ],
         ];
 

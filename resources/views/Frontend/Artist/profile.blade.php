@@ -40,6 +40,11 @@
     <section class="artist_artworks bg-white">
         <div class="container">
             @include('Frontend.Artist.partials.artworks')
+            @if (!empty(trim($artist_artworks->links())))
+                <div class="text-center d-flex justify-content-center py-4">
+                    {{$artist_artworks->withQueryString()->onEachSide(0)->links()}}
+                </div>
+            @endif
         </div>
     </section>
     @endif

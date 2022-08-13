@@ -11,11 +11,16 @@
             </div>
             <div>
                 <div class="artwork-title fs-6 mb-1">
-                    <h5 class="mb-0">{{$artwork->title}}</h5>
+                    <h6 class="mb-0">{{$artwork->title}}</h6>
                     <small>{{ str($artwork->description)->limit(50) }}</small>
                 </div>
                 <div class="artwork_-info">
                     <ul class="d-flex p-0 text-secondary mb-0 flex-wrap" style="list-style: none;gap:12px;font-size:11px;">
+                        @if (auth()->id() != $artwork->user_id)
+                        <li>
+                            <i class="me-1 bi bi-person"></i> <span>{{str($artwork->user->name)->limit(30)}}</span>
+                        </li>
+                        @endif
                         <li>
                             <i class="me-1 bi bi-info-circle-fill"></i> <span>{{$artwork->status_text}}</span>
                         </li>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Helpers\Meta;
 use App\Http\Controllers\Controller;
 use App\Models\Artwork;
 use App\Models\Carousel;
@@ -18,6 +19,11 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //Page meta data
+        $meta = new Meta([
+            'title' => __('Home'),
+        ]);
+
         //Carousels
         $carousels = Cache::rememberForever('carousels', function(){
             return Carousel::active()->oldest('order')->get();

@@ -21,7 +21,7 @@ class ArtworkRequest extends FormRequest
 
     public function prepareForValidation(){
         return $this->merge([
-            'price' => (int) (((int) $this->price) * 100),
+            'price' => (int) (((float) $this->price) * 100),
             'covered_with_glass' => $this->outer_frame ? 1 : 0,
             'covered_with_glass' => $this->covered_with_glass ? 1 : 0,
 

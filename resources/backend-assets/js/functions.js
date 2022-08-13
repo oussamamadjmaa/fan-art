@@ -57,7 +57,7 @@ _s.validateForm = function (formId) {
     })
 
     $.each($(formId).find('input[type=email]'), function () {
-        if (!($(this).val()).isEmpty() && !ValidateEmail($(this).val())) {
+        if (!($(this).val()).isEmpty() && !_s.ValidateEmail($(this).val())) {
             errors_count++;
             $(this).addClass('is-invalid').parent().find('.invalid-feedback').text((lang.validation.email).replace(":attribute", ($(this).parent().find('label').text()).replace('*', '')));
         }

@@ -156,4 +156,33 @@ $(function () {
     $(document).on('change input keyup', 'input, textarea, select', function(){
         $(this).removeClass('is-invalid');
     });
+
+    //Sidebar toggler
+    var sidebarActive = false;
+    let sidebarEl = document.querySelector('._navbar#navbar');
+    let phoneBarsEl = document.querySelector('._navbar__phone-bars');
+    phoneBarsEl.onclick = function(){ toggleSidebar() };
+
+    var toggleSidebar = function () {
+        sidebarActive = !sidebarActive;
+        sidebarEl.classList.toggle('active');
+        if (sidebarEl.classList.contains('active')) {
+            phoneBarsEl.classList.add('active');
+            if (!document.querySelector('.sidebar-backdrop')) {
+                createSidebarBackdrop();
+            }
+        } else {
+            phoneBarsEl.classList.remove('active');
+            let backdrop = document.querySelector('.sidebar-backdrop');
+            if (backdrop) backdrop.remove();
+        }
+    }
+    var createSidebarBackdrop = function () {
+        let backdrop = document.createElement('div');
+        backdrop.classList.add('sidebar-backdrop');
+        backdrop.onclick = function () {
+            toggleSidebar();
+        };
+        document.querySelector('body').appendChild(backdrop);
+    }
 });

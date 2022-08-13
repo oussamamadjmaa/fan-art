@@ -6,6 +6,7 @@ use App\Helpers\Meta;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -41,5 +42,13 @@ class LoginController extends Controller
         $meta = new Meta([
             'title' => __('Login')
         ]);
+    }
+
+    public function authenticated(Request $request, $user){
+        if($user->hasRole(['admin', 'artist', 'store'])){
+            return $request->wantsJson()
+                    ? response()->json([], 204)
+                    : to_route('backend.dashboard');
+        }
     }
 }

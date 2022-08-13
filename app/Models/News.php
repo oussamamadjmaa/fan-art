@@ -44,11 +44,11 @@ class News extends Model
     /**
      * Functions
      */
-    public function generateSlug($title)
+    public function generateSlug($title, $id = false)
     {
         $slug = slugme($title);
-        if (static::whereSlug($slug)->exists()) {
-            $max = static::whereTitle($title)->latest('id')->skip(1)->value('slug');
+        if (static::whereSlug($slug)->where('id', '!=', $id)->exists()) {
+            $max = static::whereTitle($title)->skip(1)->value('slug');
             if (isset($max[-1]) && is_numeric($max[-1])) {
                 return preg_replace_callback('/(\d+)$/', function($mathces) {
                     return $mathces[1] + 1;

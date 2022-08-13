@@ -11,6 +11,6 @@ class ArtworkObserver
     }
 
     public function updating(Artwork $artwork){
-        $artwork->slug = $artwork->generateSlug($artwork->title);
+        $artwork->slug = $artwork->generateSlug($artwork->title, $artwork->id);
     }
 }

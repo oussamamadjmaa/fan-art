@@ -25,7 +25,7 @@
              @include('Frontend.partials.home.latest_artworks')
 
              <div class="text-md-end text-center mt-4">
-                 <a href="#" class="btn btn-primary">@lang('Show all artworks')</a>
+                 <a href="{{route('frontend.artworks.index')}}" class="btn btn-primary">@lang('Show all artworks')</a>
              </div>
         </div>
      </section>

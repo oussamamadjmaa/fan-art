@@ -20,7 +20,7 @@ namespace App\Models{
  * @property string $title
  * @property int $price
  * @property string $image
- * @property string|null $meterials_used
+ * @property string|null $materials_used
  * @property string|null $tools
  * @property bool $outer_frame
  * @property string|null $dimensions
@@ -47,7 +47,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork whereImage($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork whereLocation($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Artwork whereMeterialsUsed($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Artwork whereMaterialsUsed($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork whereOuterFrame($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork whereSlug($value)
@@ -94,6 +94,43 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Carousel whereUpdatedAt($value)
  */
 	class Carousel extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Exhibition
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property int $sponsor_id
+ * @property string $slug
+ * @property string $name
+ * @property \Illuminate\Support\Carbon $from_date
+ * @property \Illuminate\Support\Carbon $to_date
+ * @property string $country
+ * @property string|null $city
+ * @property string|null $registration_url
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Sponsor $sponsor
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|Exhibition newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Exhibition newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Exhibition query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Exhibition whereCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Exhibition whereCountry($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Exhibition whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Exhibition whereFromDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Exhibition whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Exhibition whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Exhibition whereRegistrationUrl($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Exhibition whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Exhibition whereSponsorId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Exhibition whereToDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Exhibition whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Exhibition whereUserId($value)
+ */
+	class Exhibition extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -213,6 +250,42 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Sponsor
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property string $name
+ * @property string|null $logo
+ * @property string|null $website
+ * @property string $country
+ * @property string|null $phone
+ * @property string|null $email
+ * @property string|null $address
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Exhibition[] $exhibitions
+ * @property-read int|null $exhibitions_count
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|Sponsor newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Sponsor newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Sponsor query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Sponsor whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Sponsor whereCountry($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Sponsor whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Sponsor whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Sponsor whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Sponsor whereLogo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Sponsor whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Sponsor wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Sponsor whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Sponsor whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Sponsor whereWebsite($value)
+ */
+	class Sponsor extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Subscription
  *
  * @property int $id
@@ -276,6 +349,8 @@ namespace App\Models{
  * @property-read \App\Models\Subscription|null $activeSubscription
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Artwork[] $artworks
  * @property-read int|null $artworks_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Exhibition[] $exhibitions
+ * @property-read int|null $exhibitions_count
  * @property-read mixed $avatar_url
  * @property-read mixed $fullname
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\News[] $news
@@ -287,6 +362,8 @@ namespace App\Models{
  * @property-read \App\Models\UserProfile|null $profile
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Role[] $roles
  * @property-read int|null $roles_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Sponsor[] $sponsors
+ * @property-read int|null $sponsors_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Subscription[] $subscriptions
  * @property-read int|null $subscriptions_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens

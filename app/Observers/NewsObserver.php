@@ -12,6 +12,6 @@ class NewsObserver
     }
 
     public function updating(News $news){
-        $news->slug = $news->generateSlug($news->title);
+        $news->slug = $news->generateSlug($news->title, $news->id);
     }
 }

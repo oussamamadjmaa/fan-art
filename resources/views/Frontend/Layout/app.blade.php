@@ -1,4 +1,8 @@
 @php
+$meta = $meta ?? NULL;
+$title =   $meta->title ?? $title ?? '';
+$title = $title ? $title . ' | '. config('app.name') : config('app.name');
+
 $dir = config('app.direction');
 $auth_ = Auth::user();
 @endphp
@@ -9,12 +13,28 @@ $auth_ = Auth::user();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="robots" content="index, archive">
 
-    <title>
-        @if (isset($meta->title) || isset($title))
-            {{ $meta->title ?? $title }} |
-        @endif {{ config('app.name') }}
-    </title>
+    <title>{{ $title }}</title>
+
+    <meta name="title"  content="{{$title}}">
+    <meta name="description"  content="{{$meta?->description ?? config('app.seo.description')}}">
+    <meta name="keywords"  content="{{$meta?->keywords ?? config('app.seo.keywords')}}">
+
+    <!--  Essential META Tags -->
+
+    <meta property="og:title" content="{{$title}}">
+    <meta property="og:description" content="{{$meta?->description ?? config('app.seo.description')}}">
+    <meta property="og:image" content="{{$meta?->image ?? asset('assets/images/art-logo.png')}}">
+    <meta property="og:url" content="{{request()->fullUrl()}}">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!--  Non-Essential, But Recommended -->
+    <meta name="og:site_name" content="{{config('app.name')}}">
+
+    {{-- <!--  Non-Essential, But Required for Analytics -->
+    <meta property="fb:app_id" content="your_app_id" />
+    <meta name="twitter:site" content="@website-username"> --}}
 
     <!-- CSS FONTS -->
     {{-- <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">

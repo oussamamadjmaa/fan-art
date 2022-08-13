@@ -45,7 +45,7 @@ if(!function_exists('date_formated')){
     function date_formated($date, string $format = NULL){
         $format = $format ?: config('app.date_format');
         if($date instanceof Carbon) return $date->translatedFormat($format);
-        else Carbon::parse($date)->translatedFormat($format);
+        else return Carbon::parse($date)->translatedFormat($format);
     }
 }
 
@@ -86,8 +86,8 @@ if(!function_exists('countries_list')){
             $location_data = visitor_location();
         }
 
+        $nationalities = [];
         if($get_nationalities){
-            $nationalities = [];
             foreach ($countries as $countryCode => $country) {
                 $country = country($countryCode);
                 $nationality_ = __($country->getDemonym());

@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Frontend\ArtistProfileController;
 use App\Http\Controllers\Frontend\ArtistProfileSetupController;
+use App\Http\Controllers\Frontend\ArtistsController;
+use App\Http\Controllers\Frontend\ArtworksController;
 use App\Http\Controllers\Frontend\PageController;
 use App\Http\Controllers\Frontend\User\AccountController;
 use Illuminate\Support\Facades\Route;
@@ -9,9 +11,16 @@ use Illuminate\Support\Facades\Route;
 //Home
 Route::get('/', [App\Http\Controllers\Frontend\HomeController::class, 'index'])->name('home');
 
+//Artists List
+Route::get('/artists', [ArtistsController::class, 'index'])->name('artists.index');
 
-//Custom Pages
+//Artworks
+Route::get('/artworks', [ArtworksController::class, 'index'])->name('artworks.index');
+Route::get('/artworks/{artwork:slug}', [ArtworksController::class, 'show'])->name('artworks.show');
+
+//Artist Profile
 Route::get('/artist/{artist_username}/{profile_page?}', [ArtistProfileController::class, 'index'])->name('artist.profile');
+
 
 //
 Route::group(['middleware' => ['auth', 'verified']], function(){

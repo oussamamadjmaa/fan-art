@@ -44,15 +44,21 @@
             </div>
             <div class="_navbar-bottom__menu">
                 <ul>
-                    <li><a href="#">@lang('Home')</a></li>
-                    <li><a href="#">@lang('Artists')</a></li>
-                    <li><a href="#">@lang('Paintings and artwork')</a></li>
+                    <li><a href="{{route('frontend.home')}}">@lang('Home')</a></li>
+                    <li><a href="{{route('frontend.artists.index')}}">@lang('Artists')</a></li>
+                    <li><a href="{{route('frontend.artworks.index')}}">@lang('Paintings and artwork')</a></li>
                     <li><a href="#">@lang('Exhibitions and meetings')</a></li>
                     <li><a href="#">@lang('Stores')</a></li>
                     <li><a href="#">@lang('Artist blog')</a></li>
                     <li><a href="#">@lang('Contact us')</a></li>
                 </ul>
             </div>
+        </div>
+
+        <div class="_navbar__phone-bars">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </div>
 </div>

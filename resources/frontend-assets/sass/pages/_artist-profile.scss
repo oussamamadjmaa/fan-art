@@ -51,18 +51,18 @@
 }
 
 .artworks-grid{
-    --gap: 3.5rem;
+    --gap: .7rem 3.5rem;
     --items: 3;
     @media (max-width: 1000px) {
-        --gap: 2.1rem;
+        --gap: .7rem 2.1rem;
         --items: 3;
     }
     @media (max-width:768px) {
-        --gap: 2rem;
+        --gap: .7rem 2rem;
         --items: 2;
     }
     @media (max-width:450px) {
-        --gap: 1rem;
+        --gap: .7rem;
         --items: 1;
     }
 

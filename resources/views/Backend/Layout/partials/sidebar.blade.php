@@ -25,6 +25,17 @@
             'icon' => 'bi bi-palette',
             'cond' => auth()->user()->can('viewAny', App\Models\Artwork::class),
             'href' => route('backend.artworks.index')
+        ],[
+            'title' => 'Sponsors',
+            'icon' => 'far fa-handshake',
+            'cond' => auth()->user()->can('viewAny', App\Models\Sponsor::class),
+            'href' => route('backend.sponsors.index')
+        ],
+        [
+            'title' => 'Exhibitions',
+            'icon' => 'bi bi-calendar-heart',
+            'cond' => auth()->user()->can('viewAny', App\Models\Exhibition::class),
+            'href' => route('backend.exhibitions.index')
         ],
     ];
     $req_url = request()->url();

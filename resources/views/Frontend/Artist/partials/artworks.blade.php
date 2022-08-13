@@ -10,7 +10,7 @@
     @endif
 @empty
     <div class="text-center py-5">
-        <h1><i class="bi bi-palette"></i></h1>
+        <h1 style="font-size: 90px;"><i class="bi bi-palette"></i></h1>
         @if ($artist->id == auth()->id())
             <p>@lang("You didn't post any artwork yet").</p>
             <a href="{{ route('backend.artworks.index') }}">@lang('Add Artwork')</a>

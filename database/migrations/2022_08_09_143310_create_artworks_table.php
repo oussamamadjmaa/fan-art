@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('title');
             $table->integer('price');
             $table->string('image');
-            $table->text('meterials_used')->nullable();
+            $table->text('materials_used')->nullable();
             $table->text('tools')->nullable();
             $table->boolean('outer_frame')->default(0);
             $table->string('dimensions')->nullable();
@@ -28,6 +28,7 @@ return new class extends Migration
             $table->text('location')->nullable();
             $table->longText('description')->nullable();
             $table->boolean('status')->default(1);
+            $table->string('url')->nullable();
             $table->timestamps();
         });
     }

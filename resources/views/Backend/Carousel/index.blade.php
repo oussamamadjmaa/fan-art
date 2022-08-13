@@ -4,7 +4,7 @@
     <x-buttons.icon-button :text="__('Add Carousel')" onclick="_s.openCreateForm(this)" />
 </div>
 
-<x-card.page-data-template title="Carousels" count_text="Carousel" icon="bi bi-file-earmark-richtext" />
+<x-card.page-data-template title="Carousels" count_text="Carousel" icon="bi bi-image" />
 <hr>
 <div class="card p-0">
     <div class="card-body p-0">

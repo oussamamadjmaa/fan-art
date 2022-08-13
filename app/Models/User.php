@@ -77,12 +77,19 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Subscription::class);
     }
 
+    public function activeSubscription(){
+        return $this->hasOne(Subscription::class)->where('subscriptions.status', Subscription::ACTIVE)->where('subscriptions.expires_at', '>=', now());
+    }
+
+    //Artist Relations
     public function artworks(){
         return $this->hasMany(Artwork::class);
     }
-
-    public function activeSubscription(){
-        return $this->hasOne(Subscription::class)->where('subscriptions.status', Subscription::ACTIVE)->where('subscriptions.expires_at', '>=', now());
+    public function sponsors(){
+        return $this->hasMany(Sponsor::class);
+    }
+    public function exhibitions(){
+        return $this->hasMany(Exhibition::class);
     }
 
     /**

@@ -114,7 +114,7 @@ return [
      | X-Requested-With with the value XMLHttpRequest (most JS libraries send this), or have application/json as a Accept header.
      */
 
-    'capture_ajax' => false,
+    'capture_ajax' => env('DEBUGBAR_CAPTURE_AJAX', true),
     'add_ajax_timing' => false,
 
     /*
