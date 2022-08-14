@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Helpers\Meta;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Closure;
@@ -17,8 +18,14 @@ class ArtistProfileController extends Controller
         });
     }
     public function index($artist_username, $profile_page = "artworks") {
-        $artist = User::whereUsername($artist_username)->withWhereHas('profile')->activeSubscribedArtist()->firstOrFail();
+        $artist = User::role('artist')->whereUsername($artist_username)->withWhereHas('profile')->activeSubscribedArtist()->firstOrFail();
 
+        //Page meta data
+        $meta = new Meta([
+            'title' => $artist->name,
+        ]);
+
+        //
         $artist_artworks = NULL;
 
         if($profile_page == "artworks") {

@@ -1076,5 +1076,13 @@
     "Registration url" : "رابط التسجيل",
     "Sponsor" : "الراعي",
     "Select Sponsor" : "إختر الراعي",
-    "Artwork location" : "مكان تواجد اللوحة"
+    "Artwork location" : "مكان تواجد اللوحة",
+    "Active" : "مفعل",
+    "Current plan" : "الباقة الحالية",
+    "Plan name" : "إسم الباقة",
+    "Plan status" : "حالة الباقة",
+    "Expire at" : "تنتهي في",
+    "Subscription" : "الإشتراك",
+    "Expired" : "منتهية",
+    "Expired at" : "إنتهت في"
 }

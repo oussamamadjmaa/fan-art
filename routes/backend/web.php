@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\ExhibitionController;
 use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\PagesManagerController;
 use App\Http\Controllers\Backend\SponsorController;
+use App\Http\Controllers\Backend\SubscriptionController;
 use App\Http\Controllers\Backend\UploadFilesController;
 use Illuminate\Support\Facades\Route;
 
@@ -46,8 +47,12 @@ Route::group(['middleware' => ['role:admin|artist', 'backend-check:subscribed']]
     //Sponsors
     Route::delete('exhibitions', [ExhibitionController::class, 'multiple_delete'])->name('exhibitions.multiple_delete');
     Route::resource('exhibitions', ExhibitionController::class)->except(['show']);
+
 });
 
+Route::middleware('role:artist')->group(function(){
+    Route::get('subscription', [SubscriptionController::class, 'index']);
+});
 
 //Upload
 Route::post('upload', [UploadFilesController::class, 'upload'])->name('upload');

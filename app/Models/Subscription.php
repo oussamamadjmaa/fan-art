@@ -17,12 +17,6 @@ class Subscription extends Model
     protected $fillable = [
         'user_id',
         'plan_id',
-        'transaction_id',
-        'payment_method',
-        'confirmation_picture',
-        'payment_data',
-        'price',
-        'description',
         'status',
         'expires_at'
     ];
@@ -44,6 +38,38 @@ class Subscription extends Model
     }
 
     /**
+     * Attributes
+     */
+    public function getStatusAttribute($status){
+        $this->append('status_text');
+        return $status;
+    }
+
+    public function getStatusTextAttribute(){
+        $text = 'Unknown';
+        if($this->expired()){
+            $text = 'Expired';
+        }else{
+            switch ($this->status) {
+                case self::PENDING:
+                    $text = "Pending";
+                    break;
+                case self::ACTIVE:
+                    $text = "Active";
+                    break;
+                case self::CANCELED:
+                    $text = "Canceled";
+                    break;
+                case self::CANCELED_BY_USER:
+                    $text = "Canceled by user";
+                    break;
+            }
+        }
+
+        return __($text);
+    }
+
+    /**
      * Functions
      */
     public function is_free(){
@@ -51,5 +77,15 @@ class Subscription extends Model
     }
     public function days_left(){
         return $this->expires_at->diffInDays(now()->subDay());
+    }
+    public function expired(){
+        return now()->gt($this->expires_at);
+    }
+
+    /**
+     * Scopes
+     */
+    public function scopeActive($q){
+        return $q->where('subscriptions.status', Subscription::ACTIVE)->where('subscriptions.expires_at', '>=', now());
     }
 }

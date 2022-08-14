@@ -25,7 +25,7 @@ class BackendCheck
             return to_route('frontend.setup_profile.index', 'my-profile');
         }
 
-        if($check == "subscribed" && auth()->user()->hasRole('artist') && !auth()->user()->activeSubscription()->count()){
+        if($check == "subscribed" && auth()->user()->hasRole('artist') && !auth()->user()->subscription()->active()->count()){
             return abort(405, 'Go pay bro');
         }
         return $next($request);

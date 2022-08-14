@@ -73,12 +73,12 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(News::class);
     }
 
-    public function subscriptions(){
-        return $this->hasMany(Subscription::class);
+    public function activeSubscription(){
+        return $this->hasOne(Subscription::class)->active();
     }
 
-    public function activeSubscription(){
-        return $this->hasOne(Subscription::class)->where('subscriptions.status', Subscription::ACTIVE)->where('subscriptions.expires_at', '>=', now());
+    public function subscription(){
+        return $this->hasOne(Subscription::class);
     }
 
     //Artist Relations
@@ -121,7 +121,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $q->whereNotNull('email_verified_at');
     }
     public function scopeSubscribed($q){
-        return $q->whereHas('activeSubscription');
+        return $q->whereHas('subscription', fn($q) => $q->active());
     }
 
     public function scopeActiveSubscribedArtist($q) {

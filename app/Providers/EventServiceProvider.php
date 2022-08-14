@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Events\SubscriptionPayment;
+use App\Listeners\HandleSubscription;
 use App\Models\Artwork;
 use App\Models\Carousel;
 use App\Models\News;
@@ -27,6 +29,9 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
+        ],
+        SubscriptionPayment::class => [
+            HandleSubscription::class,
         ],
     ];
 

@@ -28,6 +28,7 @@ namespace App\Models{
  * @property string|null $location
  * @property string|null $description
  * @property int $status
+ * @property string|null $url
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read mixed $price_format
@@ -55,6 +56,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork whereTools($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Artwork whereUrl($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork whereUserId($value)
  */
 	class Artwork extends \Eloquent {}
@@ -200,6 +202,45 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Payment
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property int $paymentable_id
+ * @property string $paymentable_type
+ * @property string|null $transaction_id
+ * @property string|null $payment_method
+ * @property string|null $confirmation_picture
+ * @property array|null $payment_data
+ * @property int $price
+ * @property string $description
+ * @property int $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $paymentable
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|Payment newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Payment newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Payment query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Payment whereConfirmationPicture($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Payment whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Payment whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Payment whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Payment wherePaymentData($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Payment wherePaymentMethod($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Payment wherePaymentableId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Payment wherePaymentableType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Payment wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Payment whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Payment whereTransactionId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Payment whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Payment whereUserId($value)
+ */
+	class Payment extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Plan
  *
  * @property int $id
@@ -211,6 +252,8 @@ namespace App\Models{
  * @property int $price
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Payment[] $payments
+ * @property-read int|null $payments_count
  * @method static \Illuminate\Database\Eloquent\Builder|Plan newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Plan newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Plan query()
@@ -291,32 +334,22 @@ namespace App\Models{
  * @property int $id
  * @property int $user_id
  * @property int $plan_id
- * @property string|null $transaction_id
- * @property string|null $payment_method
- * @property string|null $confirmation_picture
- * @property array|null $payment_data
- * @property int $price
- * @property string $description
  * @property int $status
  * @property \Illuminate\Support\Carbon $expires_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read mixed $status_text
  * @property-read \App\Models\Plan $plan
  * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|Subscription active()
  * @method static \Illuminate\Database\Eloquent\Builder|Subscription newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Subscription newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Subscription query()
- * @method static \Illuminate\Database\Eloquent\Builder|Subscription whereConfirmationPicture($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Subscription whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Subscription whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Subscription whereExpiresAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Subscription whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Subscription wherePaymentData($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Subscription wherePaymentMethod($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Subscription wherePlanId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Subscription wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Subscription whereStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Subscription whereTransactionId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Subscription whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Subscription whereUserId($value)
  */
@@ -364,8 +397,7 @@ namespace App\Models{
  * @property-read int|null $roles_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Sponsor[] $sponsors
  * @property-read int|null $sponsors_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Subscription[] $subscriptions
- * @property-read int|null $subscriptions_count
+ * @property-read \App\Models\Subscription|null $subscription
  * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
  * @property-read int|null $tokens_count
  * @method static \Illuminate\Database\Eloquent\Builder|User active()

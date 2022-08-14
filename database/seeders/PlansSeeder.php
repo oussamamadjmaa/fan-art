@@ -23,6 +23,7 @@ class PlansSeeder extends Seeder
                 'description' => 'الباقة التجريبية',
                 'features' => [],
                 'price' => 0,
+                'level' => 0,
             ],
             'paid' => [
                 'key' => 'paid',
@@ -31,6 +32,7 @@ class PlansSeeder extends Seeder
                 'description' => 'الباقة الأساسية',
                 'features' => [],
                 'price' => 250*100,
+                'level' => 1
             ],
         ];
 

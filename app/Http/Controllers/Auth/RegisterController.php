@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\SubscriptionPayment;
 use App\Helpers\Meta;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
+use App\Models\Payment;
 use App\Models\Plan;
 use App\Models\Subscription;
 use App\Models\User;
@@ -44,15 +46,7 @@ class RegisterController extends Controller
             $user->assignRole($role);
             $plan = Plan::where('key', 'free_trial')->first();
             if($plan) {
-                $user->subscriptions()->create([
-                    'plan_id' =>  $plan->id,
-                    'payment_method' => 'free_trial',
-                    'payment_data' => [],
-                    'price' => 0,
-                    'description' => 'الإشتراك التلقائي في '.$plan->name.' لمدة 6 أشهر',
-                    'status' => Subscription::ACTIVE,
-                    'expires_at' => now()->addDays(180),
-                ]);
+                event(new SubscriptionPayment($payment = $this->createFreeTrialPayment($user, $plan)));
             }
         };
 
@@ -67,5 +61,20 @@ class RegisterController extends Controller
         ];
 
         return redirect($routes[$role] ?? RouteServiceProvider::HOME);
+    }
+
+    private function createFreeTrialPayment(User $user, Plan $plan){
+        return $plan->payments()->create([
+            'user_id' =>  $user->id,
+            'payment_method' => 'free_trial',
+            'payment_data' => [
+                'duration' => 180,
+                'duration_method' => 'addDays',
+                'duration_type' => 'days',
+            ],
+            'price' => 0,
+            'description' => 'Automatic subscription to the free trial plan for 6 months',
+            'status' => Payment::CONFIRMED,
+        ]);
     }
 }

@@ -18,10 +18,19 @@ class Plan extends Model
         'description',
         'features',
         'price',
+        'level'
     ];
 
     protected $casts = [
         'features' => 'array'
     ];
+
+    /**
+     * Model Relations
+     */
+    public function payments()
+    {
+        return $this->morphMany(Payment::class, 'paymentable');
+    }
 
 }

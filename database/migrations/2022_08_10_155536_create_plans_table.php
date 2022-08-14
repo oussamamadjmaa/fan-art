@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->json('features')->nullable();
             $table->integer('price');
+            $table->smallInteger('level');
             $table->timestamps();
         });
     }
