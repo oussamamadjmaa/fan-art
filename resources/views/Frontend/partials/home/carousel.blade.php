@@ -39,7 +39,7 @@
         </div>
     @empty
     <div class="hero-carousel-item carousel-cover">
-        <img src="http://fan-art.test/storage/carousels/2022-08/d6mF5BuLzM0DsAt1iNCIiczf5TDZReYGK8uWXkmq.webp">
+        <img src="{{asset('assets/images/bgs/carousel-1.webp')}}">
         <div class="carousel-content">
             <h1>موقع فــن أرت</h1>
             <h3>مرحبا بك في موقع فــن أرت الجديد</h3>
