@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\InstallController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,6 +15,9 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//Install
+Route::get('install-website', [InstallController::class, 'index']);
 
 //Auth Routes
 Auth::routes(['verify' => true]);
