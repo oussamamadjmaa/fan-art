@@ -1084,5 +1084,12 @@
     "Expire at" : "تنتهي في",
     "Subscription" : "الإشتراك",
     "Expired" : "منتهية",
-    "Expired at" : "إنتهت في"
+    "Expired at" : "إنتهت في",
+    "Upgrade plan" : "ترقية الإشتراك",
+    "Upload bank transfer receipt" : "رفع إيصال التحويل البنكي",
+    "Bank" : "البنك",
+    "Account holder"  : "صاحب الحساب",
+    "Account number" : "رقم الحساب",
+    "IBAN number" : "رقم الآيبان",
+    "There's no artworks yet" : "لا يوجد أي أعمال فنية بعد"
 }

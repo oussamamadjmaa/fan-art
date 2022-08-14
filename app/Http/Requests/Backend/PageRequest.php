@@ -20,6 +20,7 @@ class PageRequest extends FormRequest
     public function prepareForValidation(){
         return $this->merge([
             'slug' => slugme($this->slug),
+            'content' => strip_tags($this->input('content') ?? '', config('app.allowed_html_tags')),
             'status' => $this->status ? 1 : 0,
         ]);
     }
@@ -32,7 +33,7 @@ class PageRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'             => 'required|string|191',
+            'title'             => 'required|string|max:191',
             'slug'              => 'required|string|max:191|unique:pages,slug,'.($this->route('page')->id ?? false),
             'content'           => 'required|string',
             'seo'               => 'required|array',

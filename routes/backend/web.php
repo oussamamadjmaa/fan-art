@@ -51,7 +51,7 @@ Route::group(['middleware' => ['role:admin|artist', 'backend-check:subscribed']]
 });
 
 Route::middleware('role:artist')->group(function(){
-    Route::get('subscription', [SubscriptionController::class, 'index']);
+    Route::get('subscription', [SubscriptionController::class, 'index'])->name('subscription.index');
 });
 
 //Upload

@@ -21,7 +21,7 @@ class HandleSubscription
         $plan = $event->payment->paymentable;
         $payment_data =  $event->payment->payment_data;
         if ($event->payment->status == Payment::CONFIRMED) {
-            $subscription = $event->payment->user->subscriptions()->create([
+            $subscription = $event->payment->user->subscription()->create([
                 'plan_id' =>  $plan->id,
                 'status' => Subscription::ACTIVE,
                 'expires_at' => now()->{$payment_data['duration_method']}($payment_data['duration']),

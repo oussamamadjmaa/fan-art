@@ -23,6 +23,7 @@ class NewsRequest extends FormRequest
                 'title' => $this->seo['title'] ?? '',
                 'description' => $this->seo['description'] ?? '',
                 'keywords'  => $this->seo['keywords'] ?? '',
+                'body' => strip_tags($this->input('body') ?? '', config('app.allowed_html_tags')),
                 'image' => $this->input('image')
             ]
         ]);
