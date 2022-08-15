@@ -24,7 +24,7 @@
     ]
   },
   "resources/frontend-assets/js/app.js": {
-    "file": "assets/app.6ea177b3.js",
+    "file": "assets/app.8fac2ef8.js",
     "src": "resources/frontend-assets/js/app.js",
     "isEntry": true,
     "imports": [
@@ -45,7 +45,7 @@
     "isEntry": true
   },
   "resources/frontend-assets/sass/app.scss": {
-    "file": "assets/app.1c9dd28c.css",
+    "file": "assets/app.64770dde.css",
     "src": "resources/frontend-assets/sass/app.scss",
     "isEntry": true
   }

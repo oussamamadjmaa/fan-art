@@ -84,20 +84,20 @@
 
 .painting-border {
     position: relative;
-    &::after{
-        content: "";
-        position: absolute;
-        height: 1.8rem;
-        width: 100%;
-        background: linear-gradient(to left, #f26822, #034ea2);
-        z-index: 0;
-        top: calc(100% + -1.75rem);
-        border-radius: 47px;
-        background: url("../assets/images/bgs/paint.png");
-        background-position: 87px 185px;
-        background-size: 180px;
-        transform: rotate(180deg);
-    }
+    // &::after{
+    //     content: "";
+    //     position: absolute;
+    //     height: 1.8rem;
+    //     width: 100%;
+    //     background: linear-gradient(to left, #f26822, #034ea2);
+    //     z-index: 0;
+    //     top: calc(100% + -1.75rem);
+    //     border-radius: 47px;
+    //     background: url("../assets/images/bgs/paint.png");
+    //     background-position: 87px 185px;
+    //     background-size: 180px;
+    //     transform: rotate(180deg);
+    // }
     &::before{
         content: "";
         position: absolute;

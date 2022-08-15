@@ -180,3 +180,46 @@ div#artistsSlider .owl-nav>button:hover {
     background-color: transparent;
     opacity: .8;
 }
+
+.app-preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    z-index: 9999999999;
+    transition: all 2s ease-in-out;
+    animation: backgroundAnimation 2s infinite ease;
+    &-img{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        > img {
+            transition: all .3s ease-in-out;
+            animation: preloaderScale 1.4s infinite;
+        }
+    }
+}
+
+@keyframes preloaderScale {
+    0% {
+        transform: scale(1.2);
+    }
+    50% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes backgroundAnimation {
+    0%{
+        background: linear-gradient(50deg, white, #e0e0e0, white, #e0e0e0);
+    }
+    100%{
+        background: linear-gradient(60deg, white, #e0e0e0, white, #e0e0e0);
+    }
+}

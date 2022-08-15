@@ -113,6 +113,9 @@ function makeCrModal() {
 }
 
 $(function () {
+    $('.app-preloader').fadeOut(700, function(){
+        $(this).remove();
+    });
     function inputImagePlaceholder(file, target) {
         cr.target = target;
         var reader = new FileReader();

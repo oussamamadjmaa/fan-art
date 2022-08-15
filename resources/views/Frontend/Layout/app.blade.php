@@ -66,6 +66,11 @@ $auth_ = Auth::user();
     @include('Frontend.Layout.partials.navbar')
 
     <div class="app-container" id="app">
+        <div class="app-preloader">
+            <div class="app-preloader-img">
+                <img src="{{ asset('assets/images/art-logo.png') }}" alt="{{config('app.name')}}" height="107">
+            </div>
+        </div>
         <div class="app-content">
             @yield('content')
         </div>
