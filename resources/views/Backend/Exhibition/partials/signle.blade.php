@@ -25,7 +25,7 @@
                             <i class="me-1 bi bi-geo-alt"></i> <span>{{__(country($exhibition->country)->getName())}}, {{$exhibition->city}}</span>
                         </li>
                         <li>
-                            <i class="me-1 bi bi-clock"></i> <span>{{date_formated($exhibition->from_date)}} -> {{date_formated($exhibition->to_date)}}</span>
+                            <i class="me-1 bi bi-clock"></i> <span>{{$exhibition->from_to_date}}</span>
                         </li>
                     </ul>
                 </div>

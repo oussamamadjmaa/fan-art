@@ -10,3 +10,22 @@
         color: #fff;
     }
 }
+
+.primary-btn {
+    background-color: #000;
+    color: #fff;
+    padding: .7rem 2.3rem;
+    padding-top: .9rem;
+    text-transform: uppercase;
+    display: inline-block;
+    transition: all .21s ease-in-out;
+    border-color: #000;
+    &:hover {
+        background-color: var(--thm-primary-color);
+        border-color: var(--thm-primary-color);
+        color: #fff;
+        text-shadow: 0 0 #fff;
+        opacity: 1;
+        box-shadow: -1px 3px 10px 1px #0000004d;
+    }
+}

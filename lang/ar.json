@@ -1091,5 +1091,18 @@
     "Account holder"  : "صاحب الحساب",
     "Account number" : "رقم الحساب",
     "IBAN number" : "رقم الآيبان",
-    "There's no artworks yet" : "لا يوجد أي أعمال فنية بعد"
+    "There's no artworks yet" : "لا يوجد أي أعمال فنية بعد",
+    "There's no exhibitions yet" : "لا يوجد أي معارض بعد",
+    "Contact artist" : "تواصل مع الفنان",
+    "Send message to artist" : "إرسال رسالة للفنان",
+    "Description" : "الوصف",
+    "Here's more artworks and paintings from :name you may like" : "إليك المزيد من الأعمال الفنية واللوحات من :name الذي قد تعجبك",
+    "View all artworks" : "عرض جميع الأعمال الفنية",
+    "Date" : "التاريخ",
+    "Send message" : "إرسال الرسالة",
+    "Hi, I'm interested in purchasing this work. Could you please provide more information about the piece?" : "مرحبًا ، أنا مهتم بشراء هذا العمل الفني. هل يمكنك تقديم مزيد من المعلومات حوله من فضلك؟",
+    "First name" : "الإسم",
+    "Last name" : "اللقب",
+    "Message" : "رسالة"
+
 }

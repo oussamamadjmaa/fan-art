@@ -17,7 +17,7 @@ class ArtworksController extends Controller
 
         //
         $artworks = Artwork::query();
-        $artworks = $artworks->latest()->paginate(12);
+        $artworks = $artworks->activeSubscribedArtist()->latest('artworks.created_at')->paginate(12);
 
         if($artworks->currentPage() > $artworks->lastPage()) {
             return redirect(request()->fullUrlWithQuery(['page' => $artworks->lastPage()]));

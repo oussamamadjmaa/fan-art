@@ -114,8 +114,10 @@ namespace App\Models{
  * @property string|null $registration_url
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read mixed $from_to_date
  * @property-read \App\Models\Sponsor $sponsor
  * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|Exhibition activeSubscribedArtist()
  * @method static \Illuminate\Database\Eloquent\Builder|Exhibition newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Exhibition newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Exhibition query()
@@ -250,6 +252,7 @@ namespace App\Models{
  * @property string|null $description
  * @property array|null $features
  * @property int $price
+ * @property int $level
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Payment[] $payments
@@ -262,6 +265,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Plan whereFeatures($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Plan whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Plan whereKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Plan whereLevel($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Plan whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Plan wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Plan whereShortDescription($value)
