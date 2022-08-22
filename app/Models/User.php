@@ -81,6 +81,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(Subscription::class);
     }
 
+    public function notifications(){
+        return $this->hasMany(Notification::class, 'to_user_id');
+    }
+
     //Artist Relations
     public function artworks(){
         return $this->hasMany(Artwork::class);

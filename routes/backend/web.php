@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\CarouselController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\ExhibitionController;
 use App\Http\Controllers\Backend\NewsController;
+use App\Http\Controllers\Backend\NotificationsController;
 use App\Http\Controllers\Backend\PagesManagerController;
 use App\Http\Controllers\Backend\SponsorController;
 use App\Http\Controllers\Backend\SubscriptionController;
@@ -57,6 +58,14 @@ Route::group(['middleware' => ['role:admin|artist', 'backend-check:subscribed']]
 
 Route::middleware('role:artist')->group(function(){
     Route::get('subscription', [SubscriptionController::class, 'index'])->name('subscription.index');
+});
+
+//Notifications
+Route::prefix('notifications')->as('notifications.')->controller(NotificationsController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('stats', 'getNotificationsData')->name('stats');
+    Route::get('mark-all-as-read', 'markAllAsRead')->name('mark-all-as-read');
+    Route::get('{notification}', 'redirect')->name('redirect');
 });
 
 //Upload

@@ -154,6 +154,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $messageable
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Notification[] $notifications
+ * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $sender
  * @method static \Illuminate\Database\Eloquent\Builder|Message newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Message newQuery()
@@ -205,6 +207,39 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|News whereUserId($value)
  */
 	class News extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Notification
+ *
+ * @property int $id
+ * @property int|null $from_user_id
+ * @property int|null $to_user_id
+ * @property int|null $notifiable_id
+ * @property string|null $notifiable_type
+ * @property string $type
+ * @property \Illuminate\Support\Carbon|null $seen_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User|null $from_user
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $notifiable
+ * @property-read \App\Models\User|null $to_user
+ * @method static \Illuminate\Database\Eloquent\Builder|Notification newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Notification newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Notification query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Notification unseen()
+ * @method static \Illuminate\Database\Eloquent\Builder|Notification whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Notification whereFromUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Notification whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Notification whereNotifiableId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Notification whereNotifiableType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Notification whereSeenAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Notification whereToUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Notification whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Notification whereUpdatedAt($value)
+ */
+	class Notification extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -427,7 +462,7 @@ namespace App\Models{
  * @property-read mixed $fullname
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\News[] $news
  * @property-read int|null $news_count
- * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Notification[] $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
  * @property-read int|null $permissions_count

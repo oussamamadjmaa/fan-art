@@ -23,4 +23,9 @@ class Message extends Model
     public function messageable() : MorphTo{
         return $this->morphTo();
     }
+
+    //
+    public function notifications(){
+        return $this->morphMany(Notification::class, 'notifiable');
+    }
 }

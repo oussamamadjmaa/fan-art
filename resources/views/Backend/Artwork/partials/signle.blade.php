@@ -47,6 +47,12 @@
                 </div>
             </div>
         </div>
+        <div>
+            <a type="button" class="button py-1" id="artworkActionsDropDown{{ $artwork->id }}" data-bs-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                    @lang('New messages') ({{$artwork?->messages_count ?? 0}})
+                </a>
+        </div>
         <div class="dropdown open">
             <a type="button" class="button py-1" id="artworkActionsDropDown{{ $artwork->id }}" data-bs-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">

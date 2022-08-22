@@ -24,7 +24,7 @@ class ArtworkController extends Controller
     {
         if(request()->expectsJson()){
             $artworks = (auth()->user()->hasRole('admin')) ? Artwork::query()->withWhereHas('user') : auth()->user()->artworks();
-            $artworks = $artworks->latest()->cursorPaginate(15)->withQueryString();
+            $artworks = $artworks->withCount(['messages' => fn($q) => $q->whereNull('seen_at')])->latest()->cursorPaginate(15)->withQueryString();
             $slot = array_merge($artworks->toArray(), ['data' => view('Backend.Artwork.list', compact('artworks'))->render()]);
             return response()->json($slot);
         }
