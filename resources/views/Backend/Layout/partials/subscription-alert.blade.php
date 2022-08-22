@@ -1,5 +1,6 @@
 @role('artist|store')
-    @if (auth()->user()->activeSubscription)
+    <div class="px-3 mxw-1600">
+        @if (auth()->user()->activeSubscription)
         @if (auth()->user()->activeSubscription->is_free())
             <div class="alert alert-warning">
                 <i class="fas fa-clock"></i> @lang('backend.subscription_days_left', [
@@ -13,4 +14,5 @@
             <i class="fas fa-clock"></i> @lang('backend.subscription_expired') <a href="{{route('backend.subscription.index')}}">@lang('Renew subscription')</a>
         </div>
     @endif
+    </div>
 @endrole

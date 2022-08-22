@@ -64,7 +64,7 @@ class RegisterController extends Controller
     public function redirectTo($role){
         $routes = [
             'artist'    => route('frontend.setup_profile.index', 'my-profile'),
-            'store'     => route('frontend.setup_profile.index', 'my-profile'),
+            'store'     => route('backend.dashboard'),
         ];
 
         return redirect($routes[$role] ?? RouteServiceProvider::HOME);

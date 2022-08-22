@@ -45,7 +45,12 @@
             @include('Backend.Layout.partials.subscription-alert')
 
             @include('Backend.Layout.partials.breadcrumb')
-            @yield('content')
+
+            <div class="position-relative">
+                <div class="app-content">
+                    @yield('content')
+                </div>
+            </div>
         </div>
     </div>
 
