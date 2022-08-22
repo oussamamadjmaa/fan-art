@@ -40,6 +40,7 @@ Route::group(['middleware' => ['role:admin|artist', 'backend-check:subscribed']]
     //Artworks
     Route::delete('artworks', [ArtworkController::class, 'multiple_delete'])->name('artworks.multiple_delete');
     Route::put('artworks/toggle_status/{artwork}', [ArtworkController::class, 'toggle_status'])->name('artworks.toggle_status');
+    Route::get('artworks/messages/{artwork}', [ArtworkController::class, 'messages'])->name('artworks.messages');
     Route::resource('artworks', ArtworkController::class)->except(['show']);
 
     //Sponsors

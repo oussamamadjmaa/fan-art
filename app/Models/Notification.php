@@ -17,7 +17,11 @@ class Notification extends Model
     ];
 
     public function from_user(){
-        return $this->belongsTo(User::class, 'from_user_id');
+        return $this->belongsTo(User::class, 'from_user_id')->withDefault([
+            'username' => 'fanart',
+            'name' => config('app.name'),
+            'avatar' => 'avatars/defaults/art-logo.png',
+        ]);
     }
 
     public function to_user(){

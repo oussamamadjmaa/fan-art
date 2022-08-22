@@ -16,7 +16,7 @@ class NotificationObserver
      */
     public function created(Notification $notification)
     {
-        $notification->to_user->notify(new NotifyNotification($notification));
+       // $notification->to_user->notify(new NotifyNotification($notification));
     }
 
     /**
@@ -28,7 +28,7 @@ class NotificationObserver
     public function updated(Notification $notification)
     {
         if($notification->wasChanged('created_at')){
-            $notification->to_user->notify(new NotifyNotification($notification));
+        //    $notification->to_user->notify(new NotifyNotification($notification));
         }
     }
 

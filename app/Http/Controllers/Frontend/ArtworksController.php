@@ -41,6 +41,11 @@ class ArtworksController extends Controller
             return response()->json(['status' => 403, 'message' => __("You already been sent a message about this artwork!")], 403);
         }
         $message = $artwork->messages()->create($this->send_message_data($request));
+        $notification = $artwork->notifications()->create([
+            'from_user_id'  => auth()->check() ? auth()->id() : null,
+            'to_user_id'    => $artwork->user_id,
+            'type'          => 'artworks.new_message',
+        ]);
         return response()->json(['status' => 200, 'message' => __("Your message has been sent successfully")]);
     }
 

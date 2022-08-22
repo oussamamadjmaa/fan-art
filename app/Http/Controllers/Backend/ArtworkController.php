@@ -31,6 +31,10 @@ class ArtworkController extends Controller
         return view('Backend.Artwork.index');
     }
 
+    public function messages(){
+        return 'artwork message';
+    }
+
     /**
      * Show the form for creating a new resource.
      *

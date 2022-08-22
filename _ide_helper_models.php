@@ -35,6 +35,8 @@ namespace App\Models{
  * @property-read mixed $status_text
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Message[] $messages
  * @property-read int|null $messages_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Notification[] $notifications
+ * @property-read int|null $notifications_count
  * @property-read \App\Models\User $user
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork activeSubscribedArtist()
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork newModelQuery()
