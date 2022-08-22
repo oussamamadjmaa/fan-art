@@ -20,6 +20,11 @@
     display: inline-block;
     transition: all .21s ease-in-out;
     border-color: #000;
+    @media (prefers-color-scheme: dark-disabled) {
+        background-color: #fff;
+        border-color: #fff;
+        color: #000;
+    }
     &:hover {
         background-color: var(--thm-primary-color);
         border-color: var(--thm-primary-color);
@@ -29,3 +34,4 @@
         box-shadow: -1px 3px 10px 1px #0000004d;
     }
 }
+

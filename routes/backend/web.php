@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\ArtworkController;
+use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\CarouselController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\ExhibitionController;
@@ -48,6 +49,10 @@ Route::group(['middleware' => ['role:admin|artist', 'backend-check:subscribed']]
     Route::delete('exhibitions', [ExhibitionController::class, 'multiple_delete'])->name('exhibitions.multiple_delete');
     Route::resource('exhibitions', ExhibitionController::class)->except(['show']);
 
+    //Blogs
+    Route::delete('blogs', [BlogController::class, 'multiple_delete'])->name('blogs.multiple_delete');
+    Route::put('blogs/toggle_status/{blog}', [BlogController::class, 'toggle_status'])->name('blogs.toggle_status');
+    Route::resource('blogs', BlogController::class)->except(['show']);
 });
 
 Route::middleware('role:artist')->group(function(){

@@ -42,6 +42,10 @@ class Artwork extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function messages(){
+        return $this->morphMany(Message::class, 'messageable');
+    }
+
     /**
      * Scopes
      */
@@ -102,6 +106,13 @@ class Artwork extends Model
     /**
      * Functions
      */
+    public function hasMessageFromThisSender(){
+        return $this->messages()->when(auth()->check(),
+                                        fn($q) => $q->where('sender_type', 'App\Models\User')->where('sender_id', auth()->id()),
+                                        fn($q) => $q->where('data->ip_address', request()->ip()))
+                                        ->count();
+    }
+
     public function generateSlug($title, $id = false)
     {
         $slug = slugme($title);

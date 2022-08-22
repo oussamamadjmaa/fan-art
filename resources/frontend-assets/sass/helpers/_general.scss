@@ -6,6 +6,11 @@ body {
     background: #f8f8f8;
     color: #444;
     font-family: "El Messiri", sans-serif;
+    @media (prefers-color-scheme: dark-disabled) {
+        background: #181818;
+        color: #fff;
+    }
+
     &.rtl {
         direction: rtl;
         text-align: right;
@@ -28,6 +33,7 @@ body {
         margin-top: 89.19px;
     }
 }
+
 
 a {
     text-decoration: unset;
@@ -274,5 +280,23 @@ div#artistsSlider .owl-nav>button:hover {
 @media (max-width:768px) {
     .border-md-none {
         border: none!important;
+    }
+}
+
+@media (prefers-color-scheme: dark-disabled) {
+    .bg-white {
+        background-color: #181818!important;
+    }
+
+    .text-dark {
+        color: #fff!important;
+    }
+
+    .text-secondary  {
+        color: #e5e5e5!important;
+    }
+
+    .breadcrumb-item a{
+        color: #fff;
     }
 }

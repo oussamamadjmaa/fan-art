@@ -4,7 +4,12 @@ return [
     'app' => [
         'timezone'          => 'Asia/Riyadh',
         'date_format'       => 'd M Y',
-        'default_avatar'    => 'assets/images/avatars/default-avatar.png',
+        'default_avatar'    => 'avatars/defaults/default-avatar.png',
+        'store_default_avatar'      => 'avatars/defaults/store-avatar.png',
+        'artist_default_avatar'     => [
+            'male' => 'avatars/defaults/artist-avatar.png',
+            'female' => 'avatars/defaults/fartist-avatar.png'
+        ],
         'max_upload_size'   => 3072,
         'currency'          => 'SAR',
         'seo'               => [

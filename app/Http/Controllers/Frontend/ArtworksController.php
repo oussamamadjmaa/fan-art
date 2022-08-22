@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Helpers\Meta;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\ArtworkMessageRequest;
 use App\Models\Artwork;
 use Illuminate\Http\Request;
 
@@ -34,4 +35,38 @@ class ArtworksController extends Controller
         ]);
         return view('Frontend.Artworks.show', compact('artwork'));
     }
+
+    public function send_message(ArtworkMessageRequest $request, Artwork $artwork){
+        if($artwork->hasMessageFromThisSender()){
+            return response()->json(['status' => 403, 'message' => __("You already been sent a message about this artwork!")], 403);
+        }
+        $message = $artwork->messages()->create($this->send_message_data($request));
+        return response()->json(['status' => 200, 'message' => __("Your message has been sent successfully")]);
+    }
+
+    public function send_message_data($request){
+        if(auth()->check()){
+            return [
+                'sender_id' => auth()->id(),
+                'sender_type' => 'App\Models\User',
+                'body' => $request->message,
+                'data' => ['ip_address'    => $request->ip()],
+            ];
+        }else{
+            return [
+                'sender_id' => NULL,
+                'sender_type' => 'App\Models\Guest',
+                'body' => $request->message,
+                'data' => [
+                    'first_name' =>  $request->first_name,
+                    'last_name' =>  $request->last_name,
+                    'name' => $request->first_name . ' ' . $request->last_name,
+                    'email' => $request->email,
+                    'phone' => $request->phone,
+                    'ip_address'    => $request->ip(),
+                ],
+            ];
+        }
+    }
+
 }

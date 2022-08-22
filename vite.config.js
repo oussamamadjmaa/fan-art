@@ -14,6 +14,7 @@ export default defineConfig({
                 'resources/frontend-assets/sass/app.scss',
                 'resources/frontend-assets/js/app.js',
                 'resources/frontend-assets/js/pages/home.js',
+                'resources/frontend-assets/js/pages/artwork.js',
             ],
             refresh: true,
         }),

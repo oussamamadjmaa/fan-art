@@ -5,7 +5,7 @@ namespace App\Http\Requests\Backend;
 use App\Rules\ValidateFileRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class NewsRequest extends FormRequest
+class BlogRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,7 @@ class NewsRequest extends FormRequest
                 'description' => $this->seo['description'] ?? '',
                 'keywords'  => $this->seo['keywords'] ?? '',
                 'body' => strip_tags($this->input('body') ?? '', config('app.allowed_html_tags')),
-                'image' => $this->input('image')
+                'image' => $this->input('image'),
             ]
         ]);
     }
@@ -39,14 +39,14 @@ class NewsRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'max:191'],
-            'image' => ['required', new ValidateFileRule('news', ['png', 'jpg', 'jpeg', 'webp'])],
+            'image' => ['required', new ValidateFileRule('blogs', ['png', 'jpg', 'jpeg', 'webp'])],
             'image_description' => ['nullable', 'string', 'max:191'],
             'body' => ['required', 'string'],
             'seo' => ['array'],
             'seo.title' => ['nullable', 'string', 'max:191'],
             'seo.keywords' => ['nullable', 'string'],
             'seo.description' => ['nullable', 'string'],
-            'status' => 'boolean'
+            'status' => 'boolean',
         ];
     }
 }

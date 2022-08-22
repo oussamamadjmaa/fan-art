@@ -33,6 +33,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read mixed $price_format
  * @property-read mixed $status_text
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Message[] $messages
+ * @property-read int|null $messages_count
  * @property-read \App\Models\User $user
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork activeSubscribedArtist()
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork newModelQuery()
@@ -135,6 +137,39 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Exhibition whereUserId($value)
  */
 	class Exhibition extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Message
+ *
+ * @property int $id
+ * @property int|null $sender_id
+ * @property string $sender_type
+ * @property int $messageable_id
+ * @property string $messageable_type
+ * @property string $body
+ * @property object|null $data
+ * @property \Illuminate\Support\Carbon|null $seen_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $messageable
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $sender
+ * @method static \Illuminate\Database\Eloquent\Builder|Message newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Message newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Message query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereBody($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereData($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereMessageableId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereMessageableType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereSeenAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereSenderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereSenderType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Message whereUpdatedAt($value)
+ */
+	class Message extends \Eloquent {}
 }
 
 namespace App\Models{

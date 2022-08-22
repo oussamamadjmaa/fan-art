@@ -39,7 +39,7 @@
 
                         <div class="buttons">
                             <a href="javascript:;" class="primary-btn" data-bs-toggle="modal"
-                                data-bs-target="#modelId">@lang('Contact artist')</a>
+                                data-bs-target="#artworkContactModal">@lang('Contact artist')</a>
 
 
                         </div>
@@ -68,7 +68,7 @@
                                 <b>@lang('Painting dimensions (CM)')</b> : {!! nl2br(e($artwork->dimensions)) !!}
                             </p>
                             <p class="mt-2">
-                                <b>@lang('Outer frame')</b> : {{ $artwork->covered_with_glass ? __('Yes') : __('No') }}
+                                <b>@lang('Covered with glass')</b> : {{ $artwork->covered_with_glass ? __('Yes') : __('No') }}
                             </p>
                             @if (!empty($artwork->tools))
                                 <p class="mt-2">
@@ -117,12 +117,12 @@
                     <div class="col-12 border-top py-5">
                         <h4 class="mb-4">@lang("Here's more artworks and paintings from :name you may like", ['name' => explode(' ', $artwork->user->name)[0]])</h4>
                         <div>
-                            @foreach ($artist_artworks as $artwork)
+                            @foreach ($artist_artworks as $artwork_)
                                 @if ($loop->first)
                                     <div class="artworks-grid">
                                 @endif
                                 <div class="artwork-grid-item mb-md-3 mb-2">
-                                    @include('Frontend.partials.artwork.single')
+                                    @include('Frontend.partials.artwork.single', ['artwork' => $artwork_])
                                 </div>
                                 @if ($loop->last)
                                     </div>
@@ -140,7 +140,7 @@
     </section>
 
     <!-- Modal -->
-    <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal fade" id="artworkContactModal" tabindex="-1" role="dialog" aria-labelledby="artworkContactModalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 699px;">
             <div class="modal-content">
                 <div class="modal-header">
@@ -164,61 +164,55 @@
                     </div>
 
                     <div class="mt-3">
-                        <form action="#">
+                        <form data-action="{{route('frontend.artworks.send_message', $artwork->id)}}" method="POST" id="artwork_message_form">
+                            @csrf
                             <div class="mb-3">
                                 <label for="message" class="form-label">@lang('Message')</label>
-                                <textarea class="form-control" name="message" id="message" rows="3">@lang("Hi, I'm interested in purchasing this work. Could you please provide more information about the piece?")</textarea>
+                                <textarea class="form-control" name="message" id="message" rows="3" required>@lang("Hi, I'm interested in purchasing this work. Could you please provide more information about the piece?")</textarea>
+                                <div class="invalid-feedback"></div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="first_name" class="form-label">@lang('First name')</label>
                                         <input type="text" class="form-control" name="first_name" id="first_name"
-                                            placeholder="@lang('First name')">
+                                            placeholder="@lang('First name')" required>
+                                            <div class="invalid-feedback"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="last_name" class="form-label">@lang('Last name')</label>
                                         <input type="text" class="form-control" name="last_name" id="last_name"
-                                            placeholder="@lang('Last name')">
+                                            placeholder="@lang('Last name')" required>
+                                            <div class="invalid-feedback"></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">@lang('Email Address')</label>
                                 <input type="email" class="form-control" name="email" id="email"
-                                    placeholder="@lang('Email Address')">
+                                    placeholder="@lang('Email Address')" required>
+                                    <div class="invalid-feedback"></div>
                             </div>
                             <div class="mb-3">
                                 <label for="phone" class="form-label">@lang('Phone')</label>
-                                <input type="text" class="form-control" name="phone" id="phone"
+                                <input type="text" class="form-control" name="phone" id="phone" required
                                     placeholder="@lang('Phone')">
+                                    <div class="invalid-feedback"></div>
                             </div>
 
-                            <button class="primary-btn pt-2 pb-1 px-3">
+                            <button class="primary-btn pt-2 pb-1 px-3" id="send_btn">
                                 @lang('Send message')
                             </button>
                         </form>
                     </div>
                 </div>
-                {{-- <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save</button>
-                </div> --}}
             </div>
         </div>
     </div>
 @endsection
 @push('scripts')
     <script type="text/javascript" src="{{ asset('vendors/jquery/js/jquery-ez-plus.js') }}" defer></script>
-    <script type="module">
-$(function(){
-    $("#artwork_img_01").ezPlus({
-        scrollZoom: true,
-        tint: true,
-        tintColour: '#000', tintOpacity: 0.5
-    });
-})
-</script>
+     @vite(['resources/frontend-assets/js/pages/artwork.js'])
 @endpush

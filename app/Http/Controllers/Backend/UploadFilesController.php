@@ -15,7 +15,7 @@ class UploadFilesController extends Controller
             $paths = ['pages','carousels', 'news', 'artworks', 'sponsors'];
         }
         if(auth()->user()->hasRole('artist')){
-            $paths = ['artworks', 'sponsors'];
+            $paths = ['artworks', 'sponsors', 'blogs'];
         }
         $paths = implode(',', $paths);
 

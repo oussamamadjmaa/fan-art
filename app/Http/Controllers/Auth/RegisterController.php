@@ -40,6 +40,12 @@ class RegisterController extends Controller
         $data['status'] = User::STATUS_ACTIVE;
         $data['password'] = bcrypt($data['password']);
 
+        if($role == "artist") {
+            $data['avatar'] = config('app.artist_default_avatar.'.$data['gender'] ?? 'male');
+        }else if($role == "store") {
+            $data['avatar'] = config('app.store_default_avatar');
+        }
+
         event(new Registered($user = User::create($data)));
 
         if($role != 'customer') {
@@ -48,7 +54,7 @@ class RegisterController extends Controller
             if($plan) {
                 event(new SubscriptionPayment($payment = $this->createFreeTrialPayment($user, $plan)));
             }
-        };
+        }
 
         Auth::guard()->login($user);
 
@@ -57,7 +63,8 @@ class RegisterController extends Controller
 
     public function redirectTo($role){
         $routes = [
-            'artist' => route('frontend.setup_profile.index', 'my-profile'),
+            'artist'    => route('frontend.setup_profile.index', 'my-profile'),
+            'store'     => route('frontend.setup_profile.index', 'my-profile'),
         ];
 
         return redirect($routes[$role] ?? RouteServiceProvider::HOME);
@@ -73,7 +80,7 @@ class RegisterController extends Controller
                 'duration_type' => 'days',
             ],
             'price' => 0,
-            'description' => 'Automatic subscription to the free trial plan for 6 months',
+            'description' => 'Automatic subscription to the free trial plan',
             'status' => Payment::CONFIRMED,
         ]);
     }

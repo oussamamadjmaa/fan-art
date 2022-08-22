@@ -18,6 +18,7 @@ Route::get('/artists', [ArtistsController::class, 'index'])->name('artists.index
 //Artworks
 Route::get('/artworks', [ArtworksController::class, 'index'])->name('artworks.index');
 Route::get('/artworks/{artwork:slug}', [ArtworksController::class, 'show'])->name('artworks.show');
+Route::post('/artworks/{artwork}/message', [ArtworksController::class, 'send_message'])->name('artworks.send_message');
 
 //Artist Profile
 Route::get('/artist/{artist_username}/{profile_page?}', [ArtistProfileController::class, 'index'])->name('artist.profile');

@@ -35,7 +35,7 @@ class RegisterRequest extends FormRequest
         $rules = [
             //Artist registration rules
             'artist' => [
-                'username'          => ['required', 'string', 'alpha_dash', 'max:191', 'unique:users'],
+                'username'      => ['required', 'string', 'alpha_dash', 'max:191', 'unique:users'],
                 'name'          => ['required', 'string', 'max:191'],
                 'nationality'   => ['required', 'string', 'in:'.implode(',', array_keys(__('nationalities')))],
                 'country'       => ['required', 'string', 'in:'.implode(',', array_keys(countries())), 'max:2'],
@@ -45,6 +45,16 @@ class RegisterRequest extends FormRequest
                 'email'         => ['required', 'string', $email_rule, 'max:191', 'unique:users'],
                 'password'      => ['required', 'string', 'min:8', 'confirmed'],
 
+            ],
+            'store' => [
+                'username'      => ['required', 'string', 'alpha_dash', 'max:191', 'unique:users'],
+                'name'          => ['required', 'string', 'max:191'],
+                'country'       => ['required', 'string', 'in:'.implode(',', array_keys(countries())), 'max:2'],
+                'address'       => ['required', 'string', 'max:350'],
+                'website'       => ['nullable', 'url'],
+                'phone'         => ['nullable', 'regex:/[0-9]/', 'not_regex:/[A-z]/', 'between:8,30',],
+                'email'         => ['required', 'string', $email_rule, 'max:191', 'unique:users'],
+                'password'      => ['required', 'string', 'min:8', 'confirmed'],
             ]
         ];
         return $rules[$role];

@@ -1103,6 +1103,14 @@
     "Hi, I'm interested in purchasing this work. Could you please provide more information about the piece?" : "مرحبًا ، أنا مهتم بشراء هذا العمل الفني. هل يمكنك تقديم مزيد من المعلومات حوله من فضلك؟",
     "First name" : "الإسم",
     "Last name" : "اللقب",
-    "Message" : "رسالة"
-
+    "Message" : "رسالة",
+    "You already been sent a message about this artwork!" : "لقد قمت بإرسال رسالة من قبل عن هذا العمل الفني!",
+    "Your message has been sent successfully" : "تم إرسال رسالتك بنجاح",
+    "Add Blog" : "إضافة تدوينة",
+    "Edit Blog" : "تعديل التدوينة",
+    "Blog Image": "صورة التدوينة",
+    "Blog Body" : "محتوى التدوينة",
+    "Store address" : "عنوان المتجر",
+    "Store name" : "إسم المتجر",
+    "Store Registration" : "تسجيل متجر متخصص"
 }

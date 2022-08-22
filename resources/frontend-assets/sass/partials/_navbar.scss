@@ -1,5 +1,8 @@
 ._navbar{
     background-color: rgba(255, 255, 255, 0.507);
+    @media (prefers-color-scheme: dark-disabled) {
+        background-color: #181818;
+    }
     @media (max-width:768px) {
         position: fixed;
         z-index: 999;
@@ -122,6 +125,9 @@
                 a {
                     color: #000;
                     font-size: 17px;
+                    @media (prefers-color-scheme: dark-disabled) {
+                        color: #fff;
+                    }
                 }
             }
         }

@@ -36,6 +36,11 @@
             'icon' => 'bi bi-calendar-heart',
             'cond' => auth()->user()->can('viewAny', App\Models\Exhibition::class),
             'href' => route('backend.exhibitions.index')
+        ],[
+            'title' => 'Blog',
+            'icon' => 'fa fa-blog',
+            'cond' => auth()->user()->can('viewAny', App\Models\News::class),
+            'href' => route('backend.blogs.index')
         ],
     ];
     $req_url = request()->url();

@@ -23,7 +23,7 @@ class ExhibitionController extends Controller
     public function index()
     {
         if(request()->expectsJson()){
-            $exhibitions = (auth()->user()->hasRole('admin')) ? Exhibition::query()->with('user') : auth()->user()->exhibitions();
+            $exhibitions = (auth()->user()->hasRole('admin')) ? Exhibition::query()->withWhereHas('user') : auth()->user()->exhibitions();
             $exhibitions = $exhibitions->with('sponsor')->latest()->cursorPaginate(15)->withQueryString();
             $slot = array_merge($exhibitions->toArray(), ['data' => view('Backend.Exhibition.list', compact('exhibitions'))->render()]);
             return response()->json($slot);

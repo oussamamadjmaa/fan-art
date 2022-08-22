@@ -31,7 +31,7 @@ class ArtistPorfileSetupRequest extends FormRequest
     {
         return [
             'avatar'    => ['required', 'string'],
-            'bio'       => ['required', 'string', 'max:700'],
+            'bio'       => ['required', 'string', 'between:3,700'],
             'cv'        => ['nullable', 'file', 'mimetypes:application/pdf', 'max:3072'],
             'facebook'  => ['nullable', 'url'],
             'instagram' => ['nullable', 'url'],

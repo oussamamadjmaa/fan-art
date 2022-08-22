@@ -23,7 +23,7 @@ class ArtworkController extends Controller
     public function index()
     {
         if(request()->expectsJson()){
-            $artworks = (auth()->user()->hasRole('admin')) ? Artwork::query()->with('user') : auth()->user()->artworks();
+            $artworks = (auth()->user()->hasRole('admin')) ? Artwork::query()->withWhereHas('user') : auth()->user()->artworks();
             $artworks = $artworks->latest()->cursorPaginate(15)->withQueryString();
             $slot = array_merge($artworks->toArray(), ['data' => view('Backend.Artwork.list', compact('artworks'))->render()]);
             return response()->json($slot);
