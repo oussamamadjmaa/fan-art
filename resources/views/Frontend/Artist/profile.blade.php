@@ -47,5 +47,16 @@
             @endif
         </div>
     </section>
+    @elseif ($profile_page == "blogs")
+    <section class="artist_blogs bg-white">
+        <div class="container">
+            @include('Frontend.Artist.partials.blogs')
+            @if (!empty(trim($artist_blogs->links())))
+                <div class="text-center d-flex justify-content-center py-4">
+                    {{$artist_blogs->withQueryString()->onEachSide(0)->links()}}
+                </div>
+            @endif
+        </div>
+    </section>
     @endif
 @endsection

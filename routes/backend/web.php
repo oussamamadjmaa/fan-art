@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\NotificationsController;
 use App\Http\Controllers\Backend\PagesManagerController;
 use App\Http\Controllers\Backend\SponsorController;
 use App\Http\Controllers\Backend\SubscriptionController;
+use App\Http\Controllers\Backend\UpdateController;
 use App\Http\Controllers\Backend\UploadFilesController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,8 @@ Route::group(['middleware' => 'role:admin'], function(){
     Route::delete('news', [NewsController::class, 'multiple_delete'])->name('news.multiple_delete');
     Route::put('news/toggle_status/{news}', [NewsController::class, 'toggle_status'])->name('news.toggle_status');
     Route::resource('news', NewsController::class)->except(['show']);
+
+    Route::get('update/{v}', [UpdateController::class, 'update']);
 });
 
 //Artist Routes

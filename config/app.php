@@ -138,7 +138,7 @@ return [
     |
     */
 
-    'allowed_html_tags' => ['p', 'em', 's', 'strong', 'ol', 'ul', 'li', 'blockquote', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'del', 'sub', 'sup', 'img'],
+    'allowed_html_tags' => ['span', 'p', 'em', 's', 'strong', 'ol', 'ul', 'li', 'blockquote', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'del', 'sub', 'sup', 'img'],
 
     /*
     |--------------------------------------------------------------------------

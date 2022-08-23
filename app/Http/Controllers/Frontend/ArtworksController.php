@@ -32,6 +32,7 @@ class ArtworksController extends Controller
         $meta = new Meta([
             'title' => $artwork->title,
             'description' => str($artwork->description)->limit(160)->toString(),
+            'image'    => storage_url($artwork->image)
         ]);
         return view('Frontend.Artworks.show', compact('artwork'));
     }

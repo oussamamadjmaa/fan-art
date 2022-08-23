@@ -45,7 +45,7 @@
             <div class="_navbar-bottom__menu">
                 <ul>
                     <li><a href="{{route('frontend.home')}}">@lang('Home')</a></li>
-                    <li><a href="#">@lang('Artists')</a></li>
+                    <li><a href="{{route('frontend.artists.index')}}">@lang('Artists')</a></li>
                     <li><a href="{{route('frontend.artworks.index')}}">@lang('Paintings and artwork')</a></li>
                     <li><a href="{{route('frontend.exhibitions.index')}}">@lang('Exhibitions and meetings')</a></li>
                     <li><a href="#">@lang('Stores')</a></li>

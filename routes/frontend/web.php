@@ -4,6 +4,7 @@ use App\Http\Controllers\Frontend\ArtistProfileController;
 use App\Http\Controllers\Frontend\ArtistProfileSetupController;
 use App\Http\Controllers\Frontend\ArtistsController;
 use App\Http\Controllers\Frontend\ArtworksController;
+use App\Http\Controllers\Frontend\BlogsController;
 use App\Http\Controllers\Frontend\ExhibitionsController;
 use App\Http\Controllers\Frontend\PageController;
 use App\Http\Controllers\Frontend\User\AccountController;
@@ -22,6 +23,11 @@ Route::post('/artworks/{artwork}/message', [ArtworksController::class, 'send_mes
 
 //Artist Profile
 Route::get('/artist/{artist_username}/{profile_page?}', [ArtistProfileController::class, 'index'])->name('artist.profile');
+
+//Blogs
+Route::get('blogs/', [BlogsController::class, 'index'])->name('blogs.index');
+Route::get('blogs/{blog:slug}', [BlogsController::class, 'show'])->name('blogs.show');
+
 
 //Exhibitions
 Route::get('/exhibitions', [ExhibitionsController::class, 'index'])->name('exhibitions.index');

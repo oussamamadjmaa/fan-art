@@ -11,7 +11,7 @@
              @include('Frontend.partials.home.latest_artists')
 
              <div class="text-md-end text-center mt-4">
-                 <a href="#" class="primary-btn">@lang('Show all artists')</a>
+                 <a href="{{route('frontend.artists.index')}}" class="primary-btn">@lang('Show all artists')</a>
              </div>
         </div>
      </section>

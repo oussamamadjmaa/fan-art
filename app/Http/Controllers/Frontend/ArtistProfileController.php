@@ -23,9 +23,11 @@ class ArtistProfileController extends Controller
         //Page meta data
         $meta = new Meta([
             'title' => $artist->name,
+            'description' => str($artist->profile->description)->limit(160)->toString(),
+            'image'    => $artist->avatar_url
         ]);
 
-        //
+        //Artist artworks
         $artist_artworks = NULL;
 
         if($profile_page == "artworks") {
@@ -35,6 +37,16 @@ class ArtistProfileController extends Controller
             }
         }
 
-        return view('Frontend.Artist.profile', compact('artist', 'artist_artworks', 'profile_page'));
+        //Artist Blogs
+        $artist_blogs = NULL;
+
+        if($profile_page == "blogs") {
+            $artist_blogs = $artist->news()->published()->latest()->paginate(16);
+            if($artist_blogs->currentPage() > $artist_blogs->lastPage()) {
+                return redirect(request()->fullUrlWithQuery(['page' => $artist_blogs->lastPage()]));
+            }
+        }
+
+        return view('Frontend.Artist.profile', compact('artist', 'artist_artworks', 'artist_blogs', 'profile_page'));
     }
 }

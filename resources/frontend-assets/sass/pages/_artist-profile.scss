@@ -70,3 +70,35 @@
     grid-template-columns: repeat(var(--items), 1fr);
     gap: var(--gap);
 }
+
+.blog-item  {
+    .blog-item-data {
+        overflow: hidden;
+        .blog-item-title {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .info {
+            position: sticky;
+            top: 100%;
+        }
+
+    }
+
+    .blog-item-pic{
+        position: relative;
+        .pic-w150{
+            position: relative;
+            img {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}
