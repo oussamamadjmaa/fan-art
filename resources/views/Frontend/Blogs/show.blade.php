@@ -35,7 +35,7 @@
                     <div class="py-2">
                         <h4>@lang('Latest blogs from :name', ['name' => explode(' ', $blog->user->name)[0]])</h4>
 
-                        @forelse ($blog->user->news()->where('id', '!=', $blog->id)->latest()->take(7)->get() as $blog)
+                        @forelse ($blog->user->news()->published()->where('id', '!=', $blog->id)->latest()->take(7)->get() as $blog)
                             @if ($loop->first)
                                 <div class="blogs-list">
                             @endif
