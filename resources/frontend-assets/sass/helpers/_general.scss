@@ -6,6 +6,7 @@ body {
     background: #f8f8f8;
     color: #444;
     font-family: "El Messiri", sans-serif;
+    min-height: 100vh;
     @media (prefers-color-scheme: dark-disabled) {
         background: #181818;
         color: #fff;

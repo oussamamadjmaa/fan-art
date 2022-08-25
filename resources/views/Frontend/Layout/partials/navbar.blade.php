@@ -49,7 +49,7 @@
                     <li><a href="{{route('frontend.artworks.index')}}">@lang('Paintings and artwork')</a></li>
                     <li><a href="{{route('frontend.exhibitions.index')}}">@lang('Exhibitions and meetings')</a></li>
                     <li><a href="#">@lang('Stores')</a></li>
-                    <li><a href="#">@lang('Artist blog')</a></li>
+                    <li><a href="{{route('frontend.blogs.index')}}">@lang('Artist blog')</a></li>
                     <li><a href="#">@lang('Contact us')</a></li>
                 </ul>
             </div>

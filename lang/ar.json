@@ -1116,5 +1116,8 @@
     "New messages" : "الرسائل الجديدة",
     "Notifications" : "الإشعارات",
     "You didn't post any blog yet" : "لم تقم بنشر أي تدوينة بعد",
-    "This artist didn't post any blog yet" : "هذا الفنان ليس لديه أي تدوينة بعد"
+    "This artist didn't post any blog yet" : "هذا الفنان ليس لديه أي تدوينة بعد",
+    "Latest blogs from :name" : "آخر التدوينات من :name",
+    "There's no more blogs" : "لا يوجد تدوينات أخرى",
+    "Show all blogs" : "عرض جميع التدوينات"
 }

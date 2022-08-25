@@ -27,21 +27,21 @@ width: 100% !important;
 }
 </style>
 </head>
-<body>
+<body dir="<?= config('app.direction') ?>">
 
-<table class="wrapper" width="100%" cellpadding="0" cellspacing="0" role="presentation">
+<table class="wrapper" width="100%" cellpadding="0" cellspacing="0" role="presentation" dir="<?= config('app.direction') ?>">
 <tr>
 <td align="center">
-<table class="content" width="100%" cellpadding="0" cellspacing="0" role="presentation">
+<table class="content" width="100%" cellpadding="0" cellspacing="0" role="presentation" dir="<?= config('app.direction') ?>">
 {{ $header ?? '' }}
 
 <!-- Email Body -->
 <tr>
 <td class="body" width="100%" cellpadding="0" cellspacing="0">
-<table class="inner-body" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation">
+<table class="inner-body" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation" dir="<?= config('app.direction') ?>">
 <!-- Body content -->
 <tr>
-<td class="content-cell">
+<td class="content-cell" dir="<?= config('app.direction') ?>">
 {{ Illuminate\Mail\Markdown::parse($slot) }}
 
 {{ $subcopy ?? '' }}

@@ -73,6 +73,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(News::class);
     }
 
+    public function latest_blog(){
+        return $this->hasOne(News::class)->latest();
+    }
+
     public function activeSubscription(){
         return $this->hasOne(Subscription::class)->active();
     }
@@ -119,13 +123,13 @@ class User extends Authenticatable implements MustVerifyEmail
      * Scopes
      */
     public function scopeActive($q){
-        return $q->whereStatus(self::STATUS_ACTIVE);
+        return $q->where('users.status', '=', self::STATUS_ACTIVE);
     }
     public function scopeVerified($q){
-        return $q->whereNotNull('email_verified_at');
+        return $q->whereNotNull('users.email_verified_at');
     }
     public function scopeSubscribed($q){
-        return $q->whereHas('subscription', fn($q) => $q->active());
+        return $q->whereHas('profile')->whereHas('subscription', fn($q) => $q->active());
     }
 
     public function scopeActiveSubscribedArtist($q) {

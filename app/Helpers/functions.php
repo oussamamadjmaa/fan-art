@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Page;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
@@ -173,5 +174,13 @@ if (!function_exists('cleanHtml')) {
         }
 
         return $dom->saveHTML();
+    }
+}
+
+if(!function_exists('footer_pages')) {
+    function footer_pages(){
+        return Cache::rememberForever('footer_pages', function () {
+            return Page::active()->get();
+        });
     }
 }

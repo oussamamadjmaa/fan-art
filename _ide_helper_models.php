@@ -462,6 +462,7 @@ namespace App\Models{
  * @property-read int|null $exhibitions_count
  * @property-read mixed $avatar_url
  * @property-read mixed $fullname
+ * @property-read \App\Models\News|null $latest_blog
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\News[] $news
  * @property-read int|null $news_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Notification[] $notifications

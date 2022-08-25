@@ -1,0 +1,19 @@
+footer#footer{
+    position: sticky;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: var(--thm-primary-color);
+
+    .footer-footer-links {
+        list-style: none;
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        a {
+            color: #fff;
+        }
+    }
+}

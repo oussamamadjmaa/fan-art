@@ -10,12 +10,14 @@ use App\Models\News;
 use App\Models\User;
 use App\Models\Exhibition;
 use App\Models\Notification;
+use App\Models\Page;
 use App\Observers\ArtworkObserver;
 use App\Observers\CarouselObserver;
 use App\Observers\NewsObserver;
 use App\Observers\UserObserver;
 use App\Observers\ExhibitionObserver;
 use App\Observers\NotificationObserver;
+use App\Observers\PageObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -42,6 +44,7 @@ class EventServiceProvider extends ServiceProvider
         News::class => NewsObserver::class,
         Artwork::class => ArtworkObserver::class,
         Carousel::class => CarouselObserver::class,
+        Page::class => PageObserver::class,
         Exhibition::class => ExhibitionObserver::class,
         Notification::class => NotificationObserver::class,
     ];

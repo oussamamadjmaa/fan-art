@@ -76,6 +76,23 @@ $auth_ = Auth::user();
         </div>
     </div>
 
+    <footer id="footer">
+        <div class="app-footer">
+            <div class="container">
+                <div class="app-footer-copyrights">
+                    <div class="d-flex justify-content-between flex-wrap py-2 text-white">
+                        <p class="mb-0 py-1">جميع الحقوق محفوظة © {{config('app.name')}} {{date('Y')}}</p>
+                        <ul class="footer-footer-links py-1">
+                            @foreach (footer_pages() as $footer_page)
+                                <li><a href="{{route('frontend.page', $footer_page->slug)}}">{{$footer_page->title}}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     {{-- Register modal --}}
     @include('Frontend.Layout.partials.register-modal')
 
