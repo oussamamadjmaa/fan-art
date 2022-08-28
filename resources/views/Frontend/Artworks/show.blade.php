@@ -37,12 +37,12 @@
                         <h3 class="text-primary py-3">{{ price_format($artwork->price) }}
                             <small><sup>@lang(config('app.currency'))</sup></small></h3>
 
+                        @if (!auth()->check() || auth()->id() != $artwork->user_id)
                         <div class="buttons">
                             <a href="javascript:;" class="primary-btn" data-bs-toggle="modal"
                                 data-bs-target="#artworkContactModal">@lang('Contact artist')</a>
-
-
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -139,6 +139,7 @@
         </div>
     </section>
 
+    @if (!auth()->check() || auth()->id() != $artwork->user_id)
     <!-- Modal -->
     <div class="modal fade" id="artworkContactModal" tabindex="-1" role="dialog" aria-labelledby="artworkContactModalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 699px;">
@@ -171,6 +172,7 @@
                                 <textarea class="form-control" name="message" id="message" rows="3" required>@lang("Hi, I'm interested in purchasing this work. Could you please provide more information about the piece?")</textarea>
                                 <div class="invalid-feedback"></div>
                             </div>
+                            @guest
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
@@ -201,6 +203,7 @@
                                     placeholder="@lang('Phone')">
                                     <div class="invalid-feedback"></div>
                             </div>
+                            @endguest
 
                             <button class="primary-btn pt-2 pb-1 px-3" id="send_btn">
                                 @lang('Send message')
@@ -211,6 +214,7 @@
             </div>
         </div>
     </div>
+    @endif
 @endsection
 @push('scripts')
     <script type="text/javascript" src="{{ asset('vendors/jquery/js/jquery-ez-plus.js') }}" defer></script>

@@ -13,7 +13,7 @@ class ArtworkMessageRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return auth()->check() ? ($this->route('artwork')->user_id != auth()->id()) : true;
     }
 
     public function prepareForValidation()
@@ -30,6 +30,12 @@ class ArtworkMessageRequest extends FormRequest
      */
     public function rules()
     {
+        if (auth()->check()) {
+            return [
+                'message' => ['required', 'string', 'between:3,500'],
+            ];
+        }
+
         return [
             'message' => ['required', 'string', 'between:3,500'],
             'first_name' => ['required', 'string', 'between:3,60'],
