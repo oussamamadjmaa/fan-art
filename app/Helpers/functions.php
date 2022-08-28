@@ -4,6 +4,7 @@ use App\Models\Page;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 if (!function_exists('trans_')) {
     function trans_($attr)
@@ -56,26 +57,29 @@ if (!function_exists('date_formated')) {
 }
 
 if (!function_exists('slugme')) {
-    function slugme($string = null, $separator = "-")
-    {
-        if (is_null($string)) {
-            return "";
-        }
-        $string = trim($string);
-        $string = mb_strtolower($string, "UTF-8");
-        // '/' and/or '\' if found and not remoeved it will change the get request route
-        $string = str_replace('/', $separator, $string);
-        $string = str_replace('\\', $separator, $string);
-        $string = preg_replace(
-            "/[^a-z0-9_\sءاأإآؤئبتثجحخدذرزسشصضطظعغفقكلمنهويةى]#u/",
-            "",
-            $string
-        );
-        $string = preg_replace("/[\s-]+/", " ", $string);
-        $string = preg_replace("/[\s_]/", $separator, $string);
-        return $string;
+    // function slugme($string = null, $separator = "-")
+    // {
+    //     if (is_null($string)) {
+    //         return "";
+    //     }
+    //     $string = trim($string);
+    //     $string = mb_strtolower($string, "UTF-8");
+    //     // '/' and/or '\' if found and not remoeved it will change the get request route
+    //     $string = str_replace('/', $separator, $string);
+    //     $string = str_replace('\\', $separator, $string);
+    //     $string = preg_replace(
+    //         "/[^a-z0-9_\sءاأإآؤئبتثجحخدذرزسشصضطظعغفقكلمنهويةى]#u/",
+    //         "",
+    //         $string
+    //     );
+    //     $string = preg_replace("/[\s-]+/", " ", $string);
+    //     $string = preg_replace("/[\s_]/", $separator, $string);
 
-        return $string;
+    //     return $string;
+    // }
+    function slugme($string, $separator = '-')
+    {
+        return Str::slug($string, '-', Null);
     }
 }
 
@@ -169,7 +173,7 @@ if (!function_exists('cleanHtml')) {
         $xpath = new DOMXPath($dom);
         $nodes = $xpath->query('//@*');
         foreach ($nodes as $node) {
-            if($node->nodeName != "style" && $node->nodeName != "href" && $node->nodeName != "target") {
+            if ($node->nodeName != "style" && $node->nodeName != "href" && $node->nodeName != "target") {
                 $node->parentNode->removeAttribute($node->nodeName);
             }
         }
@@ -178,8 +182,9 @@ if (!function_exists('cleanHtml')) {
     }
 }
 
-if(!function_exists('footer_pages')) {
-    function footer_pages(){
+if (!function_exists('footer_pages')) {
+    function footer_pages()
+    {
         return Cache::rememberForever('footer_pages', function () {
             return Page::active()->get();
         });
