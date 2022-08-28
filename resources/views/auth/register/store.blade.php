@@ -3,7 +3,7 @@
 @section('content')
     <div class="auth auth-container container my-5 pt-3">
         <div class="auth-form mt-5">
-            <div class="auth-form-box col-md-8 mx-auto">
+            <div class="auth-form-box  col-xl-8 col-lg-10 col-md-12 mx-auto">
                 <div>
                     <div class="heading text-center">
                         <h2>@lang('Store Registration') <i class="fas fa-store"></i></h2>

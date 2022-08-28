@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\Admin\WebsiteSettingsController;
 use App\Http\Controllers\Backend\ArtworkController;
 use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\CarouselController;
@@ -35,6 +36,13 @@ Route::group(['middleware' => 'role:admin'], function(){
     Route::put('news/toggle_status/{news}', [NewsController::class, 'toggle_status'])->name('news.toggle_status');
     Route::resource('news', NewsController::class)->except(['show']);
 
+    //Website Settings
+    Route::controller(WebsiteSettingsController::class)->as('website-settings.')->group(function(){
+        Route::get('website-settings', 'index')->name('index');
+        Route::get('website-settings/{tab}', 'settings_tab_index')->name('tab');
+        Route::put('website-settings/{tab}', 'settings_tab_save')->name('save');
+    });
+
     Route::get('update/{v}', [UpdateController::class, 'update']);
 });
 
@@ -62,6 +70,8 @@ Route::group(['middleware' => ['role:admin|artist', 'backend-check:subscribed']]
 
 Route::middleware('role:artist')->group(function(){
     Route::get('subscription', [SubscriptionController::class, 'index'])->name('subscription.index');
+    Route::get('subscription/payments/history', [SubscriptionController::class, 'payment_history'])->name('subscription.payment_history');
+    Route::post('subscription/upgrade_plan', [SubscriptionController::class, 'upgrade_plan'])->name('subscription.upgrade_plan');
 });
 
 //Notifications

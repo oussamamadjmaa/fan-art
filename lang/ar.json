@@ -1119,5 +1119,22 @@
     "This artist didn't post any blog yet" : "هذا الفنان ليس لديه أي تدوينة بعد",
     "Latest blogs from :name" : "آخر التدوينات من :name",
     "There's no more blogs" : "لا يوجد تدوينات أخرى",
-    "Show all blogs" : "عرض جميع التدوينات"
+    "Show all blogs" : "عرض جميع التدوينات",
+    "Reset Defaults" : "إسترجاع الإعدادات الإفتراضية",
+    "Bank Settings" : "معلومات الحساب البنكي",
+    "Back" : "رجوع",
+    "You're not allowed to perform this action" : "غير مصرح لك بتنفيذ هذا الإجراء",
+    "years" : "سنوات",
+    "year" : "سنة",
+    "days" : "أيام",
+    "day" : "يوم",
+    "Duration" : "المدة",
+    "Amount" : "المبلغ",
+    "Payment Status" : "حالة الدفع",
+    "Pending" : "قيد الانتظار",
+    "Confirmed" : "مؤكدة",
+    "Note" : "ملحوظة",
+    "Automatic subscription to the free trial plan" : "اشتراك تلقائي في الباقة التجريبية المجانية",
+    "Payment history" : "سجل الدفع",
+    "Your order has been sent successfully" : "تم إرسال طلبك  بنجاح"
 }

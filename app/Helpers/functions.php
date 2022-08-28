@@ -38,8 +38,9 @@ if (!function_exists('app_json_data')) {
             "PAGE_URL" => request()->url(),
             "FULL_PAGE_URL" => request()->fullUrl(),
             "IS_RTL" => (config('app.direction') == "rtl") ? true : false,
-            "PUSHER_APP_KEY" => env('broadcasting.connections.pusher.key'),
-            "PUSHER_APP_CLUSTER" => env('PUSHER_APP_CLUSTER')
+            "PUSHER_APP_KEY" => env('PUSHER_APP_KEY'),
+            "PUSHER_APP_CLUSTER" => env('PUSHER_APP_CLUSTER'),
+            'userId' => auth()->check() ? auth()->id() : NULL,
         ];
         return json_encode($data, JSON_UNESCAPED_UNICODE);
     }

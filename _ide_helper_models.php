@@ -286,16 +286,24 @@ namespace App\Models{
  * @property string|null $payment_method
  * @property string|null $confirmation_picture
  * @property array|null $payment_data
- * @property int $price
- * @property string $description
+ * @property int $amount
+ * @property string|null $description
  * @property int $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read mixed $status_color
+ * @property-read mixed $status_text
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Notification[] $notifications
+ * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $paymentable
  * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|Payment confirmed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Payment declined()
  * @method static \Illuminate\Database\Eloquent\Builder|Payment newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Payment newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Payment pending()
  * @method static \Illuminate\Database\Eloquent\Builder|Payment query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Payment whereAmount($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Payment whereConfirmationPicture($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Payment whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Payment whereDescription($value)
@@ -304,7 +312,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Payment wherePaymentMethod($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Payment wherePaymentableId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Payment wherePaymentableType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Payment wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Payment whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Payment whereTransactionId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Payment whereUpdatedAt($value)
@@ -467,6 +474,8 @@ namespace App\Models{
  * @property-read int|null $news_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Notification[] $notifications
  * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Payment[] $payments
+ * @property-read int|null $payments_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
  * @property-read int|null $permissions_count
  * @property-read \App\Models\UserProfile|null $profile

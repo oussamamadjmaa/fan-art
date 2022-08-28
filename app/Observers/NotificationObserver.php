@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Events\NewNotificationEvent;
 use App\Models\Notification;
 use App\Notifications\NotifyNotification;
 use Log;
@@ -16,6 +17,7 @@ class NotificationObserver
      */
     public function created(Notification $notification)
     {
+        broadcast(new NewNotificationEvent($notification))->toOthers();
        // $notification->to_user->notify(new NotifyNotification($notification));
     }
 

@@ -2,6 +2,7 @@
 @section('content')
 <section>
     <div class="card">
+        @include('Backend.Subscription.partials.nav')
         <div class="card-body">
             <div>
                 <h3 class="text-primary">@lang('Current plan'):</h3>
@@ -18,15 +19,22 @@
                     <button class="btn btn-primary">@lang('Renew subscription')</button>
                 @endif
             </div>
-            @if ($higher_plans)
+            @if ($higher_plans->count() && !auth()->user()->payments()->pending()->count())
             <hr>
             <div>
                 <h3 class="text-primary">@lang('Upgrade plan'):</h3>
+                @if ($errors->any())
+                    <ul class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                            <li>{{$error}}</li>
+                        @endforeach
+                    </ul>
+                @endif
                 <div class="row">
                     @foreach ($higher_plans as $plan_)
                     <div class="col-md-6">
                         <h5>{{$plan_->name}}</h5>
-                        <form action="javascript:;" method="post">
+                        <form action="{{route('backend.subscription.upgrade_plan')}}" method="post">
                             @csrf
                             <input type="hidden" name="plan_id" value="{{$plan_->id}}">
                             <div class="form-check">
@@ -55,7 +63,7 @@
                                     </tr>
                                 </table>
                             </div>
-                            <x-form.input type="file" name="confirmation_picture" id="confirmation_picture" label="Upload bank transfer receipt" inputAttributes="onchange=_s.uploadImage(this) data-path=confirmation_pictures" :value="old('confirmation_picture')" />
+                            <x-form.input type="file" name="bank_transfer_receipt" id="bank_transfer_receipt" label="Upload bank transfer receipt" inputAttributes="onchange=_s.uploadImage(this) data-path=confirmation_pictures" :value="old('bank_transfer_receipt')" />
 
                             <button class="btn btn-primary">@lang('Subscribe')</button>
                         </form>

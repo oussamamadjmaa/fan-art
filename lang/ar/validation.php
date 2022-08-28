@@ -196,6 +196,7 @@ return [
         "website"               => 'رابط الموقع',
         "logo"                  => 'الشعار',
         "registration_url"      => 'رابط التسجيل',
-        "sponsor_id"            => 'الراعي'
+        "sponsor_id"            => 'الراعي',
+        "bank_transfer_receipt" => 'إيصال التحويل البنكي'
     ],
 ];

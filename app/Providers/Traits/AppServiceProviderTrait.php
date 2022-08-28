@@ -24,18 +24,20 @@ trait AppServiceProviderTrait{
 
         foreach ($configs as $key => $value) {
             $existsing_configs = config($key);
+
             if(is_array($value) && is_array($existsing_configs)){
                 $value = array_merge($existsing_configs, $value);
 
-                if($key == "app" && !Cookie::get('locale', false)){
-                    date_default_timezone_set($value['timezone']);
-                }
+                // if($key == "app" && !Cookie::get('locale', false)){
+                //     date_default_timezone_set($value['timezone']);
+                // }
             }
            config()->set($key, $value);
         }
 
-        app()->setLocale(Cookie::get('locale', app()->getLocale()));
-
+        if (in_array($locale = Cookie::get('locale', app()->getLocale()), ['ar', 'en'])) {
+            app()->setLocale($locale);
+        }
         config()->set('app.direction', app()->getLocale() == "ar" ? 'rtl' : 'ltr');
     }
 }

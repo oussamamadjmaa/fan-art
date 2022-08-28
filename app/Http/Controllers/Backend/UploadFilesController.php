@@ -15,8 +15,13 @@ class UploadFilesController extends Controller
             $paths = ['pages','carousels', 'news', 'artworks', 'sponsors'];
         }
         if(auth()->user()->hasRole('artist')){
-            $paths = ['artworks', 'sponsors', 'blogs'];
+            $paths = ['artworks', 'sponsors', 'blogs', 'confirmation_pictures'];
         }
+
+        if(auth()->user()->hasRole('store')){
+            $paths = ['confirmation_pictures'];
+        }
+
         $paths = implode(',', $paths);
 
         //Request Rules

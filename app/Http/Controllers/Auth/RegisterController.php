@@ -79,7 +79,7 @@ class RegisterController extends Controller
                 'duration_method' => 'addDays',
                 'duration_type' => 'days',
             ],
-            'price' => 0,
+            'amount' => 0,
             'description' => 'Automatic subscription to the free trial plan',
             'status' => Payment::CONFIRMED,
         ]);

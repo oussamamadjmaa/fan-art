@@ -26,7 +26,7 @@ class NotificationResource extends JsonResource
             'to_user_id' => $this->to_user_id,
             'from_user' => $this->from_user->only('id', 'name', 'avatar', 'avatar_url'),
             'notifiable_id' => $this->notifiable_id,
-            'notifiable_type' => $this->notifiable_type,
+           // 'notifiable_type' => $this->notifiable_type,
             'seen_at' => $this->seen_at,
             'seen' => !is_null($this->seen_at),
             'type' => $this->type,

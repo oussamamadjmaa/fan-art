@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('payment_method')->nullable();
             $table->string('confirmation_picture')->nullable();
             $table->json('payment_data')->nullable();
-            $table->integer('price');
-            $table->text('description');
+            $table->integer('amount');
+            $table->text('description')->nullable();
             $table->boolean('status')->default(0);
             $table->timestamps();
         });

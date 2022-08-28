@@ -19,7 +19,7 @@ class Payment extends Model
         'payment_method',
         'confirmation_picture',
         'payment_data',
-        'price',
+        'amount',
         'description',
         'status',
     ];
@@ -39,4 +39,63 @@ class Payment extends Model
     {
         return $this->morphTo();
     }
+
+    public function notifications(){
+        return $this->morphMany(Notification::class, 'notifiable');
+    }
+
+    /**
+     * Scopes
+     */
+    public function scopePending($q){
+        return $q->whereStatus(self::PENDING);
+    }
+
+    public function scopeConfirmed($q){
+        return $q->whereStatus(self::CONFIRMED);
+    }
+    public function scopeDeclined($q){
+        return $q->whereStatus(self::DECLINED);
+    }
+
+    /**
+     * Attributes
+     */
+    public function getStatusAttribute($status){
+        $this->append('status_text');
+        return $status;
+    }
+    public function getStatusTextAttribute(){
+        $text = 'Unknown';
+        switch ($this->status) {
+            case self::PENDING:
+                $text = "Pending";
+                break;
+            case self::CONFIRMED:
+                $text = "Confirmed";
+                break;
+            case self::DECLINED:
+                $text = "Declined";
+                break;
+        }
+
+        return __($text);
+    }
+    public function getStatusColorAttribute(){
+        $color = 'dark';
+        switch ($this->status) {
+            case self::PENDING:
+                $color = "warning";
+                break;
+            case self::CONFIRMED:
+                $color = "success";
+                break;
+            case self::DECLINED:
+                $color = "danger";
+                break;
+        }
+
+        return __($color);
+    }
+
 }

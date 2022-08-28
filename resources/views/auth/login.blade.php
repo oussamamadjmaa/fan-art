@@ -3,7 +3,7 @@
 @section('content')
     <div class="auth auth-container container my-5 pt-3">
         <div class="auth-form mt-5">
-            <div class="auth-form-box col-md-5 mx-auto">
+            <div class="auth-form-box col-lg-5 col-md-10 mx-auto">
                 <div id="loginForm">
                     <div class="heading text-center">
                         <h1>@lang('Hello')</h1>
