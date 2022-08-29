@@ -8,7 +8,23 @@
                     {{ session('success') }}
                 </div>
             @endif
-            <div id="page-data-list"></div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>@lang('Payment Method')</th>
+                            <th>@lang('Plan name')</th>
+                            <th>@lang('Duration')</th>
+                            <th>@lang('Amount')</th>
+                            <th>@lang('Payment Status')</th>
+                            <th>@lang('Note')</th>
+                        </tr>
+                    </thead>
+                    <tbody id="page-data-list">
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 @endsection

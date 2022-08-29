@@ -38,7 +38,9 @@ class ArtworkController extends Controller
             $messages = $artwork->messages();
             $messages = $messages->with('sender')->latest('id')->cursorPaginate(15)->withQueryString();
 
-            Message::whereIn('id', $messages->pluck('id')->toArray())->update(['seen_at' => now()]);
+            if(auth()->id() == $artwork->user_id){
+                Message::whereIn('id', $messages->pluck('id')->toArray())->update(['seen_at' => now()]);
+            }
 
             $slot = array_merge($messages->toArray(), ['data' => view('Backend.Artwork.partials.messages_list', compact('messages', 'artwork'))->render()]);
             return response()->json($slot);

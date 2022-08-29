@@ -64,7 +64,7 @@
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-6">
-                    <div class="table-reponsive">
+                    <div class="table-responsive">
                         <table class="table" width="100%">
                             <tr>
                                 <td scope="row">@lang('Exhibition name')</td>
