@@ -3,7 +3,7 @@
     <div class="dropdown">
         <button type="button" title="@lang('Notifications')" class="btn btn-transparent position-relative" data-bs-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false">
-            <i class="bi bi-bell"></i>
+            <i @class(['bi bi-bell', 'text-white' => isset($is_phone)])></i>
             <span class="position-absolute start-0 translate-middle badge rounded-pill bg-danger notificationsCount" data-count="0" style="top: 5px;">
               <span class="count">0</span>
               <span class="visually-hidden">@lang('Unseen Notifications')</span>

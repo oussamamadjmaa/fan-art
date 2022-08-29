@@ -1,7 +1,7 @@
 @forelse ($notifications as $notification)
     <a class="col-12 px-0 d-block text-dark"
         href="{{ route('backend.notifications.redirect', [$notification->id, 'b' => 'true']) }}">
-        <div class="notification-item___ d-flex flex-wrap py-3 px-3 border-bottom {{ !$notification->seen ? 'bg-light' : '' }}"
+        <div class="notification-item___ d-flex py-3 px-3 border-bottom {{ !$notification->seen ? 'bg-light' : '' }}"
             style="border-color: #bababa6b!important;">
             <div class="notification-header__">
                 <div class="notification-sender-avatar__">

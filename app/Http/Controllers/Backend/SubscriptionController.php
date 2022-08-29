@@ -23,7 +23,7 @@ class SubscriptionController extends Controller
         $request_data = $request->validate([
             'plan_id' => ['required', 'exists:plans,id'],
             'duration' => ['required', 'in:yearly'],
-            'bank_transfer_receipt' => ['required', new ValidateFileRule('confirmation_pictures', ['png', 'jpg', 'jpeg'])],
+            'bank_transfer_receipt' => ['required', new ValidateFileRule('confirmation_pictures', ['png', 'jpg', 'jpeg', 'webp'])],
         ]);
 
         $current_subscription = auth()->user()->subscription;
