@@ -25,7 +25,7 @@ $icon = $icons[$attributes->get('name')] ?? 'fas fa-question-circle';
 
 @if($type == "textarea")
 <div class="mb-3">
-    <div class="input-container">
+    <div @class(['input-container', 'is-invalid' => $errors->has($attributes->get('name'))])>
         <label for="{{ $attributes->get('id') }}" class="form-label"><i class="{{ $icon }}"></i></label>
         <textarea
             {{ $attributes->class(['form-control'])->merge([
@@ -39,7 +39,7 @@ $icon = $icons[$attributes->get('name')] ?? 'fas fa-question-circle';
 </div>
 @elseif ($type == 'email')
     <div class="mb-3">
-        <div class="input-container">
+        <div @class(['input-container', 'is-invalid' => $errors->has($attributes->get('name'))])>
             <label for="{{ $attributes->get('id') }}" class="form-label"><i class="{{ $icon }}"></i></label>
             <input
                 {{ $attributes->class(['form-control'])->merge([
@@ -49,15 +49,15 @@ $icon = $icons[$attributes->get('name')] ?? 'fas fa-question-circle';
                     'autocomplete' => 'email',
                 ]) }} />
         </div>
-        @error($attributes->get('name'))
-            <span class="invalid-feedback d-block" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
+        <span class="invalid-feedback" role="alert">
+            @error($attributes->get('name'))
+            <strong>{{ $message }}</strong>
+            @enderror
+        </span>
     </div>
 @elseif($type == 'select')
     <div class="mb-3">
-        <div class="input-container">
+        <div @class(['input-container', 'is-invalid' => $errors->has($attributes->get('name'))])>
             <label for="{{ $attributes->get('id') }}" class="form-label"><i class="{{$icon}}"></i></label>
             <select
                 {{ $attributes->class(['form-control'])->merge([
@@ -66,18 +66,18 @@ $icon = $icons[$attributes->get('name')] ?? 'fas fa-question-circle';
                 {{ $slot }}
             </select>
         </div>
-        @error($attributes->get('name'))
-            <span class="invalid-feedback d-block" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
+        <span class="invalid-feedback" role="alert">
+            @error($attributes->get('name'))
+            <strong>{{ $message }}</strong>
+            @enderror
+        </span>
     </div>
 @else
     <div class="mb-3">
-        <div class="input-container">
-            <label for="{{ $attributes->get('id') }}" class="form-label"><i class="{{ $icon }}"></i></label>
+        <div @class(['input-container', 'is-invalid' => $errors->has($attributes->get('name'))])>
+            <label for="{{ $attributes->get('id') }}" class="form-label" @class(['is-invalid' => $errors->has($attributes->get('name'))])><i class="{{ $icon }}"></i></label>
             <input
-                {{ $attributes->class(['form-control'])->merge([
+                {{ $attributes->class(['form-control', 'is-invalid' => $errors->has($attributes->get('name'))])->merge([
                     'type' => $type,
                 ]) }}>
             @if ($type == 'password')
@@ -85,10 +85,10 @@ $icon = $icons[$attributes->get('name')] ?? 'fas fa-question-circle';
             @endif
         </div>
 
-        @error($attributes->get('name'))
-            <span class="invalid-feedback d-block" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
+        <span class="invalid-feedback" role="alert">
+            @error($attributes->get('name'))
+            <strong>{{ $message }}</strong>
+            @enderror
+        </span>
     </div>
 @endif
