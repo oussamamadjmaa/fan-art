@@ -31,8 +31,8 @@
                         <x-auth.form.input  :placeholder="__('Phone')" name="phone" :value="$user->phone" />
                         <x-auth.form.input  :placeholder="__('Email')" name="email" :value="$user->email" readonly />
                         <x-auth.form.input type="select" name="gender" :placeholder="__('Gender')" required>
-                            <option value="male">@lang('Male')</option>
-                            <option value="female">@lang('Female')</option>
+                            <option value="male" @selected(old('gender', $user->gender) == "male")>@lang('Male')</option>
+                            <option value="female" @selected(old('gender', $user->gender) == "female")>@lang('Female')</option>
                         </x-auth.form.input>
                         <x-auth.form.input type="select" name="nationality" :placeholder="__('Nationality')" required>
                             <option value="">@lang('Select Nationality')...</option>

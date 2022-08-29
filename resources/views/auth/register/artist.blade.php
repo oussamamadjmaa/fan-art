@@ -37,8 +37,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <x-auth.form.input type="select" name="gender" id="gender">
-                                        <option value="male">@lang('Male')</option>
-                                        <option value="female">@lang('Female')</option>
+                                        <option value="male" @selected(old('gender') == "male")>@lang('Male')</option>
+                                        <option value="female" @selected(old('gender') == "female")>@lang('Female')</option>
                                     </x-auth.form.input>
                                 </div>
                                 <div class="col-md-6">
