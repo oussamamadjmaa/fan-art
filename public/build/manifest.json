@@ -8,7 +8,7 @@
     "src": "resources/frontend-assets/assets/images/bgs/paint.png"
   },
   "resources/backend-assets/js/app.js": {
-    "file": "assets/app.58d5db39.js",
+    "file": "assets/app.ffb630cb.js",
     "src": "resources/backend-assets/js/app.js",
     "isEntry": true,
     "imports": [
@@ -24,7 +24,7 @@
     ]
   },
   "resources/frontend-assets/js/app.js": {
-    "file": "assets/app.3d4332cf.js",
+    "file": "assets/app.96888489.js",
     "src": "resources/frontend-assets/js/app.js",
     "isEntry": true,
     "imports": [

@@ -57,6 +57,7 @@ function makeCrModal() {
                                 </div>
                             </div>
                         </div>`).appendTo('body');
+    modal.modal({backdrop: 'static', keyboard: false});
     modal.on('shown.bs.modal', function () {
         cr.cropper = new Cropper(cr.image, {
             aspectRatio: 1,
@@ -73,6 +74,7 @@ function makeCrModal() {
         modal.remove();
         cr.cropper.destroy();
         cr.cropper = '';
+        $("input#avatar").val('');
     });
 
     modal.find("#saveAvatar").click(function () {
