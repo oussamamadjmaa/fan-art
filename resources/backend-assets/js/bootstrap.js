@@ -36,9 +36,9 @@ let emptyNotifications = false;
 let elNotificationSound = document.createElement('audio');
 elNotificationSound.src = GLOBAL.APP_URL+"/assets/sounds/trn.mp3";
 
-function prependNotification(notification){
+function appendNotification(notification, action = "append"){
     if(emptyNotifications) $(pushNotification).html('');
-    $(pushNotification).prepend(`<a href="${GLOBAL.APP_URL+"/panel/notifications/"+notification.id}" class="text-reset notification-item">
+    let notification_elem = `<a href="${GLOBAL.APP_URL+"/panel/notifications/"+notification.id}" class="text-reset notification-item">
     <div class="d-flex pt-3 border-bottom ${!notification.seen ? 'bg-light' : ''}" style="border-color: #bababa6b!important;">
         <div class="me-3">
             <span class="avatar-40">
@@ -53,7 +53,10 @@ function prependNotification(notification){
             </div>
         </div>
     </div>
-    </a>`);
+    </a>`;
+    if(action == "append") notification_elem = $(pushNotification).append(notification_elem);
+    else notification_elem = $(pushNotification).prepend(notification_elem);
+    return notification_elem;
 }
 
 if (GLOBAL['userId']) {
@@ -62,7 +65,7 @@ if (GLOBAL['userId']) {
             elNotificationSound.play().catch(function(error){});
            // toastr.info(GLOBAL.LANG == "ar" ? 'لديك إشعار جديد' : "You have new notification");
             $(".notificationsCount").attr('data-count', e.stats.notifications_count).find('.count').text(e.stats.notifications_count);
-            prependNotification(e.notification);
+            appendNotification(e.notification, "prepend");
         });
 }
 
@@ -79,7 +82,7 @@ $.ajax({
         $(pushNotification).html(`<div class="text-center py-3">لا يوجد أي إشعارات</div>`);
     } else {
         notifications.forEach(function (e) {
-           prependNotification(e);
+           appendNotification(e);
         });
     }
 })
