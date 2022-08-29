@@ -40,6 +40,15 @@ let _f = window._s;
         this.value = parseFloat(this.value).toFixed(2);
     });
 
+    $(document).on('click', '.show-password', function () {
+        if ($(this).hasClass('active')) $(this).parent().find('input').attr('type', 'password');
+        else $(this).parent().find('input').attr('type', 'text');
+        $(this).toggleClass('active');
+    });
+    $(document).on('submit', '.auth-form form', function () {
+        $('.auth-btn').prop('disabled', true);
+    });
+
     _f.setRequiredInputsStar();
 
     _f.setupDatePicker();

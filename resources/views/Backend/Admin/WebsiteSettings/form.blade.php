@@ -9,7 +9,6 @@
                 <h5 class="mb-0">{{$title}}</h5>
             </div>
             <div class="card-body">
-
                 <div class="col-lg-6 col-md-8 col-12">
                     @if (session('success'))
                         <div class="alert alert-success">

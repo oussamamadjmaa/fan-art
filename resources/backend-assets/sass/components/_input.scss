@@ -17,3 +17,83 @@ label.file-label {
     max-height: 170px;
     max-width: 100%;
 }
+
+.inputs {
+    .input-container {
+        position: relative;
+        >label {
+            position: absolute;
+            top: 0;
+            .text-danger{display: none;}
+            .rtl &{right: 0;}
+            .ltr &{left: 0;}
+            width: 40px;
+            background-color: var(--thm-primary-color);
+            color: #fff;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 40px 0 0 40px;
+            i{
+                padding-left: 4px;
+                padding-top: 0;
+            }
+        }
+        >textarea{
+            &::-webkit-scrollbar {
+                width: 0;
+            }
+
+            &::-webkit-scrollbar-track {
+                -webkit-box-shadow: none;
+            }
+
+            &::-webkit-scrollbar-thumb {
+              background-color: transparent;
+              outline: none;
+            }
+        }
+        >input, >select, >textarea {
+            border: solid 1px var(--thm-primary-color);
+            border-radius: 40px 0 0 40px;
+            padding: 11px 21px;
+            &.is-invalid {
+                padding: 11px 30px;
+                border: solid 1px #dc3545!important;
+            }
+            line-height: 23px;
+            .rtl &{padding-right: 49px;}
+            .ltr &{padding-left: 49px;}
+            &:focus {
+                color: #212529;
+                background-color: #fff;
+                border-color: #86b7fe;
+                outline: 0;
+                box-shadow: 0 0 0 0.25rem transparentize($thm-primary-color, .6);
+            }
+        }
+
+        .show-password{
+            position: absolute;
+            opacity: .7;
+            top: 14px;
+            .rtl &{left: 13px;}
+            .ltr &{right: 13px;}
+            cursor: pointer;
+            transition: all .2s ease;
+            &:hover{
+                opacity: .80;
+            }
+            i:before {
+                content: "\f06e";
+            }
+            &.active {
+                opacity: 1;
+                i:before{
+                    content: "\f070";
+                }
+            }
+        }
+    }
+}

@@ -35,19 +35,19 @@ class NotificationsController extends Controller
 
         $data = new stdClass();
 
-        $data->unread_count = auth()->user()->notifications()->unseen()->limit(100)->count();
-        $data->unread_count = ($data->unread_count == 100) ? "+99" : $data->unread_count;
+        $data->unread_count = auth()->user()->notifications()->unseen()->limit(10)->count();
+        $data->unread_count = ($data->unread_count == 10) ? "+9" : $data->unread_count;
 
         $notificationsDB = auth()->user()->notifications()->with(['notifiable', 'from_user'])->latest()->limit(10)->get();
         $data->notifications = json_decode(NotificationResource::collection($notificationsDB)->toJson());
 
-        return response()->jsone($data);
+        return response()->json($data);
     }
 
     public function redirect(Notification $notification){
         abort_if($notification->to_user_id != auth()->id(), 404);
 
-        $url = (request()->get('b') == true) ? false : route('Backend.Notifications.index');
+        $url = (request()->get('b') == true) ? false : route('backend.notifications.index');
 
         $routes = [];
         $routes['artworks.new_message'] =  route('backend.artworks.messages', $notification->notifiable_id);
@@ -60,7 +60,7 @@ class NotificationsController extends Controller
 
     public function markAllAsRead(){
         auth()->user()->notifications()->unseen()->update(['seen_at' => now()]);
-        return redirect()->route('Backend.Notifications.index');
+        return redirect()->route('backend.notifications.index');
     }
 
 }

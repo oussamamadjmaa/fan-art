@@ -3,6 +3,7 @@
 namespace App\Events;
 
 use App\Http\Resources\NotificationResource;
+use App\Models\Notification;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -17,6 +18,7 @@ class NewNotificationEvent implements ShouldBroadcastNow
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $notification;
+    public $stats;
 
     /**
      * Create a new event instance.
@@ -25,8 +27,14 @@ class NewNotificationEvent implements ShouldBroadcastNow
      */
     public function __construct($notification)
     {
-        $notification = new NotificationResource($notification);
-        $this->notification = json_decode($notification->toJson());
+        $notification_ = new NotificationResource($notification);
+        $this->notification = json_decode($notification_->toJson());
+
+        //Receiver Stats
+        $notifications_count = Notification::where('to_user_id', $notification->to_user_id)->unseen()->limit(10)->count();
+        $this->stats = [
+            'notifications_count' =>  $notifications_count > 9 ? '+9' : $notifications_count
+        ];
     }
 
     public function broadcastAs()

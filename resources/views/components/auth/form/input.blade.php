@@ -1,8 +1,11 @@
-@props(['type'])
+@props(['type'=>'text'])
 @php
 $icons = [
     'name'                  => 'fa fa-user',
     'password'              => 'fa fa-lock',
+    'current_password'          => 'fa fa-lock',
+    'new_password'          => 'fa fa-lock',
+    'new_password_confirmation' => 'fa fa-lock',
     'password_confirmation' => 'fa fa-lock',
     'email'                 => 'fa fa-envelope',
     'nationality'           => 'fa fa-globe',
@@ -12,9 +15,10 @@ $icons = [
     'phone'                 => 'fa fa-phone',
     'username'              => 'fa fa-user',
     'facebook'              => 'fab fa-facebook',
-    'instagram'              => 'fab fa-instagram',
-    'twitter'              => 'fab fa-twitter',
+    'instagram'             => 'fab fa-instagram',
+    'twitter'               => 'fab fa-twitter',
     'linkedin'              => 'fab fa-linkedin',
+    'bio'                   => 'fas fa-address-card'
 ];
 $icon = $icons[$attributes->get('name')] ?? 'fas fa-question-circle';
 @endphp

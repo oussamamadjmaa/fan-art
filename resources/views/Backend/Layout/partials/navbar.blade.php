@@ -11,6 +11,7 @@
             </a>
         </div>
         <div class="d-flex align-items-center justify-content-end d-pc-none h-100">
+            @include('Backend.Layout.partials.notifications')
             @include('Backend.Layout.partials.language-menu', ['is_phone' => true])
             @include('Backend.Layout.partials.user-dropdown-menu', ['is_phone' => true])
         </div>
@@ -18,6 +19,7 @@
     <div class="mnav-content">
         {{-- <div class="mnav__right-content"></div> --}}
         <div class="mnav__left-content">
+            @include('Backend.Layout.partials.notifications')
             @include('Backend.Layout.partials.language-menu')
             @include('Backend.Layout.partials.user-dropdown-menu')
         </div>

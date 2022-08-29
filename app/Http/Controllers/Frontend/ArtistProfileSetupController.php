@@ -36,7 +36,7 @@ class ArtistProfileSetupController extends Controller
         ];
 
         $data['docs'] = [
-            'cv' => ($request->has('cv')) ? $request->file('cv')->store('artists-cvs', 'public') : NULL
+            'cv' => ($request->has('cv') && $request->file('cv')) ? $request->file('cv')->store('artists-cvs', 'public') : NULL
         ];
 
         auth()->user()->profile()->updateOrCreate(['user_id' => auth()->id()], $data);

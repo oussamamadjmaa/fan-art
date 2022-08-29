@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
+    'App\\Events\\NewNotificationEvent' => $baseDir . '/app/Events/NewNotificationEvent.php',
     'App\\Events\\SubscriptionPayment' => $baseDir . '/app/Events/SubscriptionPayment.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Helpers\\Meta' => $baseDir . '/app/Helpers/Meta.php',

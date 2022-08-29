@@ -156,7 +156,7 @@ $(function () {
         $('.auth-btn').prop('disabled', true);
     });
 
-    $(document).on('change input keyup', 'input, textarea, select', function(){
+    $(document).on('change input keyup', '.is-invalid', function(){
         $(this).removeClass('is-invalid');
     });
 

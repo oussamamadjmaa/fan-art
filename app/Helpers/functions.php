@@ -39,9 +39,12 @@ if (!function_exists('app_json_data')) {
             "PAGE_URL" => request()->url(),
             "FULL_PAGE_URL" => request()->fullUrl(),
             "IS_RTL" => (config('app.direction') == "rtl") ? true : false,
-            "PUSHER_APP_KEY" => env('PUSHER_APP_KEY'),
-            "PUSHER_APP_CLUSTER" => env('PUSHER_APP_CLUSTER'),
-            'userId' => auth()->check() ? auth()->id() : NULL,
+            "userId" => auth()->check() ? auth()->id() : NULL,
+            "PUSHER_APP_KEY" => config('broadcasting.connections.pusher.key'),
+            "PUSHER_HOST" => env('PUSHER_HOST'),
+            "PUSHER_APP_CLUSTER" => config('broadcasting.connections.pusher.options.cluster'),
+            "PUSHER_PORT" => config('broadcasting.connections.pusher.options.port'),
+            "PUSHER_SCHEME" => config('broadcasting.connections.pusher.options.scheme'),
         ];
         return json_encode($data, JSON_UNESCAPED_UNICODE);
     }

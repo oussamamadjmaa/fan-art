@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\AccountController;
 use App\Http\Controllers\Backend\Admin\WebsiteSettingsController;
 use App\Http\Controllers\Backend\ArtworkController;
 use App\Http\Controllers\Backend\BlogController;
@@ -80,6 +81,14 @@ Route::prefix('notifications')->as('notifications.')->controller(NotificationsCo
     Route::get('stats', 'getNotificationsData')->name('stats');
     Route::get('mark-all-as-read', 'markAllAsRead')->name('mark-all-as-read');
     Route::get('{notification}', 'redirect')->name('redirect');
+});
+
+//
+Route::controller(AccountController::class)->prefix('account')->as('account.')->group(function(){
+    Route::get('my-profile', 'profile')->name('profile');
+    Route::get('password', 'password')->name('password');
+    Route::get('artist-profile', 'artist_profile')->name('artist_profile');
+    Route::put('save/{tab}', 'save')->name('save');
 });
 
 //Upload

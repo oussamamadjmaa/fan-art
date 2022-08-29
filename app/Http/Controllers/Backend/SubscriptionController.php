@@ -58,8 +58,6 @@ class SubscriptionController extends Controller
     }
 
     public function payment_history(){
-        event(new NewNotificationEvent(Notification::where('to_user_id', 1)->latest()->first()));
-        return 'gg';
         if(request()->expectsJson()){
             $payments = auth()->user()->payments();
             $payments = $payments->with('paymentable')->latest()->cursorPaginate(15)->withQueryString();

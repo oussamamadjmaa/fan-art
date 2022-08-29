@@ -55,7 +55,18 @@
                     }
                 }
                 >textarea{
-                    overflow: hidden;
+                    &::-webkit-scrollbar {
+                        width: 0;
+                    }
+
+                    &::-webkit-scrollbar-track {
+                        -webkit-box-shadow: none;
+                    }
+
+                    &::-webkit-scrollbar-thumb {
+                      background-color: transparent;
+                      outline: none;
+                    }
                 }
                 >input, >select, >textarea {
                     border: none;

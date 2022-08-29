@@ -1136,5 +1136,15 @@
     "Note" : "ملحوظة",
     "Automatic subscription to the free trial plan" : "اشتراك تلقائي في الباقة التجريبية المجانية",
     "Payment history" : "سجل الدفع",
-    "Your order has been sent successfully" : "تم إرسال طلبك  بنجاح"
+    "Your order has been sent successfully" : "تم إرسال طلبك  بنجاح",
+    "Declined" : "مرفوضة",
+    "Mark all as read" : "تحديد الكل كمقروءة",
+    "Gender" : "الجنس",
+    "Current password is not correct" : "كلمة المرور الحالية غير صحيحة",
+    "Profile has been updated successfully" : "تم تحديث الملف الشخصي بنجاح",
+    "Artist profile has been updated successfully" : "تم تحديث ملف الفنان بنجاح",
+    "Change Password" : "تغيير كلمة المرور",
+    "The new password must be different from the current one" : "كلمة المرور الجديدة يجب أن تكون مختلفة عن الحالية",
+    "Password changed successfully" : "تم تغيير كلمة المرور بنجاح",
+    "Artist Profile" : "ملف الفنان"
 }

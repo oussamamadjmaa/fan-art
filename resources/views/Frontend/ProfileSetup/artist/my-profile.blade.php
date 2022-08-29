@@ -17,7 +17,7 @@
                         @error('avatar')
                               <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
-                      </div>
+                    </div>
                     <form action="{{ route('frontend.setup_profile.save', 'my-profile') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="inputs">
@@ -49,7 +49,7 @@
                                 name="twitter" id="twitter" placeholder="{{ __('Twitter') }}"
                                 value="{{ old('twitter', auth()->user()?->profile?->social_media['twitter'] ?? '') }}" />
                                 <x-auth.form.input type="text" class="{{$errors->has('linkedin') ? 'is-invalid' : ''}}"
-                                    name="linkedin" id="linkedin" placeholder="{{ __('linkedin') }}"
+                                    name="linkedin" id="linkedin" placeholder="{{ __('Linkedin') }}"
                                     value="{{ old('linkedin', auth()->user()?->profile?->social_media['linkedin'] ?? '') }}" />
                         </div>
                         <div>

@@ -31,26 +31,4 @@ class AccountController extends Controller
         auth()->user()->save();
         return response()->json(['status' => 200, 'avatar_url' => Storage::disk('public')->url($file)]);
     }
-
-    /**
-     * @param string $value
-     *
-     * @return File
-     */
-    protected function convertToFile(string $value): File
-    {
-        if (strpos($value, ';base64') !== false) {
-            [, $value] = explode(';', $value);
-            [, $value] = explode(',', $value);
-        }
-
-        $binaryData = base64_decode($value);
-        $tmpFile = tmpfile();
-        $this->tmpFileDescriptor = $tmpFile;
-        $tmpFilePath = stream_get_meta_data($tmpFile)['uri'];
-
-        file_put_contents($tmpFilePath, $binaryData);
-
-        return new File($tmpFilePath);
-    }
 }

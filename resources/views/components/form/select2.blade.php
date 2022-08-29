@@ -3,7 +3,6 @@
     'name',
     "type" => "text",
     "id",
-    "inputAttributes" => "",
     "value" => "",
 ])
 @php
