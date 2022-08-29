@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\ArtworkRequest;
 use App\Models\Artwork;
+use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -24,15 +25,25 @@ class ArtworkController extends Controller
     {
         if(request()->expectsJson()){
             $artworks = (auth()->user()->hasRole('admin')) ? Artwork::query()->withWhereHas('user') : auth()->user()->artworks();
-            $artworks = $artworks->withCount(['messages' => fn($q) => $q->whereNull('seen_at')])->latest()->cursorPaginate(15)->withQueryString();
+            $artworks = $artworks->withCount(['messages' => fn($q) => $q->whereNull('seen_at')])->latest('id')->cursorPaginate(15)->withQueryString();
+
             $slot = array_merge($artworks->toArray(), ['data' => view('Backend.Artwork.list', compact('artworks'))->render()]);
             return response()->json($slot);
         }
         return view('Backend.Artwork.index');
     }
 
-    public function messages(){
-        return 'artwork message';
+    public function messages(Artwork $artwork){
+        if(request()->expectsJson()){
+            $messages = $artwork->messages();
+            $messages = $messages->with('sender')->latest('id')->cursorPaginate(15)->withQueryString();
+
+            Message::whereIn('id', $messages->pluck('id')->toArray())->update(['seen_at' => now()]);
+
+            $slot = array_merge($messages->toArray(), ['data' => view('Backend.Artwork.partials.messages_list', compact('messages', 'artwork'))->render()]);
+            return response()->json($slot);
+        }
+        return view('Backend.Artwork.messages', compact('artwork'));
     }
 
     /**

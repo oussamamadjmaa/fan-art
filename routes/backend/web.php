@@ -87,7 +87,7 @@ Route::prefix('notifications')->as('notifications.')->controller(NotificationsCo
 Route::controller(AccountController::class)->prefix('account')->as('account.')->group(function(){
     Route::get('my-profile', 'profile')->name('profile');
     Route::get('password', 'password')->name('password');
-    Route::get('artist-profile', 'artist_profile')->name('artist_profile');
+    Route::get('artist-profile', 'artist_profile')->middleware('role:artist')->name('artist_profile');
     Route::put('save/{tab}', 'save')->name('save');
 });
 

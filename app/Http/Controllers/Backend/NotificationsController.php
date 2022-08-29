@@ -19,7 +19,7 @@ class NotificationsController extends Controller
         $unread_count = auth()->user()->notifications()->unseen()->limit(1)->count();
 
         if(request()->expectsJson()){
-            $notificationsDB = auth()->user()->notifications()->with(['notifiable', 'from_user'])->latest()->cursorPaginate(15)->withQueryString();
+            $notificationsDB = auth()->user()->notifications()->with(['notifiable', 'from_user'])->latest('id')->cursorPaginate(15)->withQueryString();
             $notifications = json_decode(NotificationResource::collection($notificationsDB)->toJson());
 
             $slot = array_merge($notificationsDB->toArray(), ['data' => view('Backend.Notifications.list', compact('notifications'))->render()]);

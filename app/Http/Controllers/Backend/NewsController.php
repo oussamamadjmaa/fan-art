@@ -18,7 +18,7 @@ class NewsController extends Controller
     {
         if(request()->expectsJson()){
             $news = (auth()->user()->hasRole('admin')) ? News::query()->withWhereHas('user', fn($q) => $q->role('admin')) : auth()->user()->news();
-            $news = $news->latest()->cursorPaginate(15)->withQueryString();
+            $news = $news->latest('id')->cursorPaginate(15)->withQueryString();
             $slot = array_merge($news->toArray(), ['data' => view('Backend.News.list', compact('news'))->render()]);
             return response()->json($slot);
         }

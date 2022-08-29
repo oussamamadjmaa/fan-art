@@ -60,7 +60,7 @@ class SubscriptionController extends Controller
     public function payment_history(){
         if(request()->expectsJson()){
             $payments = auth()->user()->payments();
-            $payments = $payments->with('paymentable')->latest()->cursorPaginate(15)->withQueryString();
+            $payments = $payments->with('paymentable')->latest('id')->cursorPaginate(15)->withQueryString();
             $slot = array_merge($payments->toArray(), ['data' => view('Backend.Subscription.payment_history.list', compact('payments'))->render()]);
             return response()->json($slot);
         }

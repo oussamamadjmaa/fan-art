@@ -48,8 +48,7 @@
             </div>
         </div>
         <div>
-            <a type="button" class="button py-1" id="artworkActionsDropDown{{ $artwork->id }}" data-bs-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
+            <a type="button" class="button py-1" href="{{ route('backend.artworks.messages', $artwork->id) }}" >
                     @lang('New messages') ({{$artwork?->messages_count ?? 0}})
                 </a>
         </div>

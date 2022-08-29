@@ -61,7 +61,7 @@ class ArtworksController extends Controller
         }else{
             return [
                 'sender_id' => NULL,
-                'sender_type' => 'App\Models\Guest',
+                'sender_type' => NULL,
                 'body' => $request->message,
                 'data' => [
                     'first_name' =>  $request->first_name,

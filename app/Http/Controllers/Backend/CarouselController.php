@@ -17,7 +17,7 @@ class CarouselController extends Controller
     public function index()
     {
         if(request()->expectsJson()){
-            $carousels = Carousel::latest()->cursorPaginate(15)->withQueryString();
+            $carousels = Carousel::latest('id')->cursorPaginate(15)->withQueryString();
             $slot = array_merge($carousels->toArray(), ['data' => view('Backend.Carousel.list', compact('carousels'))->render()]);
             return response()->json($slot);
         }

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('sender_id')->nullable();
-            $table->string('sender_type');
+            $table->string('sender_type')->nullable();
             $table->unsignedBigInteger('messageable_id');
             $table->string('messageable_type');
             $table->longText('body');

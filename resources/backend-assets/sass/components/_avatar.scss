@@ -5,4 +5,8 @@
         border-radius: 50%;
         object-fit: cover;
     }
+
+    .pic-w#{$size} {
+        width: #{$size+"px"};
+    }
 }

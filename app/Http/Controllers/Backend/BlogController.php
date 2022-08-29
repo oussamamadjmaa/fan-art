@@ -23,7 +23,7 @@ class BlogController extends Controller
     {
         if(request()->expectsJson()){
             $blogs = (auth()->user()->hasRole('admin')) ? News::query()->withWhereHas('user', fn($q) => $q->role('artist')) : auth()->user()->news();
-            $blogs = $blogs->latest()->cursorPaginate(15)->withQueryString();
+            $blogs = $blogs->latest('id')->cursorPaginate(15)->withQueryString();
             $slot = array_merge($blogs->toArray(), ['data' => view('Backend.Blog.list', compact('blogs'))->render()]);
             return response()->json($slot);
         }

@@ -16,7 +16,7 @@ class PagesManagerController extends Controller
      */
     public function index()
     {
-        $pages = Page::latest()->cursorPaginate(15)->withQueryString();
+        $pages = Page::latest('id')->cursorPaginate(15)->withQueryString();
         $slot = array_merge($pages->toArray(), ['data' => view('Backend.PagesManager.list', compact('pages'))->render()]);
         return request()->expectsJson() ? response()->json($slot) : view('Backend.PagesManager.index', compact('slot'));
     }

@@ -24,7 +24,7 @@ class SponsorController extends Controller
     {
         if(request()->expectsJson()){
             $sponsors = (auth()->user()->hasRole('admin')) ? Sponsor::query()->withWhereHas('user') : auth()->user()->sponsors();
-            $sponsors = $sponsors->latest()->cursorPaginate(15)->withQueryString();
+            $sponsors = $sponsors->latest('id')->cursorPaginate(15)->withQueryString();
             $slot = array_merge($sponsors->toArray(), ['data' => view('Backend.Sponsor.list', compact('sponsors'))->render()]);
             return response()->json($slot);
         }

@@ -1146,5 +1146,6 @@
     "Change Password" : "تغيير كلمة المرور",
     "The new password must be different from the current one" : "كلمة المرور الجديدة يجب أن تكون مختلفة عن الحالية",
     "Password changed successfully" : "تم تغيير كلمة المرور بنجاح",
-    "Artist Profile" : "ملف الفنان"
+    "Artist Profile" : "ملف الفنان",
+    "Artwork Messages" : "رسائل العمل الفني"
 }
