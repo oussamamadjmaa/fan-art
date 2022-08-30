@@ -15,6 +15,11 @@ return [
             'description' =>  'يوجد عملية دفع لإشتراك بباقة بإنتظار الموافقة من طرف <b>:fromUser_name</b>',
             'icon' => 'bi bi-bank',
             'bg_class' => 'bg-info',
+        ],'payment_confirmed' => [
+            'title' =>  'تم تأكيد عملية الدفع للإشتراك',
+            'description' =>  'مبروك! تم تأكيد عملية الدفع للإشتراك الخاص بك',
+            'icon' => 'bi bi-patch-check',
+            'bg_class' => 'bg-success',
         ]
     ]
 ];

@@ -27,10 +27,16 @@ class HandleSubscriptionPayment
             }else{
                 $expires_at = now()->{$payment_data['duration_method']}($payment_data['duration']);
             }
-            $subscription = Subscription::updateOrCreate(['user_id', $event->payment->user_id], [
+            $subscription = Subscription::updateOrCreate(['user_id' => $event->payment->user_id], [
                 'plan_id' =>  $plan->id,
                 'status' => Subscription::ACTIVE,
                 'expires_at' => $expires_at,
+            ]);
+
+            $event->payment->notifications()->create([
+                'from_user_id' => auth()->id(),
+                'to_user_id' => $event->payment->user_id,
+                'type'  => 'subscription.payment_confirmed'
             ]);
         }else if($event->payment->status == Payment::PENDING){
             $admins = User::role('admin')->get();
@@ -41,6 +47,12 @@ class HandleSubscriptionPayment
                     'type'  => 'subscription.new_pending_payment'
                 ]);
             }
+        }else if($event->payment->status == Payment::DECLINED){
+            $event->payment->notifications()->create([
+                'from_user_id' => auth()->id(),
+                'to_user_id' => $event->payment->user_id,
+                'type'  => 'subscription.payment_declined'
+            ]);
         }
     }
 }

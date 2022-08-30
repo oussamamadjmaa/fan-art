@@ -26,7 +26,7 @@ class BackendCheck
         }
 
         if($check == "subscribed" && auth()->user()->hasRole('artist') && !auth()->user()->subscription()->active()->count()){
-            return abort(405, 'Go pay bro');
+            return to_route('backend.subscription.index');
         }
         return $next($request);
     }

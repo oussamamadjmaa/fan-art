@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\AccountController;
+use App\Http\Controllers\Backend\Admin\SubscriptionsController;
 use App\Http\Controllers\Backend\Admin\WebsiteSettingsController;
 use App\Http\Controllers\Backend\ArtworkController;
 use App\Http\Controllers\Backend\BlogController;
@@ -44,6 +45,14 @@ Route::group(['middleware' => 'role:admin'], function(){
         Route::put('website-settings/{tab}', 'settings_tab_save')->name('save');
     });
 
+    //Subscriptions Managment
+    Route::controller(SubscriptionsController::class)->as('subscriptions-management.')->group(function(){
+        Route::get('subscriptions-management/{status?}', 'index')->name('index');
+        Route::get('subscriptions-management/review/payment/{payment}', 'review_payment')->name('review-payment');
+        Route::put('subscriptions-management/review/payment/{payment}/{status}', 'payment_status_action')->name('payment_status_action');
+    });
+
+    //Update
     Route::get('update/{v}', [UpdateController::class, 'update']);
 });
 

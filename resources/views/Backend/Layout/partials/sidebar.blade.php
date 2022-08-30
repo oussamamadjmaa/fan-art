@@ -41,6 +41,27 @@
             'icon' => 'fa fa-blog',
             'cond' => auth()->user()->can('viewAny', App\Models\News::class),
             'href' => route('backend.blogs.index')
+        ],[
+            'title' => 'Subscriptions Management',
+            'icon' => 'bi bi-person-badge',
+            'cond' => auth()->user()->hasRole('admin'),
+            'href' => route('backend.subscriptions-management.index')
+        ],[
+            'title' => 'Subscription',
+            'icon' => 'bi bi-patch-check',
+            'cond' => auth()->user()->hasRole(['artist', 'store']),
+            'href' => route('backend.subscription.index')
+        ],[
+            'title' => 'My account',
+            'icon' => 'far fa-user',
+            'cond' => true,
+            'active' => (Route::is('backend.account.artist_profile') || Route::is('backend.account.password')),
+            'href' => route('backend.account.profile')
+        ],[
+            'title' => 'Website Settings',
+            'icon' => 'fa fa-cogs',
+            'cond' => auth()->user()->hasRole('admin'),
+            'href' => route('backend.website-settings.index')
         ],
     ];
     $req_url = request()->url();
@@ -85,7 +106,7 @@
         <ul>
             @foreach ($sidebar_list as $sb_item)
                 @if ($sb_item['cond'] ?? true)
-                    <li class="page-sidebar-menu__item {{ Str::contains($sb_item['href'], $req_url) ? 'active' : '' }}">
+                    <li class="page-sidebar-menu__item {{ (Str::contains($req_url, $sb_item['href']) || ($sb_item['active'] ?? false)) ? 'active' : '' }}">
                         <a href="{{ $sb_item['href'] ?? 'javascript:;' }}">
                             <i class="{{ $sb_item['icon'] }}"></i>
                             <span>@lang($sb_item['title'])</span>
