@@ -69,7 +69,7 @@
 <div class="page-sidebar">
     {{-- <div class="page-sidebar-header py-2 text-white px-3 align-items-center JU d-flex">
         <div class="me-3 position-relative">
-            <img src="{{ asset('panel-assets/images/art-logo.png') }}" alt="" style="max-height:47px">
+            <img src="{{ storage_url(config('app.logo')) }}" alt="" style="max-height:47px">
         </div>
         <div>
             <h6 class="mb-2">

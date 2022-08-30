@@ -1163,5 +1163,13 @@
     "Are you sure you want to confirm this payment?" : "هل أنت متأكد من تأكيد عملية الدفع هذه؟",
     "Are you sure you want to decline this payment?" : "هل أنت متأكد من رفض عملية الدفع هذه؟",
     "Payment confirmed successfully" : "تم تأكيد عملية الدفع بنجاح",
-    "Payment declined successfully" : "تم رفض عملية الدفع بنجاح"
+    "Payment declined successfully" : "تم رفض عملية الدفع بنجاح",
+    "Confirmed at" : "تم التأكيد في",
+    "Declined at" : "تم الرفض في",
+    "Smtp Settings" : "إعدادات البريد الإلكتروني SMTP",
+    "Site name" : "إسم الموقع",
+    "Site URL" : "رابط الموقع",
+    "Are you sure you want to reset default settings?" : "هل أنت متأكد من أنك تريد إسترجاع الإعدادات الإفتراضية؟",
+    "Default settings has been reseted successfully" : "تم إسترجاع الإعدادات الإفتراضية بنجاح",
+    "General Settings" : "الإعدادات العامة"
 }

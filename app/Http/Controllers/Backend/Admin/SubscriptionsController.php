@@ -13,7 +13,7 @@ class SubscriptionsController extends Controller
         if(request()->expectsJson()){
             $payments = Payment::query();
             $payments->when(in_array($status, ['pending', 'confirmed', 'declined']), fn($q) => $q->{$status}());
-            $payments = $payments->withWhereHas('user')->with('paymentable')->latest('id')->cursorPaginate(25)->withQueryString();
+            $payments = $payments->withWhereHas('user', fn($q) => $q->select('id', 'name'))->with('paymentable')->latest('id')->cursorPaginate(25)->withQueryString();
             $slot = array_merge($payments->toArray(), ['data' => view('Backend.Admin.Subscriptions.list', compact('payments'))->render()]);
             return response()->json($slot);
         }

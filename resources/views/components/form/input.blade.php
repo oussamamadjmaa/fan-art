@@ -14,7 +14,23 @@
     $value = old($name ?? '', $value);
 @endphp
 
-@if ($type == "file")
+@if($type == "textarea")
+<div class="mb-3">
+    <label for="{{$id}}" class="form-label">{{$label}}</label>
+    <textarea
+        @class(['form-control', 'is-invalid' => $errors->has($name ?? '')])
+        @isset($name) name="{{$name}}" @endisset
+        id="{{$id}}"
+        placeholder="{{$placeholder ?? $label}}"
+        {{$inputAttributes}}
+    >@if($value) {{$value}} @endif</textarea>
+    <div class="invalid-feedback">
+        @error($name ?? '')
+            {{$message}}
+        @enderror
+    </div>
+  </div>
+@elseif ($type == "file")
 <div {{ $attributes->class('mb-3') }}>
     <label class="form-label file-label" for="{{$id}}">
         <div>
@@ -23,7 +39,7 @@
             class="form-control-file form-control" id="{{$id}}" placeholder="{{$placeholder ?? $label}}" {{$inputAttributes}}>
             <div class="input_image_showcase image_showcase_{{$id}}">
                 @if ($value)
-                    <img src="{{ asset('storage/'.$value) }}">
+                    <img src="{{ filter_var($value, FILTER_VALIDATE_URL) ? $value : asset('storage/'.$value) }}">
                 @endif
             </div>
         </div>
@@ -53,7 +69,7 @@
 </div>
 @else
 <div class="mb-3">
-    <label for="" class="form-label">{{$label}}</label>
+    <label for="{{$id}}" class="form-label">{{$label}}</label>
     <input
         type="{{$type == "number" ? "text" : $type}}"
         @class(['form-control', 'number-input' => $type == "number", 'is-invalid' => $errors->has($name ?? '')])

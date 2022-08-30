@@ -40,7 +40,7 @@ class AccountRequest extends FormRequest
     {
         $tab = $this->route('tab');
         if ($tab == "profile") {
-            //  $email_rule = app()->isLocal() ? 'email:filter' : 'email:rfc,dns';
+            $email_rule = app()->isLocal() ? 'email:filter' : 'email:rfc,dns';
             $rules = [
                 'username'      => ['required', 'string', 'alpha_dash', 'between:3,60', 'unique:users,username,' . auth()->id() . ',id'],
                 'name'          => ['required', 'string', 'max:191'],
@@ -48,7 +48,6 @@ class AccountRequest extends FormRequest
                 'gender'        => ['required', 'in:male,female'],
                 'nationality'   => ['required', 'string', 'in:' . implode(',', array_keys(__('nationalities')))],
                 'country'       => ['required', 'string', 'in:' . implode(',', array_keys(countries())), 'max:2'],
-                //    'email'         => ['required', 'string', $email_rule, 'max:191', 'unique:users'],
                 'current_password'      => ['required', 'string', function ($attribute, $value, $fail) {
                     if (!Hash::check($value, auth()->user()->password)) {
                         return $fail(__('Current password is not correct'));
@@ -59,6 +58,9 @@ class AccountRequest extends FormRequest
             //Address is required for stores
             if(auth()->user()->hasRole('store'))
                 $rules['address'] = ['required', 'string', 'max:350'];
+
+            if(auth()->user()->hasRole('admin'))
+                $rules['email'] = ['required', 'string', $email_rule, 'max:191', 'unique:users,email,' . auth()->id() . ',id'];
 
             return $rules;
         }else if($tab == "password"){

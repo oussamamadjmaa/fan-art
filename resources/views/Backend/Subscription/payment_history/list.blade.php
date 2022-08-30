@@ -6,6 +6,7 @@
         <td>{{ $payment->payment_data['duration'] }} @lang($payment->payment_data['duration_type'])</td>
         <td>{{ price_format($payment->amount) }} @lang(config('app.currency'))</td>
         <td><span class="badge bg-{{ $payment->status_color }}">{{ $payment->status_text }}</span></td>
+        <td>{{ $payment->created_at->translatedFormat('d M Y h:i A') }}</td>
         <td style="max-width: 150px;">{{ __($payment->description) }}</td>
     </tr>
 @empty

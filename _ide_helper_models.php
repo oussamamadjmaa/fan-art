@@ -147,7 +147,7 @@ namespace App\Models{
  *
  * @property int $id
  * @property int|null $sender_id
- * @property string $sender_type
+ * @property string|null $sender_type
  * @property int $messageable_id
  * @property string $messageable_type
  * @property string $body

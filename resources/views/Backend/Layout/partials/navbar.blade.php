@@ -7,7 +7,7 @@
         </div>
         <div class="mnav__logo">
             <a href="{{route('backend.dashboard')}}">
-                <img src="{{ asset('panel-assets/images/art-logo.png') }}" alt="{{ config('app.name') }}">
+                <img src="{{ storage_url(config('app.logo')) }}" alt="{{ config('app.name') }}">
             </a>
         </div>
         <div class="d-flex align-items-center justify-content-end d-pc-none h-100">

@@ -2,7 +2,7 @@
     <div class="_navbar-container">
         <div class="_navbar-logo">
             <a href="{{route('frontend.home')}}">
-                <img src="{{ asset('panel-assets/images/art-logo.png') }}" alt="{{ config("app.name") }}">
+                <img src="{{ storage_url(config('app.logo')) }}" alt="{{ config("app.name") }}">
             </a>
         </div>
         <div class="_navbar-menus">

@@ -25,7 +25,7 @@ $auth_ = Auth::user();
 
     <meta property="og:title" content="{{$title}}">
     <meta property="og:description" content="{{$meta?->description ?? config('app.seo.description')}}">
-    <meta property="og:image" content="{{$meta?->image ?? asset('assets/images/art-logo.png')}}">
+    <meta property="og:image" content="{{$meta?->image ?? storage_url(config('app.logo'))}}">
     <meta property="og:url" content="{{request()->fullUrl()}}">
     <meta name="twitter:card" content="summary_large_image">
 
@@ -55,6 +55,8 @@ $auth_ = Auth::user();
     <!-- Styles -->
     @vite(['resources/frontend-assets/sass/app.scss'])
 
+    <link rel="icon" type="image/x-icon" href="{{storage_url(config('app.favicon'))}}">
+
     @stack('styles')
 </head>
 
@@ -68,7 +70,7 @@ $auth_ = Auth::user();
     <div class="app-container" id="app">
         <div class="app-preloader">
             <div class="app-preloader-img">
-                <img src="{{ asset('assets/images/art-logo.png') }}" alt="{{config('app.name')}}" height="107">
+                <img src="{{ storage_url(config('app.logo')) }}" alt="{{config('app.name')}}" height="107">
             </div>
         </div>
         <div class="app-content">

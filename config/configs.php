@@ -2,6 +2,8 @@
 
 return [
     'app' => [
+        'favicon'           => 'favicon.ico',
+        'logo'              => 'logos/art-logo.png',
         'timezone'          => 'Asia/Riyadh',
         'date_format'       => 'd M Y',
         'default_avatar'    => 'avatars/defaults/default-avatar.png',

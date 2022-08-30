@@ -20,17 +20,33 @@
                         @method('PUT')
                         <div class="row">
                             @foreach ($form_fields as $field)
-                                <x-form.input  :label="$field['title']" :name="$field['name']" :value="$field['value']" />
+                                <x-form.input :type="($field['type'])" :label="$field['title']" :name="$field['name']" :value="$field['value']" :inputAttributes="$field['inputAttributes']" />
                             @endforeach
                         </div>
                         <div>
                             <button type="submit" class="btn btn-primary"><span>@lang('Save')</span></button>
                             <a href="{{route('backend.website-settings.index')}}" class="btn btn-secondary">@lang('Back')</a>
-                            {{-- <button type="button" class="btn btn-secondary">@lang('Reset Defaults')</button> --}}
                         </div>
+                     </form>
+                     <hr>
+                     <form action="{{route('backend.website-settings.save', [$tab, 'reset_defaults'])}}" method="post" id="resetDefaults" data-confirmation="@lang('Are you sure you want to reset default settings?')">
+                        @csrf
+                        @method('PUT')
+                        <button type="submit" class="btn btn-dark">@lang('Reset Defaults')</button>
                      </form>
                 </div>
             </div>
         </div>
     </section>
 @endsection
+@push('scripts')
+<script type="module">
+    $(function(){
+        $(document).on('submit', '#resetDefaults', function(e){
+            if(!confirm($(this).data('confirmation'))){
+                e.preventDefault();
+            }
+        });
+    })
+</script>
+@endpush

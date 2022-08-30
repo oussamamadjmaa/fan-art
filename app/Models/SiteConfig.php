@@ -29,5 +29,9 @@ class SiteConfig extends Model
         self::updated(function($config){
             Cache::forget('db_config');
         });
+
+        self::deleted(function($config){
+            Cache::forget('db_config');
+        });
     }
 }

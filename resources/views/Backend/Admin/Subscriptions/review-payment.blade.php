@@ -37,19 +37,37 @@
                         <td>{{ price_format($payment->amount) }} @lang(config('app.currency'))</td>
                     </td>
                     <tr>
+                        <td>@lang('Date')</td>
+                        <td>{{ $payment->created_at->translatedFormat('D d M Y h:i A') }}</td>
+                    </tr>
+                    <tr>
                         <td>@lang('Payment Status')</td>
                         <td><span class="badge bg-{{ $payment->status_color }}">{{ $payment->status_text }}</span></td>
                     </tr>
+                    @if ($payment->status == $payment::CONFIRMED)
+                    <tr>
+                        <td>@lang('Confirmed at')</td>
+                        <td>{{ $payment->updated_at->translatedFormat('D d M Y h:i A') }}</td>
+                    </tr>
+                    @endif
+                    @if ($payment->status == $payment::DECLINED)
+                    <tr>
+                        <td>@lang('Declined at')</td>
+                        <td>{{ $payment->updated_at->translatedFormat('D d M Y h:i A') }}</td>
+                    </tr>
+                    @endif
                     @if ($payment->description)
                     <tr>
                         <td>@lang('Note')</td>
                         <td>{{ __($payment->description) }}</td>
                     </tr>
                     @endif
+                    @if ($payment->confirmation_picture)
                     <tr>
                         <td>@lang('Payment Confirmation')</td>
                         <td><a target="_blank" href="{{ storage_url($payment->confirmation_picture) }}"><img src="{{ storage_url($payment->confirmation_picture) }}" style="max-width:100%;max-height:300px;" alt="@lang('Payment Confirmation')"></a></td>
                     </tr>
+                    @endif
                 </table>
             </div>
         </div>
@@ -86,7 +104,7 @@
                         <td>
                             @if ($user_->hasRole('artist'))
                                 @lang('Artist account')
-                            @elseif($user->hasRole('store'))
+                            @elseif($user_->hasRole('store'))
                                 @lang('Store account')
                             @endif
                         </td>

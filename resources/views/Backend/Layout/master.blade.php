@@ -28,6 +28,8 @@
     <!-- Styles -->
     @vite(['resources/backend-assets/sass/app.scss'])
 
+    <link rel="icon" type="image/x-icon" href="{{storage_url(config('app.favicon'))}}">
+
     @stack('styles')
 </head>
 <body class="{{$dir}}">

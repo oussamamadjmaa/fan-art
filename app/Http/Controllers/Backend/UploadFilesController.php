@@ -12,7 +12,7 @@ class UploadFilesController extends Controller
         //Allowed Paths
         $paths = [];
         if(auth()->user()->hasRole('admin')){
-            $paths = ['pages','carousels', 'news', 'artworks', 'sponsors'];
+            $paths = ['pages','carousels', 'news', 'artworks', 'sponsors', 'favicons', 'logos'];
         }
         if(auth()->user()->hasRole('artist')){
             $paths = ['artworks', 'sponsors', 'blogs', 'confirmation_pictures'];

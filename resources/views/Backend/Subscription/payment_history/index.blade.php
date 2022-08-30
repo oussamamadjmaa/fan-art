@@ -18,6 +18,7 @@
                             <th>@lang('Duration')</th>
                             <th>@lang('Amount')</th>
                             <th>@lang('Payment Status')</th>
+                            <th>@lang('Date')</th>
                             <th>@lang('Note')</th>
                         </tr>
                     </thead>
