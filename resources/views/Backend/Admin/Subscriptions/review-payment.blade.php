@@ -75,12 +75,10 @@
         @if ($payment->status == $payment::PENDING)
         <div class="text-center">
             <div class="d-inline-block">
-                <a href="javascript:;" class="btn btn-success" data-payment-action="confirm-payment" data-confirmation-message="@lang('Are you sure you want to confirm this payment?')">@lang('Confirm Payment')</a>
-                <form action="{{route('backend.subscriptions-management.payment_status_action', [$payment->id, 'confirm'])}}" method="POST">@csrf @method('PUT')</form>
+                <a href="javascript:;" class="btn btn-success" data-payment-action="confirm" data-confirmation-message="@lang('Are you sure you want to confirm this payment?')">@lang('Confirm Payment')</a>
             </div>
             <div class="d-inline-block">
-                <a href="javascript:;" class="btn btn-danger" data-payment-action="confirm-payment" data-confirmation-message="@lang('Are you sure you want to decline this payment?')">@lang('Decline Payment')</a>
-                <form action="{{route('backend.subscriptions-management.payment_status_action', [$payment->id, 'decline'])}}" method="POST">@csrf @method('PUT')</form>
+                <a href="javascript:;" class="btn btn-danger" data-payment-action="decline" data-confirmation-message="@lang('Are you sure you want to decline this payment?')">@lang('Decline Payment')</a>
             </div>
         </div>
         @endif
@@ -152,13 +150,46 @@
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="addNote" tabindex="-1" role="dialog" aria-labelledby="addNoteTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form  method="POST" id="paymentActionForm">
+                    @csrf
+                    @method('PUT')
+                    <x-form.input type="textarea"  name="note" />
+                    <div class="text-end">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@lang('Cancel')</button>
+                        <button type="button" class="btn btn-primary" id="actionBtn_"></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection
 @push('scripts')
 <script type="module">
+let action_url = "{{route('backend.subscriptions-management.payment_status_action', [$payment->id, 'paymentAction'])}}";
 $(function(){
+    let confirmation_message;
     $(document).on('click', '[data-payment-action]', function(){
-        if(confirm($(this).data('confirmation-message'))){
-            $(this).parent().find('form').submit();
+        confirmation_message = $(this).data('confirmation-message');
+        $("#paymentActionForm").attr('action', action_url.replace('paymentAction', $(this).data('payment-action')));
+        $("#actionBtn_").text($(this).text()).attr('class', $(this).attr('class'));
+        $("#addNote").modal('show');
+
+    });
+
+    $(document).on('click', "#actionBtn_", function(e){
+        if(confirm(confirmation_message)){
+            $("#paymentActionForm").submit();
         }
     })
 })

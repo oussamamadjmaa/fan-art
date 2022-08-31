@@ -34,7 +34,7 @@ class SubscriptionsController extends Controller
         return view('Backend.Admin.Subscriptions.review-payment', compact('payment'));
     }
 
-    public function payment_status_action(Payment $payment, $status) {
+    public function payment_status_action(Request $request, Payment $payment, $status) {
         if(!in_array($status, ['confirm', 'decline']) || $payment->status != Payment::PENDING){
             return to_route('backend.subscriptions-management.review-payment', $payment->id);
         }
@@ -42,7 +42,12 @@ class SubscriptionsController extends Controller
         $payment->load('user');
         abort_if(!$payment->user, 404);
 
+        $request->validate([
+            'note' => 'nullable|string',
+        ]);
+
         $payment->status = ($status == "confirm") ? Payment::CONFIRMED : Payment::DECLINED;
+        if($request->input('note')) $payment->description = $request->input('note');
         $payment->save();
 
         event(new SubscriptionPayment($payment));

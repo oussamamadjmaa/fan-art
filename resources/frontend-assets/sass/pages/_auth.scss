@@ -54,20 +54,20 @@
                         padding-top: 0;
                     }
                 }
-                >textarea{
-                    &::-webkit-scrollbar {
-                        width: 0;
-                    }
+                // >textarea{
+                //     &::-webkit-scrollbar {
+                //         width: 0;
+                //     }
 
-                    &::-webkit-scrollbar-track {
-                        -webkit-box-shadow: none;
-                    }
+                //     &::-webkit-scrollbar-track {
+                //         -webkit-box-shadow: none;
+                //     }
 
-                    &::-webkit-scrollbar-thumb {
-                      background-color: transparent;
-                      outline: none;
-                    }
-                }
+                //     &::-webkit-scrollbar-thumb {
+                //       background-color: transparent;
+                //       outline: none;
+                //     }
+                // }
                 >input, >select, >textarea {
                     border: none;
                     border-radius: 40px 0 0 40px;

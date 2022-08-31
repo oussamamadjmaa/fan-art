@@ -45,12 +45,12 @@
     "file": "assets/jquery.55e95f45.js"
   },
   "resources/backend-assets/sass/app.scss": {
-    "file": "assets/app.310fdfcf.css",
+    "file": "assets/app.39288df1.css",
     "src": "resources/backend-assets/sass/app.scss",
     "isEntry": true
   },
   "resources/frontend-assets/sass/app.scss": {
-    "file": "assets/app.3f4d2f8d.css",
+    "file": "assets/app.57222974.css",
     "src": "resources/frontend-assets/sass/app.scss",
     "isEntry": true
   }

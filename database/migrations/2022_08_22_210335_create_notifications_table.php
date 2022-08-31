@@ -17,8 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('from_user_id')->nullable();
             $table->unsignedBigInteger('to_user_id')->nullable();
-            $table->unsignedBigInteger('notifiable_id')->nullable();
-            $table->string('notifiable_type')->nullable();
+            $table->nullableMorphs('notifiable');
             $table->string('type');
             $table->dateTime('seen_at')->nullable();
             $table->timestamps();

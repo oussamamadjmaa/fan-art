@@ -1171,5 +1171,6 @@
     "Site URL" : "رابط الموقع",
     "Are you sure you want to reset default settings?" : "هل أنت متأكد من أنك تريد إسترجاع الإعدادات الإفتراضية؟",
     "Default settings has been reseted successfully" : "تم إسترجاع الإعدادات الإفتراضية بنجاح",
-    "General Settings" : "الإعدادات العامة"
+    "General Settings" : "الإعدادات العامة",
+    "Review Payment" : "مراجعة عملية الدفع"
 }

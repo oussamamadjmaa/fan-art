@@ -18,7 +18,8 @@ $icons = [
     'instagram'             => 'fab fa-instagram',
     'twitter'               => 'fab fa-twitter',
     'linkedin'              => 'fab fa-linkedin',
-    'bio'                   => 'fas fa-address-card'
+    'bio'                   => 'fas fa-address-card',
+    'address'               => 'fa fa-map-marker-alt'
 ];
 $icon = $icons[$attributes->get('name')] ?? 'fas fa-question-circle';
 @endphp

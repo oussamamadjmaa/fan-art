@@ -78,7 +78,7 @@ Route::group(['middleware' => ['role:admin|artist', 'backend-check:subscribed']]
     Route::resource('blogs', BlogController::class)->except(['show']);
 });
 
-Route::middleware('role:artist')->group(function(){
+Route::middleware('role:artist|store')->group(function(){
     Route::get('subscription', [SubscriptionController::class, 'index'])->name('subscription.index');
     Route::get('subscription/payments/history', [SubscriptionController::class, 'payment_history'])->name('subscription.payment_history');
     Route::post('subscription/upgrade_plan', [SubscriptionController::class, 'upgrade_plan'])->name('subscription.upgrade_plan');

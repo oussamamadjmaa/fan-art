@@ -53,7 +53,7 @@
                         @role('store')
                         <x-auth.form.input type="textarea" class="{{$errors->has('address') ? 'is-invalid' : ''}}"
                             name="address" id="address" :placeholder="__('Store address')"
-                            value="{{ old('address') }}" required rows="2" autocomplete="address" />
+                            value="{{ old('address', $user->address) }}" required rows="2" autocomplete="address" />
                         @endrole
                         <x-auth.form.input type="password" :placeholder="__('Current Password')" name="current_password" required />
                     </div>

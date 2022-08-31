@@ -35,7 +35,7 @@
                                 <div class="col-md-6">
                                     <x-auth.form.input type="text" class="{{$errors->has('website') ? 'is-invalid' : ''}}"
                                         name="website" id="website" placeholder="{{ __('Website') }} ({{ __('If exists') }})"
-                                        value="{{ old('website') }}" required autocomplete="website" />
+                                        value="{{ old('website') }}" autocomplete="website" />
                                 </div>
                                 <div class="col-md-6">
                                     <x-auth.form.input type="text" class="{{$errors->has('username') ? 'is-invalid' : ''}}"

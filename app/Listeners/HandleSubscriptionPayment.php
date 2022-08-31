@@ -33,11 +33,13 @@ class HandleSubscriptionPayment
                 'expires_at' => $expires_at,
             ]);
 
-            $event->payment->notifications()->create([
-                'from_user_id' => auth()->id(),
-                'to_user_id' => $event->payment->user_id,
-                'type'  => 'subscription.payment_confirmed'
-            ]);
+            if($event->payment->payment_method != "free_trial") {
+                $event->payment->notifications()->create([
+                    'from_user_id' => auth()->id(),
+                    'to_user_id' => $event->payment->user_id,
+                    'type'  => 'subscription.payment_confirmed'
+                ]);
+            }
         }else if($event->payment->status == Payment::PENDING){
             $admins = User::role('admin')->get();
             foreach ($admins as $admin) {
