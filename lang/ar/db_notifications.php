@@ -16,10 +16,15 @@ return [
             'icon' => 'bi bi-bank',
             'bg_class' => 'bg-info',
         ],'payment_confirmed' => [
-            'title' =>  'تم تأكيد عملية الدفع للإشتراك',
+            'title' =>  'تم تأكيد عملية الدفع الخاصة بك',
             'description' =>  'مبروك! تم تأكيد عملية الدفع للإشتراك الخاص بك',
             'icon' => 'bi bi-patch-check',
             'bg_class' => 'bg-success',
+        ],'payment_declined' => [
+            'title' =>  'تم رفض عملية الدفع الخاصة بك',
+            'description' =>  'للأسف! تم رفض عملية الدفع للإشتراك الخاص بك',
+            'icon' => 'bi bi-patch-check',
+            'bg_class' => 'bg-danger',
         ]
     ]
 ];

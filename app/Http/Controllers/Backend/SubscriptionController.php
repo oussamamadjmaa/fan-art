@@ -44,6 +44,7 @@ class SubscriptionController extends Controller
                     'duration' => 1,
                     'duration_method' => 'addYear',
                     'duration_type' => 'year',
+                    'type'          => 'upgrade_plan',
                 ],
                 'amount' => $new_plan->price,
                 'confirmation_picture' => $request_data['bank_transfer_receipt'],
@@ -55,6 +56,42 @@ class SubscriptionController extends Controller
         event(new SubscriptionPayment($payment));
 
         return to_route('backend.subscription.payment_history')->with('success', __('Your order has been sent successfully'));
+    }
+
+    public function renew_plan(Request $request){
+        $request_data = $request->validate([
+            'duration' => ['required', 'in:yearly'],
+            'bank_transfer_receipt' => ['required', new ValidateFileRule('confirmation_pictures', ['png', 'jpg', 'jpeg', 'webp'])],
+        ]);
+
+        $current_subscription = auth()->user()->subscription;
+        $current_subscription_plan = $current_subscription->plan;
+
+        if($current_subscription->is_free()
+            || auth()->user()->payments()->pending()->count()){
+            return abort('403', __("You're not allowed to perform this action"));
+        }
+
+        if($request_data['duration'] == "yearly") {
+            $payment = $current_subscription_plan->payments()->create([
+                'user_id' =>  auth()->id(),
+                'payment_method' => 'bank_transfer',
+                'payment_data' => [
+                    'duration' => 1,
+                    'duration_method' => 'addYear',
+                    'duration_type' => 'year',
+                    'type'          => 'renew_plan',
+                ],
+                'amount' => $current_subscription_plan->price,
+                'confirmation_picture' => $request_data['bank_transfer_receipt'],
+                'description' => NULL,
+                'status' => Payment::PENDING,
+            ]);
+        }
+
+        event(new SubscriptionPayment($payment));
+
+        return response()->json(['status' => 200, 'message' => __('Your order has been sent successfully'), 'redirect_to' => route('backend.subscription.payment_history')]);
     }
 
     public function payment_history(){

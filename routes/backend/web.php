@@ -82,6 +82,7 @@ Route::middleware('role:artist|store')->group(function(){
     Route::get('subscription', [SubscriptionController::class, 'index'])->name('subscription.index');
     Route::get('subscription/payments/history', [SubscriptionController::class, 'payment_history'])->name('subscription.payment_history');
     Route::post('subscription/upgrade_plan', [SubscriptionController::class, 'upgrade_plan'])->name('subscription.upgrade_plan');
+    Route::post('subscription/renew_plan', [SubscriptionController::class, 'renew_plan'])->name('subscription.renew_plan');
 });
 
 //Notifications

@@ -15,6 +15,16 @@ return [
             'description' =>  'New payment for plan subscription is waiting approval from <b>:fromUser_name</b>',
             'icon' => 'bi bi-bank',
             'bg_class' => 'bg-info',
+        ],'payment_confirmed' => [
+            'title' =>  'Your payment has been confirmed',
+            'description' =>  'Congrats! Your subscription payment has been confirmed',
+            'icon' => 'bi bi-patch-check',
+            'bg_class' => 'bg-success',
+        ],'payment_declined' => [
+            'title' =>  'Your payment has been declined',
+            'description' =>  'Unfortunately! Your subscription payment has been declined',
+            'icon' => 'bi bi-patch-check',
+            'bg_class' => 'bg-danger',
         ]
     ]
 ];
