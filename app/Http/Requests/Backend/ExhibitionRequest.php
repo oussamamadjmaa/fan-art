@@ -23,11 +23,12 @@ class ExhibitionRequest extends FormRequest
      */
     public function rules()
     {
+        $sponsor_rule = auth()->user()->hasRole('admin') ? ['nullable', 'exists:sponsors,id'] : ['nullable', 'exists:sponsors,id,user_id,'.auth()->id()];
         return [
             'name'              => ['required', 'string', 'max:191'],
             'from_date'         => ['required', 'date_format:Y-m-d'],
             'to_date'           => ['required', 'date_format:Y-m-d', 'after_or_equal:from_date'],
-            'sponsor_id'        => ['nullable', 'exists:sponsors,id,user_id,'.auth()->id()],
+            'sponsor_id'        => $sponsor_rule,
             'country'           => ['required', 'string', 'in:' . implode(',', array_keys(countries())), 'max:2'],
             'city'              => ['required', 'string', 'max:191'],
             'registration_url'  => ['required', 'url', 'max:191'],
