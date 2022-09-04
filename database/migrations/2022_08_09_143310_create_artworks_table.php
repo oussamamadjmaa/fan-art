@@ -20,13 +20,13 @@ return new class extends Migration
             $table->string('title');
             $table->integer('price');
             $table->string('image');
-            $table->text('materials_used')->nullable();
-            $table->text('tools')->nullable();
+            //$table->text('materials_used')->nullable();
+            //$table->text('tools')->nullable();
             $table->boolean('outer_frame')->default(0);
             $table->string('dimensions')->nullable();
-            $table->boolean('covered_with_glass')->default(0);
+            //$table->boolean('covered_with_glass')->default(0);
             $table->text('location')->nullable();
-            $table->longText('description')->nullable();
+            //$table->longText('description')->nullable();
             $table->boolean('status')->default(1);
             $table->string('url')->nullable();
             $table->timestamps();

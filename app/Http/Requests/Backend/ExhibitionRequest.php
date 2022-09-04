@@ -27,7 +27,7 @@ class ExhibitionRequest extends FormRequest
             'name'              => ['required', 'string', 'max:191'],
             'from_date'         => ['required', 'date_format:Y-m-d'],
             'to_date'           => ['required', 'date_format:Y-m-d', 'after_or_equal:from_date'],
-            'sponsor_id'        => ['required', 'exists:sponsors,id,user_id,'.auth()->id()],
+            'sponsor_id'        => ['nullable', 'exists:sponsors,id,user_id,'.auth()->id()],
             'country'           => ['required', 'string', 'in:' . implode(',', array_keys(countries())), 'max:2'],
             'city'              => ['required', 'string', 'max:191'],
             'registration_url'  => ['required', 'url', 'max:191'],

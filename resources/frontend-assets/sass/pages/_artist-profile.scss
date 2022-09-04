@@ -102,3 +102,23 @@
         }
     }
 }
+
+.artist-social-media-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .67rem;
+    >li {
+        >a {
+            font-size: 21px;
+            >i {
+                &.fa-envelope {color: #000;}
+                &.fa-phone {color: #777777 ;}
+                &.fa-whatsapp {color: #128c7e;}
+                &.fa-facebook {color: #3b5998 ;}
+                &.fa-instagram {color: #bc2a8d;}
+                &.fa-twitter {color: #00acee;}
+                &.fa-linkedin {color: #0072b1 ;}
+            }
+        }
+    }
+}

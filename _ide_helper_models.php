@@ -20,17 +20,14 @@ namespace App\Models{
  * @property string $title
  * @property int $price
  * @property string $image
- * @property string|null $materials_used
- * @property string|null $tools
  * @property bool $outer_frame
  * @property string|null $dimensions
- * @property bool $covered_with_glass
  * @property string|null $location
- * @property string|null $description
  * @property int $status
  * @property string|null $url
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $type
  * @property-read mixed $price_format
  * @property-read mixed $status_text
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Message[] $messages
@@ -45,20 +42,17 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork query()
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork ready()
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork sold()
- * @method static \Illuminate\Database\Eloquent\Builder|Artwork whereCoveredWithGlass($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Artwork whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork whereDimensions($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork whereImage($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork whereLocation($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Artwork whereMaterialsUsed($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork whereOuterFrame($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Artwork whereTools($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Artwork whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork whereUrl($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork whereUserId($value)
@@ -108,7 +102,7 @@ namespace App\Models{
  *
  * @property int $id
  * @property int $user_id
- * @property int $sponsor_id
+ * @property int|null $sponsor_id
  * @property string $slug
  * @property string $name
  * @property \Illuminate\Support\Carbon $from_date
@@ -119,7 +113,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read mixed $from_to_date
- * @property-read \App\Models\Sponsor $sponsor
+ * @property-read \App\Models\Sponsor|null $sponsor
  * @property-read \App\Models\User $user
  * @method static \Illuminate\Database\Eloquent\Builder|Exhibition activeSubscribedArtist()
  * @method static \Illuminate\Database\Eloquent\Builder|Exhibition newModelQuery()
@@ -146,10 +140,10 @@ namespace App\Models{
  * App\Models\Message
  *
  * @property int $id
- * @property int|null $sender_id
  * @property string|null $sender_type
- * @property int $messageable_id
+ * @property int|null $sender_id
  * @property string $messageable_type
+ * @property int $messageable_id
  * @property string $body
  * @property object|null $data
  * @property \Illuminate\Support\Carbon|null $seen_at
@@ -218,8 +212,8 @@ namespace App\Models{
  * @property int $id
  * @property int|null $from_user_id
  * @property int|null $to_user_id
- * @property int|null $notifiable_id
  * @property string|null $notifiable_type
+ * @property int|null $notifiable_id
  * @property string $type
  * @property \Illuminate\Support\Carbon|null $seen_at
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -280,8 +274,8 @@ namespace App\Models{
  *
  * @property int $id
  * @property int $user_id
- * @property int $paymentable_id
  * @property string $paymentable_type
+ * @property int $paymentable_id
  * @property string|null $transaction_id
  * @property string|null $payment_method
  * @property string|null $confirmation_picture

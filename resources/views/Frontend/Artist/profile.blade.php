@@ -18,6 +18,47 @@
                     <div class="d-ph-none">
                         <p>{{ $artist->profile->bio }}</p>
                     </div>
+                    <div>
+                        <ul class="artist-contact-info list-unstyled">
+                            @if ($artist->email && $artist->profile?->privacy_settings?->show_email)
+                            <li>
+                                <a class="text-dark" title="@lang('Email')" href="mailto:{{$artist->email}}"><i class="fa fa-envelope"></i> {{$artist->email}}</a>
+                            </li>
+                            @endif
+                            @if ($artist->phone && $artist->profile?->privacy_settings?->show_phone)
+                            <li>
+                                <a class="text-dark" title="@lang('Phone')" href="tel:{{$artist->phone}}"><i class="fa fa-phone"></i>  <span dir="ltr">{{$artist->phone}}</span></a>
+                            </li>
+                            @endif
+                        </ul>
+                        <ul class="artist-social-media-links d-flex flex-wrap list-unstyled">
+                            @if (!empty($artist->profile?->social_media['whatsapp']))
+                            <li>
+                                <a title="@lang('Whatsapp')" href="https://wa.me/{{$artist->profile->social_media['whatsapp']}}" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                            </li>
+                            @endif
+                            @if (!empty($artist->profile?->social_media['facebook']))
+                            <li>
+                                <a title="@lang('Facebook')" href="{{$artist->profile->social_media['facebook']}}" target="_blank"><i class="fab fa-facebook"></i></a>
+                            </li>
+                            @endif
+                            @if (!empty($artist->profile?->social_media['instagram']))
+                            <li>
+                                <a title="@lang('Instagram')" href="{{$artist->profile->social_media['instagram']}}" target="_blank"><i class="fab fa-instagram"></i></a>
+                            </li>
+                            @endif
+                            @if (!empty($artist->profile?->social_media['twitter']))
+                            <li>
+                                <a title="@lang('Twitter')" href="{{$artist->profile->social_media['twitter']}}" target="_blank"><i class="fab fa-twitter"></i></a>
+                            </li>
+                            @endif
+                            @if (!empty($artist->profile?->social_media['linkedin']))
+                            <li>
+                                <a  title="@lang('Linkedin')"href="{{$artist->profile->social_media['linkedin']}}" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            </li>
+                            @endif
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="d-pc-none mt-3">

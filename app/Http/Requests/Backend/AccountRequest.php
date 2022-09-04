@@ -25,7 +25,13 @@ class AccountRequest extends FormRequest
         if ($this->route('tab') == "profile") {
             return $this->merge([
                 'phone' => str_replace(['(', ')', '+', ' ', '-', '_'], '', $this->phone),
-                //  'skype' => Str::replace(['/', '\\', '-', '|',"#", ",", ';'], '', ($this->skype ?? NULL))
+                //  'skype' => Str::replace(['/', '\\', '-', '|',"#", ",", ';'], '', ($this->skype ?? NULL)),
+                'show_phone' => $this->input('show_phone') ? 1 : 0,
+                'show_email' => $this->input('show_email') ? 1 : 0,
+            ]);
+        }elseif($this->route('tab') == "artist_profile"){
+            return $this->merge([
+                'whatsapp' => str_replace(['(', ')', '+', ' ', '-', '_'], '', $this->whatsapp),
             ]);
         }
     }
@@ -59,6 +65,11 @@ class AccountRequest extends FormRequest
             if(auth()->user()->hasRole('store'))
                 $rules['address'] = ['required', 'string', 'max:350'];
 
+            if(auth()->user()->hasRole('artist')){
+                $rules['show_phone'] = ['boolean'];
+                $rules['show_email'] = ['boolean'];
+            }
+
             if(auth()->user()->hasRole('admin'))
                 $rules['email'] = ['required', 'string', $email_rule, 'max:191', 'unique:users,email,' . auth()->id() . ',id'];
 
@@ -80,6 +91,7 @@ class AccountRequest extends FormRequest
             return [
                 'bio'       => ['required', 'string', 'between:3,700'],
                 'cv'        => ['nullable', 'file', 'mimetypes:application/pdf', 'max:3072'],
+                'whatsapp'  => ['nullable', 'regex:/[0-9]/', 'not_regex:/[A-z]/', 'between:8,30',],
                 'facebook'  => ['nullable', 'url'],
                 'instagram' => ['nullable', 'url'],
                 'twitter'   => ['nullable', 'url'],

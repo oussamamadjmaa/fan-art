@@ -32,6 +32,9 @@
 
                             <h3 class="mt-4">@lang('Social Media') <small><sup>(@lang('Optional'))</sup></small></h3>
                             <hr>
+                            <x-auth.form.input type="text" class="{{$errors->has('whatsapp') ? 'is-invalid' : ''}}"
+                                name="whatsapp" id="whatsapp" placeholder="{{ __('Whatsapp') }}"
+                                value="{{ old('whatsapp', auth()->user()?->profile?->social_media['whatsapp'] ?? '') }}" />
                             <x-auth.form.input type="text" class="{{$errors->has('facebook') ? 'is-invalid' : ''}}"
                                 name="facebook" id="facebook" placeholder="{{ __('Facebook') }}"
                                 value="{{ old('facebook', auth()->user()?->profile?->social_media['facebook'] ?? '') }}" />

@@ -29,11 +29,36 @@
                         <x-auth.form.input  :placeholder="__('Username')" name="username" :value="$user->username" required />
                         <x-auth.form.input  :placeholder="__('Full name')" name="name" :value="$user->name" required />
                         <x-auth.form.input  :placeholder="__('Phone')" name="phone" :value="$user->phone" />
+
+                        @role('artist')
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="1" id="show_phone" name="show_phone"
+                                    @checked($user?->profile?->privacy_settings?->show_phone)>
+                                <label class="form-check-label" for="show_phone">
+                                    @lang('Show phone on profile')
+                                </label>
+                            </div>
+                        </div>
+                        @endrole
+
                         @role('admin')
                         <x-auth.form.input  :placeholder="__('Email')" name="email" :value="$user->email" />
                         @else
                         <x-auth.form.input  :placeholder="__('Email')" name="email" :value="$user->email" readonly/>
                         @endrole
+                        @role('artist')
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="1" id="show_email" name="show_email"
+                                    @checked($user?->profile?->privacy_settings?->show_email)>
+                                <label class="form-check-label" for="show_email">
+                                    @lang('Show email on profile')
+                                </label>
+                            </div>
+                        </div>
+                        @endrole
+
                         <x-auth.form.input type="select" name="gender" :placeholder="__('Gender')" required>
                             <option value="male" @selected(old('gender', $user->gender) == "male")>@lang('Male')</option>
                             <option value="female" @selected(old('gender', $user->gender) == "female")>@lang('Female')</option>

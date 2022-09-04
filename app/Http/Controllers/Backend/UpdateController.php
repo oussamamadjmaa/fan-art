@@ -20,6 +20,15 @@ class UpdateController extends Controller
             }else{
                 echo $msg;
             }
+        }else if($v == "1.0.01"){
+            foreach (['description', 'materials_used', 'tools', 'covered_with_glass'] as $column) {
+                $this->dropColumn('artworks', $column);
+            }
+            if(($msg = $this->migrateAndOptimize()) == true){
+                $updated = true;
+            }else{
+                echo $msg;
+            }
         }
 
         if($updated == true){

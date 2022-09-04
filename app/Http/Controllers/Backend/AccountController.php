@@ -30,6 +30,16 @@ class AccountController extends Controller
             unset($data['current_password']);
             auth()->user()->update($data);
 
+            //Artist privacy settings
+            if (auth()->user()->hasRole('artist')) {
+                $privacy_settings = [
+                    'show_phone' => $data['show_phone'],
+                    'show_email' => $data['show_email'],
+                ];
+
+                auth()->user()->profile()->updateOrCreate(['user_id' => auth()->id()], ['privacy_settings' => $privacy_settings]);
+            }
+
             return to_route('backend.account.profile')->with('success', __('Profile has been updated successfully'));
         }else if($tab == "password"){
             $new_password = Hash::make($data['new_password']);
@@ -39,6 +49,7 @@ class AccountController extends Controller
             return redirect()->route('backend.account.password')->withSuccess(__('Password changed successfully'));
         }else if($tab == "artist_profile"){
             $data['social_media'] = [
+                'whatsapp' => $data['whatsapp'] ?? NULL,
                 'facebook' => $data['facebook'] ?? NULL,
                 'instagram' => $data['instagram'] ?? NULL,
                 'linkedin' => $data['linkedin'] ?? NULL,

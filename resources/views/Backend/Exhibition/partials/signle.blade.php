@@ -18,9 +18,11 @@
                         </li>
                         @endif
 
+                        @if ($exhibition->sponsor)
                         <li>
-                            <i class="me-1 far fa-handshake"></i> <span>{{$exhibition->sponsor->name}}</span>
+                            <i class="me-1 far fa-handshake"></i> <span>{{$exhibition->sponsor?->name}}</span>
                         </li>
+                        @endif
                         <li>
                             <i class="me-1 bi bi-geo-alt"></i> <span>{{__(country($exhibition->country)->getName())}}, {{$exhibition->city}}</span>
                         </li>

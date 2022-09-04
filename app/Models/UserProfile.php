@@ -18,6 +18,7 @@ class UserProfile extends Model
         'user_id',
         'bio',
         'social_media',
+        'privacy_settings',
         'docs',
     ];
 
@@ -29,6 +30,7 @@ class UserProfile extends Model
     protected $casts = [
         'social_media' => 'array',
         'docs' => 'array',
+        'privacy_settings' => 'object'
     ];
 
     /**

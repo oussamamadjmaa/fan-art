@@ -1040,7 +1040,7 @@
     "Materials used" : "المواد المستخدمة",
     "Tools" : "الأدوات",
     "Outer frame" : "الإطار الخارجي",
-    "Painting dimensions (CM)" : "أبعاد اللوحة (سم)",
+    "Painting dimensions (CM)" : "مقاس اللوحة (سم)",
     "Covered with glass" : "مغطى بالزجاج",
     "Painting location (Country, City, Address)" : "مكان تواجد اللوحة (البلد, المدينة, العنوان)",
     "Painting status" : "حالة اللوحة",
@@ -1049,7 +1049,7 @@
     "In preparation" : "قيد التجهيز",
     "Sold" : "مباعة",
     "Upgrade" : "ترقية",
-    "Painting title" : "عنوان اللوحة",
+    "Painting title" : "إسم اللوحة",
     "SAR" : "ريال سعودي",
     "Select Nationality" : "إختر الجنسية",
     "Select Country" : "إختر البلد",
@@ -1173,5 +1173,9 @@
     "Default settings has been reseted successfully" : "تم إسترجاع الإعدادات الإفتراضية بنجاح",
     "General Settings" : "الإعدادات العامة",
     "Review Payment" : "مراجعة عملية الدفع",
-    "Renew" : "تجديد"
+    "Renew" : "تجديد",
+    "Painting type" : "نوع اللوحة",
+    "Without sponsor" : "بدون راعي",
+    "Show email on profile" : "عرض البريد الإلكتروني في الملف الشخصي",
+    "Show phone on profile" : "عرض رقم الهاتف في الملف الشخصي"
 }
