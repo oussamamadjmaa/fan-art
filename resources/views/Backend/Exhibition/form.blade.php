@@ -14,7 +14,7 @@
         <div class="col-md-6">
             <x-form.select2 name="sponsor_id" label="Sponsor" inputAttributes="required">
                 <option value="">@lang('Select Sponsor')...</option>
-                <option value="" @selected(empty(old('sponsor_id', '__')))>@lang('Without sponsor')</option>
+                <option value="" @selected($exhibition && empty($exhibition?->sponsor_id))>@lang('Without sponsor')</option>
                 @foreach ($sponsors as $sponsor)
                     <option value="{{ $sponsor->id }}" @selected($sponsor->id == old('sponsor_id', $exhibition?->sponsor_id))>{{ $sponsor->name }}</option>
                 @endforeach
