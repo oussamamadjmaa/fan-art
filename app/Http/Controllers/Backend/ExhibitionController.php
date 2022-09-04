@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\ExhibitionRequest;
 use App\Models\Exhibition;
+use App\Models\Sponsor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -115,7 +116,7 @@ class ExhibitionController extends Controller
     private function form(Exhibition $exhibition = NULL){
         abort_if(!request()->expectsJson(), 404);
         $countries_list = countries_list();
-        $sponsors = auth()->user()->sponsors()->get();
+        $sponsors = auth()->user()->role('admin') ? Sponsor::get() : auth()->user()->sponsors()->get();
         return response()->json(['form' => view('Backend.Exhibition.form', compact('exhibition', 'sponsors'))->render()]);
     }
 }
