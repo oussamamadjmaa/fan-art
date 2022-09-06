@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\NotificationsController;
 use App\Http\Controllers\Backend\PagesManagerController;
 use App\Http\Controllers\Backend\SponsorController;
 use App\Http\Controllers\Backend\SubscriptionController;
+use App\Http\Controllers\Backend\SupportTicketController;
 use App\Http\Controllers\Backend\UpdateController;
 use App\Http\Controllers\Backend\UploadFilesController;
 use Illuminate\Support\Facades\Route;
@@ -99,6 +100,16 @@ Route::controller(AccountController::class)->prefix('account')->as('account.')->
     Route::get('password', 'password')->name('password');
     Route::get('artist-profile', 'artist_profile')->middleware('role:artist')->name('artist_profile');
     Route::put('save/{tab}', 'save')->name('save');
+});
+
+Route::controller(SupportTicketController::class)->as('support_tickets.')->prefix('support/tickets')->group(function(){
+    Route::get('/', 'index')->name('index');
+    Route::post('/', 'store')->name('store');
+    Route::get('/create', 'create')->name('create');
+    Route::get('/{support_ticket}', 'show')->name('show');
+    Route::post('/{support_ticket}', 'send_message')->name('send_message');
+    Route::put('/{support_ticket}/close', 'close_ticket')->name('close_ticket');
+
 });
 
 //Upload

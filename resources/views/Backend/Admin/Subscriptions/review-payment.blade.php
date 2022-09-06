@@ -38,7 +38,7 @@
                     </td>
                     <tr>
                         <td>@lang('Date')</td>
-                        <td>{{ $payment->created_at->translatedFormat('D d M Y h:i A') }}</td>
+                        <td>{{ $payment->created_at->translatedFormat('l d M Y h:i A') }}</td>
                     </tr>
                     <tr>
                         <td>@lang('Payment Status')</td>
@@ -47,13 +47,13 @@
                     @if ($payment->status == $payment::CONFIRMED)
                     <tr>
                         <td>@lang('Confirmed at')</td>
-                        <td>{{ $payment->updated_at->translatedFormat('D d M Y h:i A') }}</td>
+                        <td>{{ $payment->updated_at->translatedFormat('l d M Y h:i A') }}</td>
                     </tr>
                     @endif
                     @if ($payment->status == $payment::DECLINED)
                     <tr>
                         <td>@lang('Declined at')</td>
-                        <td>{{ $payment->updated_at->translatedFormat('D d M Y h:i A') }}</td>
+                        <td>{{ $payment->updated_at->translatedFormat('l d M Y h:i A') }}</td>
                     </tr>
                     @endif
                     @if ($payment->description)

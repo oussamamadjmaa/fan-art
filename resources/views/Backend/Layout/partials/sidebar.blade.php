@@ -52,6 +52,11 @@
             'cond' => auth()->user()->hasRole(['artist', 'store']),
             'href' => route('backend.subscription.index')
         ],[
+            'title' => 'Support tickets',
+            'icon' => 'far fa-life-ring',
+            'cond' => true,
+            'href' => route('backend.support_tickets.index')
+        ],[
             'title' => 'My account',
             'icon' => 'far fa-user',
             'cond' => true,

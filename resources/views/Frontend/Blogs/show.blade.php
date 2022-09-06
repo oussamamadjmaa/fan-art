@@ -13,7 +13,7 @@
                 <div class="col-md-9">
                     <div class="blog-container">
                         <small> <i class="far fa-clock me-1"></i>
-                            {{ $blog->created_at->translatedFormat('D d F Y على الساعة h:i A') }}</small>
+                            {{ $blog->created_at->translatedFormat('l d F Y على الساعة h:i A') }}</small>
                         <h3 class="mt-4">{{ $blog->title }}</h3>
                         <div class="bg-light p-3 pb-2 shadow-sm my-2">
                             <h5><a

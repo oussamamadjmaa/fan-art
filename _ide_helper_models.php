@@ -435,6 +435,34 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\SupportTicket
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property string $subject
+ * @property int $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read mixed $status_text
+ * @property-read \App\Models\Message|null $last_message
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Message[] $messages
+ * @property-read int|null $messages_count
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|SupportTicket newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SupportTicket newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SupportTicket query()
+ * @method static \Illuminate\Database\Eloquent\Builder|SupportTicket whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SupportTicket whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SupportTicket whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SupportTicket whereSubject($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SupportTicket whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SupportTicket whereUserId($value)
+ */
+	class SupportTicket extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\User
  *
  * @property int $id
@@ -479,6 +507,8 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Sponsor[] $sponsors
  * @property-read int|null $sponsors_count
  * @property-read \App\Models\Subscription|null $subscription
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\SupportTicket[] $support_tickets
+ * @property-read int|null $support_tickets_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
  * @property-read int|null $tokens_count
  * @method static \Illuminate\Database\Eloquent\Builder|User active()
@@ -527,6 +557,7 @@ namespace App\Models{
  * @property string|null $bio
  * @property array|null $social_media
  * @property array|null $docs
+ * @property object|null $privacy_settings
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\User $user
@@ -537,6 +568,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|UserProfile whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|UserProfile whereDocs($value)
  * @method static \Illuminate\Database\Eloquent\Builder|UserProfile whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserProfile wherePrivacySettings($value)
  * @method static \Illuminate\Database\Eloquent\Builder|UserProfile whereSocialMedia($value)
  * @method static \Illuminate\Database\Eloquent\Builder|UserProfile whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|UserProfile whereUserId($value)
