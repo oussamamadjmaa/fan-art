@@ -21,8 +21,8 @@
                             {{-- <li>
                                 <i class="me-1 bi bi-person"></i> <span>{{str($artist_->name)->limit(30)}}</span>
                             </li> --}}
-                            <li title="{{$artist_->latest_blog->created_at->translatedFormat('l d M Y H:i')}}">
-                                <i class="me-1 bi bi-clock"></i> <span>{{$artist_->latest_blog->created_at->translatedFormat('l d M Y')}}</span>
+                            <li title="{{$artist_->latest_blog->created_at->translatedFormat('D d M Y H:i')}}">
+                                <i class="me-1 bi bi-clock"></i> <span>{{$artist_->latest_blog->created_at->translatedFormat('D d M Y')}}</span>
                             </li>
                         </ul>
                     </div>

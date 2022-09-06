@@ -34,6 +34,10 @@ class SupportTicket extends Model
         return $this->morphOne(Message::class, 'messageable')->latest();
     }
 
+    public function notifications(){
+        return $this->morphMany(Notification::class, 'notifiable');
+    }
+
     /**
      * Attributes
      */

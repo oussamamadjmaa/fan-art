@@ -51,6 +51,7 @@ class NotificationsController extends Controller
 
         $routes = [];
         $routes['artworks.new_message'] =  route('backend.artworks.messages', $notification->notifiable_id);
+        $routes['support_tickets.new_ticket'] = $routes['support_tickets.new_message']  = $routes['support_tickets.ticket_closed'] =  route('backend.support_tickets.show', $notification->notifiable_id);
         $routes['subscription.new_pending_payment'] =  route('backend.subscriptions-management.review-payment', $notification->notifiable_id);
         $routes['subscription.payment_confirmed'] = $routes['subscription.payment_declined'] =  route('backend.subscription.payment_history');
 

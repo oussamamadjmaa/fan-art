@@ -1198,5 +1198,8 @@
     "Close ticket" : "إغلاق التذكرة",
     "Do you really want to close this support ticket?" : "هل أنت متأكد من إغلاق تذكرة الدعم هذه؟",
     "This support ticket has been closed successfully" : "تم إغلاق تذكرة الدعم هذه بنجاح",
-    "Closed" : "مغلقة"
+    "Closed" : "مغلقة",
+    "Advertisements" : "الإعلانات",
+    "Ads Settings" : "الإعلانات",
+    "Home banner ad html code" : "كود html للإعلان الموجود بالصفحة الرئيسية"
 }

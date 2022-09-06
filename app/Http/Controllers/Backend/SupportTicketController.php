@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Message;
 use App\Models\SupportTicket;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class SupportTicketController extends Controller
@@ -41,6 +42,16 @@ class SupportTicketController extends Controller
             'data' => ['ip_address'    => $request->ip()],
         ]);
 
+        //Notify admins
+        $admins = User::role('admin')->get();
+        foreach ($admins as $admin) {
+            $ticket->notifications()->create([
+                'from_user_id' => $ticket->user_id,
+                'to_user_id' => $admin->id,
+                'type'  => 'support_tickets.new_ticket'
+            ]);
+        }
+
         return response()->json(['status' => 200, 'message' => __('Data Created Successfully'), 'prepend' => ['target' => '#page-data-list', 'content' => view('Backend.SupportTickets.partials.single', compact('ticket'))->render()]]);
 
     }
@@ -62,12 +73,31 @@ class SupportTicketController extends Controller
         ]);
 
         //Store ticket message
+        $last_msg_before_this = $support_ticket->last_message;
         $support_ticket->last_message()->create([
             'sender_id' => auth()->id(),
             'sender_type' => 'App\Models\User',
             'body'  => $data['message'],
             'data' => ['ip_address'    => $request->ip()],
         ]);
+
+        //Notify
+        if (auth()->id() != $support_ticket->user_id) {
+            $support_ticket->notifications()->create([
+                'from_user_id' => auth()->id(),
+                'to_user_id' => $support_ticket->user_id,
+                'type'  => 'support_tickets.new_message'
+            ]);
+        }else if($support_ticket->user_id != $last_msg_before_this->sender_id){
+            $admins = User::role('admin')->get();
+            foreach ($admins as $admin) {
+                $support_ticket->notifications()->create([
+                    'from_user_id' => auth()->id(),
+                    'to_user_id' => $admin->id,
+                    'type'  => 'support_tickets.new_message'
+                ]);
+            }
+        }
 
         $support_ticket->touch();
 
@@ -80,6 +110,14 @@ class SupportTicketController extends Controller
         if($support_ticket->status == $support_ticket::OPENED){
             $support_ticket->status = $support_ticket::CLOSED;
             $support_ticket->save();
+
+            if (auth()->id() != $support_ticket->user_id) {
+                $support_ticket->notifications()->create([
+                    'from_user_id' => auth()->id(),
+                    'to_user_id' => $support_ticket->user_id,
+                    'type'  => 'support_tickets.ticket_closed'
+                ]);
+            }
 
             return to_route('backend.support_tickets.show', $support_ticket->id)->withSuccess(__('This support ticket has been closed successfully'));
         }else {

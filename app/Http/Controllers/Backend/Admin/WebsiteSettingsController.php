@@ -96,6 +96,15 @@ class WebsiteSettingsController extends Controller
         ];
     }
 
+    //Ads settings
+    private function ads_settings()
+    {
+        return [
+            $this->field_data(['type' => 'textarea', 'title' => 'Home banner ad html code', 'name' => 'app__ads[home_banner_ad]', 'id' => 'app__ads__home_banner_ad', 'value' => config('app.ads.home_banner_ad'), 'inputAttributes' => 'dir=ltr rows=5']),
+        ];
+    }
+
+
     //Function to set default field data
     private function field_data(array $field_data)
     {

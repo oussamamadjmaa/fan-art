@@ -26,5 +26,23 @@ return [
             'icon' => 'bi bi-patch-check',
             'bg_class' => 'bg-danger',
         ]
-    ]
+        ],
+        'support_tickets' => [
+            'new_ticket' => [
+                'title' =>  'تم فتح تذكرة دعم جديدة',
+                'description' =>  'تم فتح تذكرة دعم جديدة من طرف <b>:fromUser_name</b>',
+                'icon' => 'fa fa-life-ring',
+                'bg_class' => 'bg-info',
+            ], 'new_message' => [
+                'title' =>  'رسالة جديدة على تذكرة دعم',
+                'description' =>  'تم ارسال رسالة جديدة على التذكرة رقم <b>:id</b>',
+                'icon' => 'fa fa-life-ring',
+                'bg_class' => 'bg-info',
+            ],'ticket_closed' => [
+                'title' =>  'تم إغلاق تذكرة دعم',
+                'description' =>  'تم اغلاق تذكرة دعم رقم <b>:id</b>',
+                'icon' => 'fa fa-life-ring',
+                'bg_class' => 'bg-info',
+            ],
+        ]
 ];

@@ -447,6 +447,8 @@ namespace App\Models{
  * @property-read \App\Models\Message|null $last_message
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Message[] $messages
  * @property-read int|null $messages_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Notification[] $notifications
+ * @property-read int|null $notifications_count
  * @property-read \App\Models\User $user
  * @method static \Illuminate\Database\Eloquent\Builder|SupportTicket newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SupportTicket newQuery()
