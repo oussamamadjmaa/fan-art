@@ -202,3 +202,24 @@ textarea.is-invalid ~ .tox-tinymce {
     margin: 10px;
     border: 1px solid red;
 }
+
+.dashboard-stat-box {
+    border-radius: 30px;
+    box-shadow: 7px 5px 14px 1px #16263f;
+    background: linear-gradient(54deg, #16263f, #f26822);
+    color:#fff;
+    p{
+        margin-bottom: 0;
+    }
+}
+
+#latest_artworks_messages, #latest_notifications {
+    max-height: 350px;
+    overflow: auto;
+    .artwork-message-item:last-child, .notification-item:last-child{
+        border-bottom: 0!important;
+        >.border-bottom{
+            border-bottom: 0!important;
+        }
+    }
+}

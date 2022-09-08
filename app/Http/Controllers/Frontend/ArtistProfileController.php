@@ -20,6 +20,12 @@ class ArtistProfileController extends Controller
     public function index($artist_username, $profile_page = "artworks") {
         $artist = User::role('artist')->whereUsername($artist_username)->withWhereHas('profile')->activeSubscribedArtist()->firstOrFail();
 
+        //Visits count
+        if(!auth()->check() || auth()->id() != $artist->id){
+            $visits = $artist->visits()->firstOrCreate(['visits_date' => now()->format('Y-m-d')], ['count' => 0]);
+            $visits->increment('count');
+        }
+
         //Page meta data
         $meta = new Meta([
             'title' => $artist->name,

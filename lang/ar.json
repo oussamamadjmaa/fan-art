@@ -1201,5 +1201,16 @@
     "Closed" : "مغلقة",
     "Advertisements" : "الإعلانات",
     "Ads Settings" : "الإعلانات",
-    "Home banner ad html code" : "كود html للإعلان الموجود بالصفحة الرئيسية"
+    "Home banner ad html code" : "كود html للإعلان الموجود بالصفحة الرئيسية",
+    "Latest artworks messages" : "آخر رسائل الأعمال الفنية",
+    "Total number of your artworks" : "العدد الإجمالي لأعمالك الفنية",
+    "Total number of your blogs" : "العدد الإجمالي لمدوناتك",
+    "Latest notifications" : "آخر الإشعارات",
+    "Visitors stats" : "إحصائيات الزيارات",
+    "Refresh" : "تحديث",
+    "Last 30 days" : "آخر 30 يوم",
+    "Last year" : "آخر سنة",
+    "visit" : "زيارة",
+    "visits" : "زيارات",
+    "Unseen" : "غير مقروءة"
 }

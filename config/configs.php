@@ -19,7 +19,7 @@ return [
             'keywords'    => 'فن ارت, fan art, منصة فن  ارت, بيع لوحات, اعمال فنية'
         ],
         'ads'               => [
-            'home_banner_ad' => '<a href="#"><img src="'. asset('assets/images/ad-placeholder/ad.png').'" alt="Ad"></a>'
+            'home_banner_ad' => '<a href="#"><img src="/assets/images/ad-placeholder/ad.png" alt="Ad"></a>'
         ]
     ]
 ];

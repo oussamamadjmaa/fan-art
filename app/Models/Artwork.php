@@ -52,6 +52,10 @@ class Artwork extends Model
         return $this->morphMany(Notification::class, 'notifiable');
     }
 
+    public function visits(){
+        return $this->morphMany(Visit::class, 'visitable');
+    }
+
     /**
      * Scopes
      */

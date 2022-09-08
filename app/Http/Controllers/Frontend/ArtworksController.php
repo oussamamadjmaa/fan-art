@@ -28,16 +28,29 @@ class ArtworksController extends Controller
     }
 
     public function show(Artwork $artwork){
+        $artwork->load(['user' => fn($q) => $q->activeSubscribedArtist()]);
+        abort_if(!$artwork->user, 404);
+
         //Page meta data
         $meta = new Meta([
             'title' => $artwork->title,
             'description' => str($artwork->description)->limit(160)->toString(),
             'image'    => storage_url($artwork->image)
         ]);
+
+        //Visits count
+        if(!auth()->check() || auth()->id() != $artwork->user_id){
+            $visits = $artwork->visits()->firstOrCreate(['visits_date' => now()->format('Y-m-d')], ['count' => 0]);
+            $visits->increment('count');
+        }
+
         return view('Frontend.Artworks.show', compact('artwork'));
     }
 
     public function send_message(ArtworkMessageRequest $request, Artwork $artwork){
+        $artwork->load(['user' => fn($q) => $q->activeSubscribedArtist()]);
+        abort_if(!$artwork->user, 404);
+
         if($artwork->hasMessageFromThisSender()){
             return response()->json(['status' => 403, 'message' => __("You already been sent a message about this artwork!")], 403);
         }

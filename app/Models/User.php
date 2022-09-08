@@ -94,6 +94,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Payment::class);
     }
 
+    public function visits(){
+        return $this->morphMany(Visit::class, 'visitable');
+    }
+
     public function support_tickets(){
         return $this->hasMany(SupportTicket::class);
     }

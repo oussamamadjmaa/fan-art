@@ -9,6 +9,7 @@ export default defineConfig({
                 'resources/backend-assets/sass/app.scss',
                 'resources/backend-assets/js/app.js',
                 'resources/backend-assets/js/guest.js',
+                'resources/backend-assets/js/pages/artist_dashboard.js',
 
                 //Frontend
                 'resources/frontend-assets/sass/app.scss',

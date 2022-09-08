@@ -36,6 +36,10 @@ class Exhibition extends Model
         return $this->belongsTo(Sponsor::class);
     }
 
+    public function visits(){
+        return $this->morphMany(Visit::class, 'visitable');
+    }
+
     /**
      * Scopes
      */

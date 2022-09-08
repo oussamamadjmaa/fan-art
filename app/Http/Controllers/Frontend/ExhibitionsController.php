@@ -30,6 +30,15 @@ class ExhibitionsController extends Controller
     }
 
     public function show(Exhibition $exhibition){
+        $exhibition->load(['user' => fn($q) => $q->activeSubscribedArtist()]);
+        abort_if(!$exhibition->user, 404);
+
+        //Visits count
+        if(!auth()->check() || auth()->id() != $exhibition->user_id){
+            $visits = $exhibition->visits()->firstOrCreate(['visits_date' => now()->format('Y-m-d')], ['count' => 0]);
+            $visits->increment('count');
+        }
+
         return view('Frontend.Exhibitons.show', compact('exhibition'));
     }
 }

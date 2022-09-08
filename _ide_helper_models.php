@@ -35,6 +35,8 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Notification[] $notifications
  * @property-read int|null $notifications_count
  * @property-read \App\Models\User $user
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Visit[] $visits
+ * @property-read int|null $visits_count
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork activeSubscribedArtist()
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Artwork newQuery()
@@ -115,6 +117,8 @@ namespace App\Models{
  * @property-read mixed $from_to_date
  * @property-read \App\Models\Sponsor|null $sponsor
  * @property-read \App\Models\User $user
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Visit[] $visits
+ * @property-read int|null $visits_count
  * @method static \Illuminate\Database\Eloquent\Builder|Exhibition activeSubscribedArtist()
  * @method static \Illuminate\Database\Eloquent\Builder|Exhibition newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Exhibition newQuery()
@@ -186,6 +190,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\User $user
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Visit[] $visits
+ * @property-read int|null $visits_count
  * @method static \Illuminate\Database\Eloquent\Builder|News newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|News newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|News published()
@@ -513,6 +519,8 @@ namespace App\Models{
  * @property-read int|null $support_tickets_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
  * @property-read int|null $tokens_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Visit[] $visits
+ * @property-read int|null $visits_count
  * @method static \Illuminate\Database\Eloquent\Builder|User active()
  * @method static \Illuminate\Database\Eloquent\Builder|User activeSubscribedArtist()
  * @method static \Database\Factories\UserFactory factory(...$parameters)
@@ -576,5 +584,32 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|UserProfile whereUserId($value)
  */
 	class UserProfile extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Visit
+ *
+ * @property int $id
+ * @property string|null $visitable_type
+ * @property int|null $visitable_id
+ * @property int $count
+ * @property \Illuminate\Support\Carbon $visits_date
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $sender
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $visitable
+ * @method static \Illuminate\Database\Eloquent\Builder|Visit newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Visit newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Visit query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Visit whereCount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Visit whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Visit whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Visit whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Visit whereVisitableId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Visit whereVisitableType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Visit whereVisitsDate($value)
+ */
+	class Visit extends \Eloquent {}
 }
 

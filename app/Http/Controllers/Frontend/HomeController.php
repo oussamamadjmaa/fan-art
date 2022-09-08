@@ -42,7 +42,7 @@ class HomeController extends Controller
             ->withWhereHas('latest_blog')->limit(6)->get();
 
         //Latest Stores
-        $latest_stores = Cache::remember('latest_artists', (60*60), function () {
+        $latest_stores = Cache::remember('latest_stores', (60*60), function () {
             return User::role('store')->active()->verified()->whereHas('subscription', fn ($q) => $q->active())->latest()->limit(8)->get();
         });
         return view('Frontend.home', compact('carousels', 'latest_artists', 'latest_artworks', 'artists_with_last_blog', 'latest_stores'));
