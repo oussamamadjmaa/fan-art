@@ -7,7 +7,7 @@
         </div>
         <div class="sponsor-info d-flex flex-wrap">
             <div class="me-3">
-                <img src="{{ storage_url($sponsor->logo) }}" alt=" {{$sponsor->title}}" class="avatar-50">
+                <img src="{{ storage_url($sponsor->logo) }}" alt=" {{$sponsor->name}}" class="avatar-50">
             </div>
             <div>
                 <div class="sponsor-title fs-6 mb-1">

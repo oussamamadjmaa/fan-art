@@ -20,6 +20,9 @@ return [
         ],
         'ads'               => [
             'home_banner_ad' => '<a href="#"><img src="/assets/images/ad-placeholder/ad.png" alt="Ad"></a>'
+        ],
+        'subscription' => [
+            'free_trial_days' => 90
         ]
     ]
 ];

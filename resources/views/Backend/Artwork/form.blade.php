@@ -38,7 +38,7 @@
 
     <x-form.input name="location" inputAttributes="required" label="Painting location (Country, City, Address)" :value="($artwork->location ?? '')" />
 
-    <x-form.select2 name="status" label="Painting status" inputAttributes="required">
+    <x-form.select2 name="status" label="Painting status" required="required">
         <option value="1" @selected($artwork?->status === App\Models\Artwork::READY)>@lang('Ready for delivery')</option>
         {{-- <option value="0" @selected($artwork?->status === App\Models\Artwork::NOT_READY)>@lang('In preparation')</option> --}}
         <option value="2" @selected($artwork?->status === App\Models\Artwork::SOLD)>@lang('Sold')</option>

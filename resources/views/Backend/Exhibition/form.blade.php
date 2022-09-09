@@ -12,7 +12,7 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <x-form.select2 name="sponsor_id" label="Sponsor" inputAttributes="required">
+            <x-form.select2 name="sponsor_id" label="Sponsor">
                 <option value="">@lang('Select Sponsor')...</option>
                 <option value="" @selected($exhibition && empty($exhibition?->sponsor_id))>@lang('Without sponsor')</option>
                 @foreach ($sponsors as $sponsor)
@@ -21,7 +21,7 @@
             </x-form.select2>
         </div>
         <div class="col-md-6">
-            <x-form.select2 name="country" label="Country" inputAttributes="required">
+            <x-form.select2 name="country" label="Country" required="required">
                 <option value="">@lang('Select Country')...</option>
                 @foreach ($countries as $countryCode => $country)
                     <option value="{{ $countryCode }}" @selected($countryCode == old('country', $exhibition?->country ?: strtolower(auth()->user()->country)))>@lang(country($countryCode)->getName())</option>

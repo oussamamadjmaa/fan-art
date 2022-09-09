@@ -100,6 +100,17 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Category
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Category newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Category newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Category query()
+ */
+	class Category extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Exhibition
  *
  * @property int $id
@@ -355,6 +366,21 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Product
+ *
+ * @property-read \App\Models\Category|null $category
+ * @property-read mixed $price
+ * @property-read mixed $price_format
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Product newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Product query()
+ */
+	class Product extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\SiteConfig
  *
  * @property int $id
@@ -496,6 +522,8 @@ namespace App\Models{
  * @property-read \App\Models\Subscription|null $activeSubscription
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Artwork[] $artworks
  * @property-read int|null $artworks_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Category[] $categories
+ * @property-read int|null $categories_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Exhibition[] $exhibitions
  * @property-read int|null $exhibitions_count
  * @property-read mixed $avatar_url
@@ -509,6 +537,8 @@ namespace App\Models{
  * @property-read int|null $payments_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
  * @property-read int|null $permissions_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Product[] $products
+ * @property-read int|null $products_count
  * @property-read \App\Models\UserProfile|null $profile
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Role[] $roles
  * @property-read int|null $roles_count

@@ -18,6 +18,8 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Exhibition'    => 'App\Policies\ExhibitionPolicy',
         'App\Models\Sponsor'    => 'App\Policies\SponsorPolicy',
         'App\Models\News'    => 'App\Policies\BlogPolicy',
+        'App\Models\Product'    => 'App\Policies\ProductPolicy',
+        'App\Models\Category'    => 'App\Policies\CategoryPolicy',
     ];
 
     /**

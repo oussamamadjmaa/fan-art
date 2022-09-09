@@ -28,6 +28,11 @@
     "src": "resources/backend-assets/js/pages/artist_dashboard.js",
     "isEntry": true
   },
+  "resources/backend-assets/js/pages/store_dashboard.js": {
+    "file": "assets/store_dashboard.a9462bb8.js",
+    "src": "resources/backend-assets/js/pages/store_dashboard.js",
+    "isEntry": true
+  },
   "resources/frontend-assets/js/app.js": {
     "file": "assets/app.6b964635.js",
     "src": "resources/frontend-assets/js/app.js",

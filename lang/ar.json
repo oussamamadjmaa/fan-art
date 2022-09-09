@@ -1205,6 +1205,8 @@
     "Latest artworks messages" : "آخر رسائل الأعمال الفنية",
     "Total number of your artworks" : "العدد الإجمالي لأعمالك الفنية",
     "Total number of your blogs" : "العدد الإجمالي لمدوناتك",
+    "Total number of your products" : "العدد الإجمالي لمنتجاتك",
+    "Total number of your categories" : "العدد الإجمالي لتصنيفاتك",
     "Latest notifications" : "آخر الإشعارات",
     "Visitors stats" : "إحصائيات الزيارات",
     "Refresh" : "تحديث",
@@ -1212,5 +1214,18 @@
     "Last year" : "آخر سنة",
     "visit" : "زيارة",
     "visits" : "زيارات",
-    "Unseen" : "غير مقروءة"
+    "Unseen" : "غير مقروءة",
+    "Categories" : "التصنيفات",
+    "Category" : "التصنيف",
+    "Add Category" : "إضافة تصنيف",
+    "Edit Category" : "تعديل تصنيف",
+    "Category name" : "إسم التصنيف",
+    "Products" : "المنتجات",
+    "Product" : "منتج",
+    "Add Product" : "إضافة منتج",
+    "Edit Product" : "تعديل المنتج",
+    "Product name" : "إسم المنتج",
+    "Product image" : "صورة المنتج",
+    "Select Category" : "إختر التصنيف",
+    "Free trial days" : "عدد أيام المدة التجريبية"
 }

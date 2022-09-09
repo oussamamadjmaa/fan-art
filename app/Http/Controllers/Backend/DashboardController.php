@@ -24,19 +24,23 @@ class DashboardController extends Controller
         }
 
         //Stats
-        $durations = [
-            'Today' => now(),
-            'Last 30 days' => now()->subDays(30),
-            'Last year' => now()->subYear()
-        ];
-        $duration = $durations[request()->get('duration', 'Last 30 days')] ?? now()->subDays(30);
-        $visit_stats = [
-            'profile' => auth()->user()->visits()->whereDate('visits_date', '>=', $duration)->sum('count'),
-            'artworks' => Visit::whereHasMorph('visitable', [Artwork::class], fn($q) => $q->where('user_id', auth()->id()))->whereDate('visits_date', '>=', $duration)->sum('count'),
-            'blog' => Visit::whereHasMorph('visitable', [News::class], fn($q) => $q->where('user_id', auth()->id()))->whereDate('visits_date', '>=', $duration)->sum('count'),
-            'exhibitions' => Visit::whereHasMorph('visitable', [Exhibition::class], fn($q) => $q->where('user_id', auth()->id()))->whereDate('visits_date', '>=', $duration)->sum('count')
-        ];
+        if (auth()->user()->hasRole('artist')) {
+            $durations = [
+                'Today' => now(),
+                'Last 30 days' => now()->subDays(30),
+                'Last year' => now()->subYear()
+            ];
+            $duration = $durations[request()->get('duration', 'Last 30 days')] ?? now()->subDays(30);
+            $visit_stats = [
+                'profile' => auth()->user()->visits()->whereDate('visits_date', '>=', $duration)->sum('count'),
+                'artworks' => Visit::whereHasMorph('visitable', [Artwork::class], fn($q) => $q->where('user_id', auth()->id()))->whereDate('visits_date', '>=', $duration)->sum('count'),
+                'blog' => Visit::whereHasMorph('visitable', [News::class], fn($q) => $q->where('user_id', auth()->id()))->whereDate('visits_date', '>=', $duration)->sum('count'),
+                'exhibitions' => Visit::whereHasMorph('visitable', [Exhibition::class], fn($q) => $q->where('user_id', auth()->id()))->whereDate('visits_date', '>=', $duration)->sum('count')
+            ];
 
-        return view('Backend.dashboard', compact('visit_stats'));
+            view()->share('visit_stats', $visit_stats);
+        }
+
+        return view('Backend.dashboard');
     }
 }

@@ -78,6 +78,14 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(News::class)->latest();
     }
 
+    public function products(){
+        return $this->hasMany(Product::class);
+    }
+
+    public function categories(){
+        return $this->hasMany(Category::class);
+    }
+
     public function activeSubscription(){
         return $this->hasOne(Subscription::class)->active();
     }

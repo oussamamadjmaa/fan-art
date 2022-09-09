@@ -6,11 +6,13 @@ use App\Http\Controllers\Backend\Admin\WebsiteSettingsController;
 use App\Http\Controllers\Backend\ArtworkController;
 use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\CarouselController;
+use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\ExhibitionController;
 use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\NotificationsController;
 use App\Http\Controllers\Backend\PagesManagerController;
+use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SponsorController;
 use App\Http\Controllers\Backend\SubscriptionController;
 use App\Http\Controllers\Backend\SupportTicketController;
@@ -77,6 +79,16 @@ Route::group(['middleware' => ['role:admin|artist', 'backend-check:subscribed']]
     Route::delete('blogs', [BlogController::class, 'multiple_delete'])->name('blogs.multiple_delete');
     Route::put('blogs/toggle_status/{blog}', [BlogController::class, 'toggle_status'])->name('blogs.toggle_status');
     Route::resource('blogs', BlogController::class)->except(['show']);
+});
+
+Route::group(['middleware' => ['role:admin|store', 'backend-check:subscribed']], function(){
+        //Categories
+        Route::delete('categories', [CategoryController::class, 'multiple_delete'])->name('categories.multiple_delete');
+        Route::resource('categories', CategoryController::class)->except(['show']);
+
+        //Products
+        Route::delete('products', [ProductController::class, 'multiple_delete'])->name('products.multiple_delete');
+        Route::resource('products', ProductController::class)->except(['show']);
 });
 
 Route::middleware('role:artist|store')->group(function(){

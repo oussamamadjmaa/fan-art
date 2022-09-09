@@ -37,6 +37,16 @@
             'cond' => auth()->user()->can('viewAny', App\Models\Exhibition::class),
             'href' => route('backend.exhibitions.index')
         ],[
+            'title' => 'Categories',
+            'icon' => 'fa fa-list',
+            'cond' => auth()->user()->can('viewAny', App\Models\Category::class),
+            'href' => route('backend.categories.index')
+        ],[
+            'title' => 'Products',
+            'icon' => 'fa fa-store',
+            'cond' => auth()->user()->can('viewAny', App\Models\Product::class),
+            'href' => route('backend.products.index')
+        ],[
             'title' => 'Blog',
             'icon' => 'fa fa-blog',
             'cond' => auth()->user()->can('viewAny', App\Models\News::class),
