@@ -102,9 +102,19 @@ namespace App\Models{
 /**
  * App\Models\Category
  *
+ * @property int $id
+ * @property int $user_id
+ * @property string $name
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|Category newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Category newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Category query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereUserId($value)
  */
 	class Category extends \Eloquent {}
 }
@@ -368,13 +378,30 @@ namespace App\Models{
 /**
  * App\Models\Product
  *
- * @property-read \App\Models\Category|null $category
- * @property-read mixed $price
+ * @property int $id
+ * @property int $user_id
+ * @property int $category_id
+ * @property string $name
+ * @property int $price
+ * @property string|null $description
+ * @property string|null $image
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Category $category
  * @property-read mixed $price_format
  * @property-read \App\Models\User $user
  * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Product newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Product query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereCategoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereUserId($value)
  */
 	class Product extends \Eloquent {}
 }
@@ -553,6 +580,7 @@ namespace App\Models{
  * @property-read int|null $visits_count
  * @method static \Illuminate\Database\Eloquent\Builder|User active()
  * @method static \Illuminate\Database\Eloquent\Builder|User activeSubscribedArtist()
+ * @method static \Illuminate\Database\Eloquent\Builder|User activeVerifiedSubscribed()
  * @method static \Database\Factories\UserFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()

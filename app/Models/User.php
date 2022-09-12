@@ -150,10 +150,14 @@ class User extends Authenticatable implements MustVerifyEmail
         return $q->whereNotNull('users.email_verified_at');
     }
     public function scopeSubscribed($q){
-        return $q->whereHas('profile')->whereHas('subscription', fn($q) => $q->active());
+        return $q->whereHas('subscription', fn($q) => $q->active());
     }
 
     public function scopeActiveSubscribedArtist($q) {
+        return $q->active()->verified()->subscribed()->whereHas('profile');
+    }
+
+    public function scopeActiveVerifiedSubscribed($q) {
         return $q->active()->verified()->subscribed();
     }
 }

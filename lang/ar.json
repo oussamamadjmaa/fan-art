@@ -1227,5 +1227,14 @@
     "Product name" : "إسم المنتج",
     "Product image" : "صورة المنتج",
     "Select Category" : "إختر التصنيف",
-    "Free trial days" : "عدد أيام المدة التجريبية"
+    "Free trial days" : "عدد أيام المدة التجريبية",
+    "Latest" : "الأحدث",
+    "Price (Low to High)" : "السعر (الأقل إلى الأعلى)",
+    "Price (High to Low)" : "السعر (الأعلى إلى الأقل)",
+    "Oldest" : "الأقدم",
+    "All" : "الكل",
+    "Sort by" : "ترتيب حسب",
+    "This store doesn't have any products yet" : "هذا المتجر ليس لديه أي منتجات بعد",
+    "You don't have any products yet" : "ليس لديك أي منتجات بعد",
+    "There's no stores yet" : "لا يوجد متاجر متخصصة بعد"
 }

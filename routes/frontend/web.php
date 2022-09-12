@@ -7,6 +7,8 @@ use App\Http\Controllers\Frontend\ArtworksController;
 use App\Http\Controllers\Frontend\BlogsController;
 use App\Http\Controllers\Frontend\ExhibitionsController;
 use App\Http\Controllers\Frontend\PageController;
+use App\Http\Controllers\Frontend\StoreProfileController;
+use App\Http\Controllers\Frontend\StoresController;
 use App\Http\Controllers\Frontend\User\AccountController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +25,10 @@ Route::post('/artworks/{artwork}/message', [ArtworksController::class, 'send_mes
 
 //Artist Profile
 Route::get('/artist/{artist_username}/{profile_page?}', [ArtistProfileController::class, 'index'])->name('artist.profile');
+
+//Store Profile && Stores
+Route::get('/store/{store_username}', [StoreProfileController::class, 'index'])->name('store.profile');
+Route::get('/stores', [StoresController::class, 'index'])->name('stores.index');
 
 //Blogs
 Route::get('blogs/', [BlogsController::class, 'index'])->name('blogs.index');

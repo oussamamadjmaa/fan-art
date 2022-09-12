@@ -1,11 +1,11 @@
 {
-  "resources/frontend-assets/assets/images/bgs/shapes.png": {
-    "file": "assets/shapes.15bbf05e.png",
-    "src": "resources/frontend-assets/assets/images/bgs/shapes.png"
-  },
   "resources/frontend-assets/assets/images/bgs/paint.png": {
     "file": "assets/paint.58f74b9f.png",
     "src": "resources/frontend-assets/assets/images/bgs/paint.png"
+  },
+  "resources/frontend-assets/assets/images/bgs/shapes.png": {
+    "file": "assets/shapes.15bbf05e.png",
+    "src": "resources/frontend-assets/assets/images/bgs/shapes.png"
   },
   "resources/backend-assets/js/app.js": {
     "file": "assets/app.c49efff4.js",
@@ -60,7 +60,7 @@
     "isEntry": true
   },
   "resources/frontend-assets/sass/app.scss": {
-    "file": "assets/app.51fa5a33.css",
+    "file": "assets/app.414aeb4d.css",
     "src": "resources/frontend-assets/sass/app.scss",
     "isEntry": true
   }
