@@ -1,11 +1,11 @@
 {
-  "resources/frontend-assets/assets/images/bgs/paint.png": {
-    "file": "assets/paint.58f74b9f.png",
-    "src": "resources/frontend-assets/assets/images/bgs/paint.png"
-  },
   "resources/frontend-assets/assets/images/bgs/shapes.png": {
     "file": "assets/shapes.15bbf05e.png",
     "src": "resources/frontend-assets/assets/images/bgs/shapes.png"
+  },
+  "resources/frontend-assets/assets/images/bgs/paint.png": {
+    "file": "assets/paint.58f74b9f.png",
+    "src": "resources/frontend-assets/assets/images/bgs/paint.png"
   },
   "resources/backend-assets/js/app.js": {
     "file": "assets/app.c49efff4.js",
@@ -55,12 +55,12 @@
     "file": "assets/jquery.55e95f45.js"
   },
   "resources/backend-assets/sass/app.scss": {
-    "file": "assets/app.1be250e1.css",
+    "file": "assets/app.b1defc29.css",
     "src": "resources/backend-assets/sass/app.scss",
     "isEntry": true
   },
   "resources/frontend-assets/sass/app.scss": {
-    "file": "assets/app.414aeb4d.css",
+    "file": "assets/app.f3f617b8.css",
     "src": "resources/frontend-assets/sass/app.scss",
     "isEntry": true
   }

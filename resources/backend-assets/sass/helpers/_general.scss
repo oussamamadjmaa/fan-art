@@ -223,3 +223,7 @@ textarea.is-invalid ~ .tox-tinymce {
         }
     }
 }
+
+[name="phone"] {
+    direction: ltr!important;
+}

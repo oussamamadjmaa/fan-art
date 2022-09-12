@@ -33,7 +33,7 @@
                         @forelse ($store->products()->with('category')->latest()->limit(3)->get() as $product)
                         <div class="col-md-3 col-sm-6 @if(!$loop->first) d-none d-sm-block @endif">
                             <div>
-                                @include('Frontend.products.partials.single')
+                                @include('Frontend.Products.partials.single')
                             </div>
                         </div>
                         @empty

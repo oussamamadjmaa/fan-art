@@ -18,8 +18,9 @@ class ArtworkMessageRequest extends FormRequest
 
     public function prepareForValidation()
     {
+        $phone_plus = (substr(($this->phone ?? ''), 0, 1) == "+") ? "+" : '';
         return $this->merge([
-            'phone' => str_replace(['(', ')', '+', ' ', '-', '_'], '', $this->phone),
+            'phone' => $phone_plus.str_replace(['(', ')', '+', ' ', '-', '_'], '', $this->phone),
         ]);
     }
 

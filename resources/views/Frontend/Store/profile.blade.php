@@ -71,7 +71,7 @@
     <section class="store_products bg-white">
         <div class="container py-4">
             <div>
-                <div class="d-flex justify-content-between">
+                <div class="d-flex flex-wrap justify-content-between">
                     <div class="dropdown open mb-4">
                         <a class="bg-light d-block text-dark p-2 pb-1" href="javascript:;" type="button" id="categoryIdS" data-bs-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">

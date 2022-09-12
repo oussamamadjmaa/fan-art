@@ -23,8 +23,9 @@ class AccountRequest extends FormRequest
     public function prepareForValidation()
     {
         if ($this->route('tab') == "profile") {
+            $phone_plus = (substr(($this->phone ?? ''), 0, 1) == "+") ? "+" : '';
             return $this->merge([
-                'phone' => str_replace(['(', ')', '+', ' ', '-', '_'], '', $this->phone),
+                'phone' => $phone_plus.str_replace(['(', ')', '+', ' ', '-', '_'], '', $this->phone),
                 //  'skype' => Str::replace(['/', '\\', '-', '|',"#", ",", ';'], '', ($this->skype ?? NULL)),
                 'show_phone' => $this->input('show_phone') ? 1 : 0,
                 'show_email' => $this->input('show_email') ? 1 : 0,
