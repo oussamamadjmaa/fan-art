@@ -1,11 +1,9 @@
 @if ($artwork instanceof \App\Models\Artwork)
 <div class="artwork-showcase_ text-center text-dark">
     <div class="artwork-showcase_-image mb-3 mx-auto text-center">
-        <div class="img_">
-            <a href="{{route('frontend.artworks.show', $artwork->slug)}}">
-                <img src="{{ storage_url($artwork->image) }}" alt="{{ $artwork->title }}">
-            </a>
-        </div>
+        <a class="img_" href="{{route('frontend.artworks.show', $artwork->slug)}}">
+            <img src="{{ storage_url($artwork->image) }}" alt="{{ $artwork->title }}">
+        </a>
 
     </div>
     <div class="artwork-showcase_-info">
