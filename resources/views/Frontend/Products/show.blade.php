@@ -24,7 +24,7 @@
                     <div class="text-start">
                         <h1 class="fs-3 mb-0">{{ $product->name }}</h1>
                         <div><a
-                                href="{{ route('frontend.artist.profile', $product->user->username) }}">{{ $product->user->name }}</a>
+                                href="{{ route('frontend.store.profile', $product->user->username) }}">{{ $product->user->name }}</a>
                         </div>
 
                         <div class="mt-2">
@@ -42,7 +42,7 @@
                         @if (!auth()->check() || auth()->id() != $product->user_id)
                         <div class="buttons">
                             <a href="javascript:;" class="primary-btn" data-bs-toggle="modal"
-                                data-bs-target="#productContactModal">@lang('Contact artist')</a>
+                                data-bs-target="#productContactModal">@lang('Contact store')</a>
                         </div>
                         @endif
                     </div>
@@ -58,10 +58,10 @@
                                         <img src="{{ $product->user->avatar_url }}" alt="{{$product->user->name}}" class="avatar-150">
                                     </div>
                                 </div>
-                                <div class="artist-profile-info flex-grow-1">
+                                <div class="store-profile-info flex-grow-1">
                                     <div class="d-md-flex flex-wrap py-2" style="gap: 1.6rem;">
                                         <div>
-                                            <h5 class="artist-name">{{ $product->user->name }}</h5>
+                                            <h5 class="store-name">{{ $product->user->name }}</h5>
                                             <h6>{{ __(country($product->user->country)->getName()) }}</h6>
                                         </div>
                                     </div>
@@ -77,13 +77,13 @@
                     </div>
 
                     @php
-                        $artist_products = $product->user->products()->where('id', '!=', $product->id)->with('category')->take(8)->get();
+                        $store_products = $product->user->products()->where('id', '!=', $product->id)->with('category')->take(8)->get();
                     @endphp
-                    @if ($artist_products->count())
+                    @if ($store_products->count())
                     <div class="col-12 border-top py-5">
                         <h4 class="mb-4">@lang("Here's more products from :name you may like", ['name' => explode(' ', $product->user->name)[0]])</h4>
                         <div>
-                            @foreach ($artist_products as $product_)
+                            @foreach ($store_products as $product_)
                                 @if ($loop->first)
                                     <div class="products-grid row">
                                 @endif
@@ -111,7 +111,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 699px;">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">@lang('Send message to artist')</h5>
+                    <h5 class="modal-title">@lang('Send message to store')</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
