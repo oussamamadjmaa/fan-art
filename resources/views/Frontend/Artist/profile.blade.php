@@ -16,7 +16,7 @@
                         </div>
                     </div>
                     <div class="d-ph-none">
-                        <p>{{ $artist->profile->bio }}</p>
+                        <p>{{ $artist?->profile?->bio }}</p>
                     </div>
                     <div>
                         <ul class="artist-contact-info list-unstyled">
@@ -62,7 +62,7 @@
                 </div>
             </div>
             <div class="d-pc-none mt-3">
-                <p>{{ $artist->profile->bio }}</p>
+                <p>{{ $artist->profile?->bio }}</p>
             </div>
         </div>
     </section>

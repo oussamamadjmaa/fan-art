@@ -77,12 +77,12 @@
                                         </div>
                                     </div>
                                     <div class="d-ph-none">
-                                        <p>{{ $artwork->user->profile->bio }}</p>
+                                        <p>{{ $artwork->user->profile?->bio }}</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="d-pc-none mt-3">
-                                <p>{{ $artwork->user->profile->bio }}</p>
+                                <p>{{ $artwork->user->profile?->bio }}</p>
                             </div>
                         </div>
                     </div>

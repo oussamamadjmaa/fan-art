@@ -51,6 +51,7 @@ class RegisterController extends Controller
         if($role != 'customer') {
             $user->assignRole($role);
             $plan = Plan::where('key', 'free_trial')->first();
+            $profile = $user->profile()->create();
             if($plan) {
                 event(new SubscriptionPayment($payment = $this->createFreeTrialPayment($user, $plan)));
             }

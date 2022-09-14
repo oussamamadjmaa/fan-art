@@ -45,7 +45,7 @@ Route::get('/exhibitions', [ExhibitionsController::class, 'index'])->name('exhib
 Route::get('/exhibitions/{exhibition:slug}', [ExhibitionsController::class, 'show'])->name('exhibitions.show');
 
 //
-Route::group(['middleware' => ['auth', 'verified']], function(){
+Route::group(['middleware' => ['auth']], function(){
     //Account
     Route::controller(AccountController::class)->group(function(){
         Route::post('upload-avatar', 'upload_avatar')->name('account.upload_avatar');

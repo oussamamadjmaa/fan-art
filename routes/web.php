@@ -30,6 +30,6 @@ Route::as('frontend.')->group(function(){
 });
 
 //Backend Routes
-Route::prefix('panel')->as('backend.')->middleware(['auth', 'verified', 'backend-check'])->group(function(){
+Route::prefix('panel')->as('backend.')->middleware(['auth', 'backend-check'])->group(function(){
     require_once __DIR__.'/backend/web.php';
 });

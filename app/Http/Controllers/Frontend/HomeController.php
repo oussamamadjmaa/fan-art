@@ -33,7 +33,7 @@ class HomeController extends Controller
         // Cache::remember('latest_artists', (60*60), function () {
         //     return User::role('artist')->active()->verified()->whereHas('profile')->whereHas('subscription', fn ($q) => $q->active())->latest()->limit(10)->get();
         // });
-        $latest_artists = User::role('artist')->active()->verified()->whereHas('profile')->whereHas('subscription', fn ($q) => $q->active())->latest()->limit(10)->get();
+        $latest_artists = User::role('artist')->active()->whereHas('subscription', fn ($q) => $q->active())->latest()->limit(10)->get();
 
         //Latest Artworks & Paintings
         $latest_artworks = Artwork::where('artworks.status', '!=', Artwork::SOLD)->activeSubscribedArtist()->latest('artworks.created_at')->limit(6)->get();
@@ -46,7 +46,7 @@ class HomeController extends Controller
         //Cache::remember('latest_stores', (60*60), function () {
         //    return User::role('store')->active()->verified()->whereHas('subscription', fn ($q) => $q->active())->latest()->limit(8)->get();
         //});
-        $latest_stores = User::role('store')->active()->verified()->whereHas('subscription', fn ($q) => $q->active())->latest()->limit(8)->get();
+        $latest_stores = User::role('store')->active()->whereHas('subscription', fn ($q) => $q->active())->latest()->limit(8)->get();
         return view('Frontend.home', compact('carousels', 'latest_artists', 'latest_artworks', 'artists_with_last_blog', 'latest_stores'));
     }
 }

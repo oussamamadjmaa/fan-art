@@ -18,7 +18,7 @@ class ArtistProfileController extends Controller
         });
     }
     public function index($artist_username, $profile_page = "artworks") {
-        $artist = User::role('artist')->whereUsername($artist_username)->withWhereHas('profile')->activeSubscribedArtist()->firstOrFail();
+        $artist = User::role('artist')->whereUsername($artist_username)->with('profile')->activeSubscribedArtist()->firstOrFail();
 
         //Visits count
         if(!auth()->check() || auth()->id() != $artist->id){
@@ -29,7 +29,7 @@ class ArtistProfileController extends Controller
         //Page meta data
         $meta = new Meta([
             'title' => $artist->name,
-            'description' => str($artist->profile->description)->limit(160)->toString(),
+            'description' => str($artist->profile?->description)->limit(160)->toString(),
             'image'    => $artist->avatar_url
         ]);
 
