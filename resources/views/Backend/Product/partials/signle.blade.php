@@ -36,6 +36,11 @@
         </div>
     </div>
     <div class="product-actions d-flex flex-wrap align-items-center justify-content-center" style="gap: 10px;">
+        <div>
+            <a type="button" class="button py-1" href="{{ route('backend.products.messages', $product->id) }}" >
+                    @lang('New messages') ({{$product?->messages_count ?? 0}})
+                </a>
+        </div>
         <div class="dropdown open">
             <a type="button" class="button py-1" id="productActionsDropDown{{ $product->id }}" data-bs-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="false">

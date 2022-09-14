@@ -1097,14 +1097,18 @@
     "Send message to artist" : "إرسال رسالة للفنان",
     "Description" : "الوصف",
     "Here's more artworks and paintings from :name you may like" : "إليك المزيد من الأعمال الفنية واللوحات من :name الذي قد تعجبك",
+    "Here's more products from :name you may like" : "إليك المزيد من المنتجات من :name الذي قد تعجبك",
     "View all artworks" : "عرض جميع الأعمال الفنية",
+    "View all products" : "عرض جميع المنتجات",
     "Date" : "التاريخ",
     "Send message" : "إرسال الرسالة",
     "Hi, I'm interested in purchasing this work. Could you please provide more information about the piece?" : "مرحبًا ، أنا مهتم بشراء هذا العمل الفني. هل يمكنك تقديم مزيد من المعلومات حوله من فضلك؟",
+    "Hi, I'm interested in purchasing this product. Could you please provide more information about it?" : "مرحبًا ، أنا مهتم بشراء هذا المنتج. هل يمكنك تقديم مزيد من المعلومات حوله من فضلك؟",
     "First name" : "الإسم",
     "Last name" : "اللقب",
     "Message" : "رسالة",
     "You already been sent a message about this artwork!" : "لقد قمت بإرسال رسالة من قبل عن هذا العمل الفني!",
+    "You already been sent a message about this product!" : "لقد قمت بإرسال رسالة من قبل عن هذا المنتج!",
     "Your message has been sent successfully" : "تم إرسال رسالتك بنجاح",
     "Add Blog" : "إضافة تدوينة",
     "Edit Blog" : "تعديل التدوينة",
@@ -1236,5 +1240,7 @@
     "Sort by" : "ترتيب حسب",
     "This store doesn't have any products yet" : "هذا المتجر ليس لديه أي منتجات بعد",
     "You don't have any products yet" : "ليس لديك أي منتجات بعد",
-    "There's no stores yet" : "لا يوجد متاجر متخصصة بعد"
+    "There's no stores yet" : "لا يوجد متاجر متخصصة بعد",
+    "Product Messages" : "رسائل المنتج",
+    "Latest products messages" : "آخر رسائل المنتجات"
 }

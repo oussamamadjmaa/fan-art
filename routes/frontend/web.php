@@ -7,6 +7,7 @@ use App\Http\Controllers\Frontend\ArtworksController;
 use App\Http\Controllers\Frontend\BlogsController;
 use App\Http\Controllers\Frontend\ExhibitionsController;
 use App\Http\Controllers\Frontend\PageController;
+use App\Http\Controllers\Frontend\ProductsController;
 use App\Http\Controllers\Frontend\StoreProfileController;
 use App\Http\Controllers\Frontend\StoresController;
 use App\Http\Controllers\Frontend\User\AccountController;
@@ -29,6 +30,10 @@ Route::get('/artist/{artist_username}/{profile_page?}', [ArtistProfileController
 //Store Profile && Stores
 Route::get('/store/{store_username}', [StoreProfileController::class, 'index'])->name('store.profile');
 Route::get('/stores', [StoresController::class, 'index'])->name('stores.index');
+
+//Products
+Route::get('/products/{product}', [ProductsController::class, 'show'])->name('products.show');
+Route::post('/products/{product}/message', [ProductsController::class, 'send_message'])->name('products.send_message');
 
 //Blogs
 Route::get('blogs/', [BlogsController::class, 'index'])->name('blogs.index');

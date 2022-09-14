@@ -95,7 +95,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function notifications(){
-        return $this->hasMany(Notification::class, 'to_user_id')->whereHas('notifiable')->whereHas('from_user');
+        return $this->hasMany(Notification::class, 'to_user_id')->whereHas('notifiable');
     }
 
     public function payments(){

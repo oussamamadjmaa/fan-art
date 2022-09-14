@@ -9,6 +9,14 @@ return [
             'bg_class' => 'bg-success',
         ],
     ],
+    'products' => [
+        'new_message' => [
+            'title' =>  'رسالة جديدة عن منتج',
+            'description' =>  'لديك رسالة جديدة عن منتجك <b>:name</b>',
+            'icon' => 'bi bi-chat-left-text',
+            'bg_class' => 'bg-success',
+        ],
+    ],
     'subscription' => [
         'new_pending_payment' => [
             'title' =>  'عملية دفع لإشتراك بباقة بإنتظار الموافقة',

@@ -29,7 +29,7 @@
     "isEntry": true
   },
   "resources/backend-assets/js/pages/store_dashboard.js": {
-    "file": "assets/store_dashboard.a9462bb8.js",
+    "file": "assets/store_dashboard.68dbf95a.js",
     "src": "resources/backend-assets/js/pages/store_dashboard.js",
     "isEntry": true
   },
@@ -49,6 +49,11 @@
   "resources/frontend-assets/js/pages/artwork.js": {
     "file": "assets/artwork.da67bcde.js",
     "src": "resources/frontend-assets/js/pages/artwork.js",
+    "isEntry": true
+  },
+  "resources/frontend-assets/js/pages/product.js": {
+    "file": "assets/product.66bffb57.js",
+    "src": "resources/frontend-assets/js/pages/product.js",
     "isEntry": true
   },
   "_jquery.55e95f45.js": {

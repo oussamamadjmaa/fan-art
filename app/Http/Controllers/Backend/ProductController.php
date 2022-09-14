@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\ProductRequest;
 use App\Models\Category;
+use App\Models\Message;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -25,11 +26,26 @@ class ProductController extends Controller
     {
         if(request()->expectsJson()){
             $products = (auth()->user()->hasRole('admin')) ? Product::query()->withWhereHas('user') : auth()->user()->products();
-            $products = $products->with('category')->latest('id')->cursorPaginate(15)->withQueryString();
+            $products = $products->withCount(['messages' => fn($q) => $q->whereNull('seen_at')])->with('category')->latest('id')->cursorPaginate(15)->withQueryString();
             $slot = array_merge($products->toArray(), ['data' => view('Backend.Product.list', compact('products'))->render()]);
             return response()->json($slot);
         }
         return view('Backend.Product.index');
+    }
+
+    public function messages(Product $product){
+        if(request()->expectsJson()){
+            $messages = $product->messages();
+            $messages = $messages->with('sender')->latest('id')->cursorPaginate(15)->withQueryString();
+
+            if(auth()->id() == $product->user_id){
+                Message::whereIn('id', $messages->pluck('id')->toArray())->update(['seen_at' => now()]);
+            }
+
+            $slot = array_merge($messages->toArray(), ['data' => view('Backend.Product.partials.messages_list', compact('messages', 'product'))->render()]);
+            return response()->json($slot);
+        }
+        return view('Backend.Product.messages', compact('product'));
     }
 
     /**

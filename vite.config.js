@@ -17,6 +17,7 @@ export default defineConfig({
                 'resources/frontend-assets/js/app.js',
                 'resources/frontend-assets/js/pages/home.js',
                 'resources/frontend-assets/js/pages/artwork.js',
+                'resources/frontend-assets/js/pages/product.js',
             ],
             refresh: true,
         }),

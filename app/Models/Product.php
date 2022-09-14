@@ -29,6 +29,18 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function messages(){
+        return $this->morphMany(Message::class, 'messageable');
+    }
+
+    public function notifications(){
+        return $this->morphMany(Notification::class, 'notifiable');
+    }
+
+    public function visits(){
+        return $this->morphMany(Visit::class, 'visitable');
+    }
+
     /**
      * Append attributes
      */
@@ -39,5 +51,15 @@ class Product extends Model
 
     public function getPriceFormatAttribute(){
         return price_format($this->price);
+    }
+
+    /**
+     * Functions
+     */
+    public function hasMessageFromThisSender(){
+        return $this->messages()->when(auth()->check(),
+                                        fn($q) => $q->where('sender_type', 'App\Models\User')->where('sender_id', auth()->id()),
+                                        fn($q) => $q->where('data->ip_address', request()->ip()))
+                                        ->count();
     }
 }

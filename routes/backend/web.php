@@ -88,6 +88,7 @@ Route::group(['middleware' => ['role:admin|store', 'backend-check:subscribed']],
 
         //Products
         Route::delete('products', [ProductController::class, 'multiple_delete'])->name('products.multiple_delete');
+        Route::get('products/messages/{product}', [ProductController::class, 'messages'])->name('products.messages');
         Route::resource('products', ProductController::class)->except(['show']);
 });
 
