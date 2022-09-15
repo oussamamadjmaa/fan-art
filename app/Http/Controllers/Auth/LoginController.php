@@ -48,7 +48,7 @@ class LoginController extends Controller
         if($user->hasRole(['admin', 'artist', 'store'])){
             return $request->wantsJson()
                     ? response()->json([], 204)
-                    : to_route('backend.dashboard');
+                    : redirect()->intended(route('backend.dashboard'));
         }
     }
 }

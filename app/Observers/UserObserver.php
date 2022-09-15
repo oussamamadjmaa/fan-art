@@ -27,7 +27,7 @@ class UserObserver
      */
     public function updating(User $user)
     {
-        if($user->isDirty('email')){
+        if($user->isDirty('email') && !$user->hasRole('admin')){
             $user->email_verified_at = NULL;
         }
     }
