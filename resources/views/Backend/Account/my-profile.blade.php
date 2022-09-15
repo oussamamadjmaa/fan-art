@@ -26,9 +26,9 @@
                                   <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        <x-auth.form.input  :placeholder="__('Username')" name="username" :value="$user->username" required />
-                        <x-auth.form.input  :placeholder="__('Full name')" name="name" :value="$user->name" required />
-                        <x-auth.form.input  :placeholder="__('Phone')" name="phone" :value="$user->phone" />
+                        <x-auth.form.input  :placeholder="__('Username')" name="username" :value="old('username', $user->username)" required />
+                        <x-auth.form.input  :placeholder="__('Full name')" name="name" :value="old('name', $user->name)" required />
+                        <x-auth.form.input  :placeholder="__('Phone')" name="phone" :value="old('phone', $user->phone)" />
 
                         @role('artist')
                         <div class="mb-3">
@@ -42,11 +42,7 @@
                         </div>
                         @endrole
 
-                        @role('admin')
-                        <x-auth.form.input  :placeholder="__('Email')" name="email" :value="$user->email" />
-                        @else
-                        <x-auth.form.input  :placeholder="__('Email')" name="email" :value="$user->email" readonly/>
-                        @endrole
+                        <x-auth.form.input  :placeholder="__('Email')" name="email" :value="old('email', $user->email)" />
                         @role('artist')
                         <div class="mb-3">
                             <div class="form-check">
@@ -79,6 +75,10 @@
                         <x-auth.form.input type="textarea" class="{{$errors->has('address') ? 'is-invalid' : ''}}"
                             name="address" id="address" :placeholder="__('Store address')"
                             value="{{ old('address', $user->address) }}" required rows="2" autocomplete="address" />
+                        @endrole
+
+                        @role('store|artist')
+                        <x-auth.form.input dir="ltr"  :placeholder="__('Website')" name="website" :value="old('website', $user->website)" />
                         @endrole
                         <x-auth.form.input type="password" :placeholder="__('Current Password')" name="current_password" required />
                     </div>

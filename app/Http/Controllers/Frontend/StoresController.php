@@ -16,7 +16,7 @@ class StoresController extends Controller
         ]);
 
         $stores = User::role('store')->activeVerifiedSubscribed()
-            ->latest('email_verified_at')
+            ->latest()
             ->paginate(16);
 
         if ($stores->currentPage() > $stores->lastPage()) {

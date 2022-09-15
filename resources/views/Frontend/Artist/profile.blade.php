@@ -20,6 +20,11 @@
                     </div>
                     <div>
                         <ul class="artist-contact-info list-unstyled">
+                            @if ($artist->website)
+                            <li>
+                                <a class="text-dark" title="@lang('Website')" target="_blank" href="{{$artist->website}}"><i class="fa fa-link"></i> <span dir="ltr">{{str_replace(['http://', 'https://'], '',$artist->website)}}</span></a>
+                            </li>
+                            @endif
                             @if ($artist->email && $artist->profile?->privacy_settings?->show_email)
                             <li>
                                 <a class="text-dark" title="@lang('Email')" href="mailto:{{$artist->email}}"><i class="fa fa-envelope"></i> {{$artist->email}}</a>

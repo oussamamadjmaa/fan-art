@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\User;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Cache;
 
 class UserObserver
@@ -19,6 +20,19 @@ class UserObserver
     }
 
     /**
+     * Handle the User "updating" event.
+     *
+     * @param  \App\Models\User  $user
+     * @return void
+     */
+    public function updating(User $user)
+    {
+        if($user->isDirty('email')){
+            $user->email_verified_at = NULL;
+        }
+    }
+
+    /**
      * Handle the User "updated" event.
      *
      * @param  \App\Models\User  $user
@@ -26,7 +40,9 @@ class UserObserver
      */
     public function updated(User $user)
     {
-
+        if($user->wasChanged('email') && $user instanceof MustVerifyEmail && !$user->hasVerifiedEmail()){
+            $user->sendEmailVerificationNotification();
+        }
     }
 
     /**

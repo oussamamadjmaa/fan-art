@@ -4,6 +4,7 @@
         {{ __('A fresh verification link has been sent to your email address.') }}
     </div>
     @endif
+    @if (!auth()->user()->email_verified_at)
     <div class="alert alert-warning">
         {{ __('Please check your email for a verification link.') }}
         {{ __('If you did not receive the email') }},
@@ -12,6 +13,7 @@
             <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
         </form>
     </div>
+    @endif
 </div>
 
 @role('artist|store')

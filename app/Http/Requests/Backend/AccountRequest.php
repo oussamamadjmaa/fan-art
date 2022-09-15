@@ -65,14 +65,15 @@ class AccountRequest extends FormRequest
             //Address is required for stores
             if(auth()->user()->hasRole('store'))
                 $rules['address'] = ['required', 'string', 'max:350'];
+                $rules['website'] = ['nullable', 'url'];
 
             if(auth()->user()->hasRole('artist')){
                 $rules['show_phone'] = ['boolean'];
                 $rules['show_email'] = ['boolean'];
+                $rules['website'] = ['nullable', 'url'];
             }
 
-            if(auth()->user()->hasRole('admin'))
-                $rules['email'] = ['required', 'string', $email_rule, 'max:191', 'unique:users,email,' . auth()->id() . ',id'];
+            $rules['email'] = ['required', 'string', $email_rule, 'max:191', 'unique:users,email,' . auth()->id() . ',id'];
 
             return $rules;
         }else if($tab == "password"){

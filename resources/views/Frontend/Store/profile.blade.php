@@ -20,6 +20,11 @@
                     </div>
                     <div>
                         <ul class="store-contact-info list-unstyled">
+                            @if ($store->website)
+                            <li>
+                                <a class="text-dark" title="@lang('Website')" target="_blank" href="{{$store->website}}"><i class="fa fa-link"></i> <span dir="ltr">{{str_replace(['http://', 'https://'], '',$store->website)}}</span></a>
+                            </li>
+                            @endif
                             @if ($store->email && $store->profile?->privacy_settings?->show_email)
                             <li>
                                 <a class="text-dark" title="@lang('Email')" href="mailto:{{$store->email}}"><i class="fa fa-envelope"></i> {{$store->email}}</a>
