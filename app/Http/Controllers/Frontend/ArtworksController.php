@@ -16,15 +16,24 @@ class ArtworksController extends Controller
             'title' => __('Paintings and artwork'),
         ]);
 
+
+        //Filtering
+        $sortByList = ['latest' => 'Latest', 'lowest_price' => 'Price (Low to High)' , 'highest_price' => 'Price (High to Low)', 'oldest' => 'Oldest'];
+        $currentSortBy = request()->get('sortBy', 'latest');
+
         //
         $artworks = Artwork::query();
+        $artworks->when(($currentSortBy == 'latest' || !array_key_exists($currentSortBy, $sortByList)) , fn($q) => $q->latest())
+                            ->when(($currentSortBy == 'highest_price') , fn($q) => $q->latest('price'))
+                            ->when(($currentSortBy == 'lowest_price') , fn($q) => $q->oldest('price'))
+                            ->when(($currentSortBy == 'oldest') , fn($q) => $q->oldest());
         $artworks = $artworks->activeSubscribedArtist()->latest('artworks.created_at')->paginate(12);
 
         if($artworks->currentPage() > $artworks->lastPage()) {
             return redirect(request()->fullUrlWithQuery(['page' => $artworks->lastPage()]));
         }
 
-        return view('Frontend.Artworks.index', compact('artworks'));
+        return view('Frontend.Artworks.index', compact('artworks', 'sortByList', 'currentSortBy'));
     }
 
     public function show(Artwork $artwork){
