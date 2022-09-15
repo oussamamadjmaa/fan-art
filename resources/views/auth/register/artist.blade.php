@@ -71,7 +71,7 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <p>{{ __('By creating this account you agree to') }} <a href="javascript:;">@lang('Subscription Terms')</a> @lang('and') <a href="javascript:;">@lang('Privacy Policy')</a></p>
+                                <p class="fs-7 text-secondary">{{ __('By creating this account you agree to') }} <a href="javascript:;" class="text-dark">@lang('Subscription Terms')</a> @lang('and') <a href="javascript:;" class="text-dark">@lang('Privacy Policy')</a></p>
                             </div>
                         </div>
                         <div>
@@ -80,7 +80,7 @@
                                 <i class="fa fa-arrow-left"></i>
                             </button>
                         </div>
-                        <div class="new-account text-center mt-5">
+                        <div class="new-account text-center mt-5 fs-6">
                             @lang("You already have an account?") <a href="{{route('login')}}" > @lang('Sign in')</a>
                         </div>
                     </form>
