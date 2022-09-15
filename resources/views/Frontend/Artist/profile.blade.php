@@ -85,7 +85,7 @@
     @if ($profile_page == "artworks")
     <section class="artist_artworks bg-white">
         <div class="container">
-            @if ($artworks->count())
+            @if ($artist_artworks->count())
             <div>
                 <div class="d-flex flex-wrap justify-content-end">
                     <div class="dropdown open mb-4">
@@ -113,7 +113,7 @@
     @elseif ($profile_page == "blogs")
     <section class="artist_blogs bg-white">
         <div class="container">
-            @if ($artworks->count())
+            @if ($artist_blogs->count())
             <div>
                 <div class="d-flex flex-wrap justify-content-end">
                     <div class="dropdown open mb-4">
