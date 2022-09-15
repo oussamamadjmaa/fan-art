@@ -37,7 +37,15 @@ class ArtistProfileController extends Controller
         $artist_artworks = NULL;
 
         if($profile_page == "artworks") {
-            $artist_artworks = $artist->artworks()->latest()->paginate(12);
+             //Filtering
+            $sortByList = ['latest' => 'Latest', 'lowest_price' => 'Price (Low to High)' , 'highest_price' => 'Price (High to Low)', 'oldest' => 'Oldest'];
+            $currentSortBy = request()->get('sortBy', 'latest');
+
+            $artist_artworks = $artist->artworks()
+                                        ->when(($currentSortBy == 'latest' || !array_key_exists($currentSortBy, $sortByList)) , fn($q) => $q->latest())
+                                        ->when(($currentSortBy == 'highest_price') , fn($q) => $q->latest('price'))
+                                        ->when(($currentSortBy == 'lowest_price') , fn($q) => $q->oldest('price'))
+                                        ->when(($currentSortBy == 'oldest') , fn($q) => $q->oldest())->paginate(12);
             if($artist_artworks->currentPage() > $artist_artworks->lastPage()) {
                 return redirect(request()->fullUrlWithQuery(['page' => $artist_artworks->lastPage()]));
             }
@@ -47,7 +55,14 @@ class ArtistProfileController extends Controller
         $artist_blogs = NULL;
 
         if($profile_page == "blogs") {
-            $artist_blogs = $artist->news()->published()->latest()->paginate(16);
+            //Filtering
+            $sortByList = ['latest' => 'Latest', 'oldest' => 'Oldest'];
+            $currentSortBy = request()->get('sortBy', 'latest');
+
+            $artist_blogs = $artist->news()
+                                    ->when(($currentSortBy == 'latest' || !array_key_exists($currentSortBy, $sortByList)) , fn($q) => $q->latest())
+                                    ->when(($currentSortBy == 'oldest') , fn($q) => $q->oldest())
+                                    ->published()->paginate(16);
             if($artist_blogs->currentPage() > $artist_blogs->lastPage()) {
                 return redirect(request()->fullUrlWithQuery(['page' => $artist_blogs->lastPage()]));
             }
