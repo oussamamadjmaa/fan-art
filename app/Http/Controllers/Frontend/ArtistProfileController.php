@@ -33,13 +33,16 @@ class ArtistProfileController extends Controller
             'image'    => $artist->avatar_url
         ]);
 
+        //Filtering
+        $sortByList = ['latest' => 'Latest', 'oldest' => 'Oldest'];
+        $currentSortBy = request()->get('sortBy', 'latest');
+
         //Artist artworks
         $artist_artworks = NULL;
 
         if($profile_page == "artworks") {
              //Filtering
             $sortByList = ['latest' => 'Latest', 'lowest_price' => 'Price (Low to High)' , 'highest_price' => 'Price (High to Low)', 'oldest' => 'Oldest'];
-            $currentSortBy = request()->get('sortBy', 'latest');
 
             $artist_artworks = $artist->artworks()
                                         ->when(($currentSortBy == 'latest' || !array_key_exists($currentSortBy, $sortByList)) , fn($q) => $q->latest())
@@ -57,7 +60,6 @@ class ArtistProfileController extends Controller
         if($profile_page == "blogs") {
             //Filtering
             $sortByList = ['latest' => 'Latest', 'oldest' => 'Oldest'];
-            $currentSortBy = request()->get('sortBy', 'latest');
 
             $artist_blogs = $artist->news()
                                     ->when(($currentSortBy == 'latest' || !array_key_exists($currentSortBy, $sortByList)) , fn($q) => $q->latest())
@@ -68,6 +70,6 @@ class ArtistProfileController extends Controller
             }
         }
 
-        return view('Frontend.Artist.profile', compact('artist', 'artist_artworks', 'artist_blogs', 'profile_page'));
+        return view('Frontend.Artist.profile', compact('artist', 'artist_artworks', 'artist_blogs', 'profile_page', 'sortByList', 'currentSortBy'));
     }
 }
