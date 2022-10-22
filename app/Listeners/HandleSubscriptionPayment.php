@@ -41,7 +41,7 @@ class HandleSubscriptionPayment
                 ]);
             }
         }else if($event->payment->status == Payment::PENDING){
-            $admins = User::role('admin')->get();
+            $admins = User::role(['admin', 'financial'])->get();
             foreach ($admins as $admin) {
                 $event->payment->notifications()->create([
                     'from_user_id' => $event->payment->user_id,
