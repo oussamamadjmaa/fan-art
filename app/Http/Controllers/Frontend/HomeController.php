@@ -36,7 +36,7 @@ class HomeController extends Controller
         $latest_artists = User::role('artist')->active()->whereHas('subscription', fn ($q) => $q->active())->latest()->limit(10)->get();
 
         //Latest Artworks & Paintings
-        $latest_artworks = Artwork::where('artworks.status', '!=', Artwork::SOLD)->activeSubscribedArtist()->latest('artworks.created_at')->limit(6)->get();
+        $latest_artworks = Artwork::where('artworks.status', '!=', Artwork::SOLD)->activeSubscribedArtist()->latest('artworks.created_at')->limit(8)->get();
 
         //Blogs
         $artists_with_last_blog = User::role('artist')->activeSubscribedArtist()
