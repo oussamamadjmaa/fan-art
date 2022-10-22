@@ -13,7 +13,7 @@
                 <div class="col-md-9">
                     <div class="blog-container">
                         <small> <i class="far fa-clock me-1"></i>
-                            {{ $blog->created_at->translatedFormat('D d F Y على الساعة h:i A') }}</small>
+                            {{ $blog->created_at->translatedFormat('l d F Y على الساعة h:i A') }}</small>
                         <h3 class="mt-4">{{ $blog->title }}</h3>
                         <div class="bg-light p-3 pb-2 shadow-sm my-2">
                             <h5><a
@@ -35,7 +35,7 @@
                     <div class="py-2">
                         <h4>@lang('Latest blogs from :name', ['name' => explode(' ', $blog->user->name)[0]])</h4>
 
-                        @forelse ($blog->user->news()->published()->where('id', '!=', $blog->id)->latest()->take(7)->get() as $blog)
+                        @forelse ($blog->user->news()->published()->where('id', '!=', $blog->id)->latest()->take(7)->get() as $blog_)
                             @if ($loop->first)
                                 <div class="blogs-list">
                             @endif
@@ -44,9 +44,9 @@
                                     <div>
                                         <div class="blog-item-data">
                                             <h5 class="text-primary mb-1 blog-item-title"><a
-                                                    href="{{ route('frontend.blogs.show', $blog->slug) }}">{{ $blog->title }}</a>
+                                                    href="{{ route('frontend.blogs.show', $blog_->slug) }}">{{ $blog_->title }}</a>
                                             </h5>
-                                            <p class="mb-2">{{ str(strip_tags($blog->body))->limit(71) }}</p>
+                                            <p class="mb-2">{{ str(strip_tags($blog_->body))->limit(71) }}</p>
                                             <div class="info mb-0">
                                                 <ul class="d-flex p-0 text-secondary mb-0 flex-wrap"
                                                     style="list-style: none;gap:12px;font-size:14px;">
@@ -54,9 +54,9 @@
                                                         <i class="me-1 bi bi-person"></i>
                                                         <span>{{ str($blog->user->name)->limit(30) }}</span>
                                                     </li>
-                                                    <li title="{{ $blog->created_at->translatedFormat('d M Y H:i') }}">
+                                                    <li title="{{ $blog_->created_at->translatedFormat('d M Y H:i') }}">
                                                         <i class="me-1 bi bi-clock"></i>
-                                                        <span>{{ $blog->created_at->diffForHumans() }}</span>
+                                                        <span>{{ $blog_->created_at->diffForHumans() }}</span>
                                                     </li>
                                                 </ul>
                                             </div>

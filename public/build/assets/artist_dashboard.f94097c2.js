@@ -1,0 +1,1 @@
+$(function(){let a=$("#latest_artworks_messages");$.ajax({method:"GET",url:GLOBAL.APP_URL+"/panel/dashboard/",dataType:"JSON",cache:!1}).then(t=>{a.html(t.latest_artworks_messages)}),$(document).on("change","#visits_duration",function(){$("#durationForm").submit()})});

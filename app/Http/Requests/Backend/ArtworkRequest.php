@@ -38,14 +38,15 @@ class ArtworkRequest extends FormRequest
             'title'                     => ['required', 'string', 'max:191'],
             'price'                     => ['required', 'integer'],
             'image'                     => ['required', new ValidateFileRule('artworks', ['png', 'jpeg', 'jpg', 'webp'])],
-            'materials_used'            => ['nullable', 'string', 'max:400'],
-            'tools'                     => ['nullable', 'string', 'max:400'],
+           // 'materials_used'            => ['nullable', 'string', 'max:400'],
+           // 'tools'                     => ['nullable', 'string', 'max:400'],
+            'type'                      => ['required', 'string', 'max:191'],
             'outer_frame'               => ['boolean'],
             'dimensions'                => ['required', 'string', 'max:191'],
-            'covered_with_glass'        => ['boolean'],
+          //  'covered_with_glass'        => ['boolean'],
             'location'                  => ['required', 'string', 'max:300'],
-            'status'                    => ['required', 'in:0,1,2'],
-            'description'               => ['required', 'string', 'max:700'],
+            'status'                    => ['required', 'in:1,2'],
+          //  'description'               => ['required', 'string', 'max:700'],
         ];
     }
 }

@@ -1,4 +1,3 @@
-@if (request()->segment(2) != "dashboard")
 <div class="main-breadcrumb bg-white">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -7,4 +6,3 @@
         </ol>
     </nav>
 </div>
-@endif

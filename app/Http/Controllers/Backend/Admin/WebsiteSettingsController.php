@@ -89,12 +89,22 @@ class WebsiteSettingsController extends Controller
         return [
             $this->field_data(['title' => 'Site name', 'name' => 'app__name', 'id' => 'app__name', 'value' => config('app.name')]),
             $this->field_data(['title' => 'Site URL', 'name' => 'app__url', 'id' => 'app__url', 'value' => config('app.url')]),
+            $this->field_data(['title' => 'Free trial days', 'name' => 'app__subscription[free_trial_days]', 'id' => 'app__subscription__free_trial_days', 'value' => config('app.subscription.free_trial_days')]),
             $this->field_data(['type' => 'textarea', 'title' => 'SEO Description', 'name' => 'app__seo[description]', 'id' => 'app__seo__description', 'value' => config('app.seo.description')]),
             $this->field_data(['title' => 'SEO Keywords', 'name' => 'app__seo[keywords]', 'id' => 'app__seo__description', 'value' => config('app.seo.keywords')]),
             $this->field_data(['type' => 'file','title' => 'Favicon', 'name' => 'app__favicon', 'id' => 'app__favicon', 'value' => config('app.favicon'), 'inputAttributes' => 'onchange=_s.uploadImage(this) data-path=favicons']),
             $this->field_data(['type' => 'file','title' => 'Logo', 'name' => 'app__logo', 'id' => 'app__logo', 'value' => config('app.logo'), 'inputAttributes' => 'onchange=_s.uploadImage(this) data-path=logos']),
         ];
     }
+
+    //Ads settings
+    private function ads_settings()
+    {
+        return [
+            $this->field_data(['type' => 'textarea', 'title' => 'Home banner ad html code', 'name' => 'app__ads[home_banner_ad]', 'id' => 'app__ads__home_banner_ad', 'value' => config('app.ads.home_banner_ad'), 'inputAttributes' => 'dir=ltr rows=5']),
+        ];
+    }
+
 
     //Function to set default field data
     private function field_data(array $field_data)

@@ -16,28 +16,50 @@ class ArtworksController extends Controller
             'title' => __('Paintings and artwork'),
         ]);
 
+
+        //Filtering
+        $sortByList = ['latest' => 'Latest', 'lowest_price' => 'Price (Low to High)' , 'highest_price' => 'Price (High to Low)', 'oldest' => 'Oldest'];
+        $currentSortBy = request()->get('sortBy', 'latest');
+
         //
         $artworks = Artwork::query();
+        $artworks->when(($currentSortBy == 'latest' || !array_key_exists($currentSortBy, $sortByList)) , fn($q) => $q->latest())
+                            ->when(($currentSortBy == 'highest_price') , fn($q) => $q->latest('price'))
+                            ->when(($currentSortBy == 'lowest_price') , fn($q) => $q->oldest('price'))
+                            ->when(($currentSortBy == 'oldest') , fn($q) => $q->oldest());
         $artworks = $artworks->activeSubscribedArtist()->latest('artworks.created_at')->paginate(12);
 
         if($artworks->currentPage() > $artworks->lastPage()) {
             return redirect(request()->fullUrlWithQuery(['page' => $artworks->lastPage()]));
         }
 
-        return view('Frontend.Artworks.index', compact('artworks'));
+        return view('Frontend.Artworks.index', compact('artworks', 'sortByList', 'currentSortBy'));
     }
 
     public function show(Artwork $artwork){
+        $artwork->load(['user' => fn($q) => $q->activeSubscribedArtist()]);
+        abort_if(!$artwork->user, 404);
+
         //Page meta data
         $meta = new Meta([
             'title' => $artwork->title,
             'description' => str($artwork->description)->limit(160)->toString(),
             'image'    => storage_url($artwork->image)
         ]);
+
+        //Visits count
+        if(!auth()->check() || auth()->id() != $artwork->user_id){
+            $visits = $artwork->visits()->firstOrCreate(['visits_date' => now()->format('Y-m-d')], ['count' => 0]);
+            $visits->increment('count');
+        }
+
         return view('Frontend.Artworks.show', compact('artwork'));
     }
 
     public function send_message(ArtworkMessageRequest $request, Artwork $artwork){
+        $artwork->load(['user' => fn($q) => $q->activeSubscribedArtist()]);
+        abort_if(!$artwork->user, 404);
+
         if($artwork->hasMessageFromThisSender()){
             return response()->json(['status' => 403, 'message' => __("You already been sent a message about this artwork!")], 403);
         }

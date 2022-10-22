@@ -115,6 +115,7 @@ ul {
         .dropdown-item {
             font-size: 14px;
             height: 36px;
+            line-height: 30px;
 
             i {
                 font-size: 18px;
@@ -300,4 +301,20 @@ div#artistsSlider .owl-nav>button:hover {
     .breadcrumb-item a{
         color: #fff;
     }
+}
+
+img{
+    pointer-events: none;
+}
+
+[name="phone"] {
+    direction: ltr!important;
+}
+
+p {
+    font-size: 1rem;
+}
+
+.fs-7{
+    font-size: 13px;
 }

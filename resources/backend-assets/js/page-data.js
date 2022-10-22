@@ -14,7 +14,7 @@ $(function () {
 
 _s.getItemsList = function (reqParams) {
     pageParams = {...pageParams, ...reqParams };
-    if (nextPageUrl && !isGettingPage) {
+    if (nextPageUrl && !isGettingPage && $("#page-data-list").length) {
         $(".loading-data").remove();
         $("#page-data-list").append(`<div class="py-3 text-center loading-data"><i class="fa fa-spinner fa-spin text-primary"></i></div>`);
         isGettingPage = true;

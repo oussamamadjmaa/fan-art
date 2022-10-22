@@ -27,13 +27,26 @@
                                 href="{{ route('frontend.artist.profile', $artwork->user->username) }}">{{ $artwork->user->name }}</a>
                         </div>
 
-                        <p class="pt-4 fs-5">
-                            {{$artwork->dimensions}}
-                        </p>
-                        <p class="pt-2 fs-5">
-                            {{ $artwork->status_text }}
-                        </p>
+                        <div class="mt-5">
 
+                            <p class="mt-2">
+                                <b>@lang('Painting type')</b> : {!! nl2br(e($artwork->type)) !!}
+                            </p>
+                            <p class="mt-2">
+                                <b>@lang('Outer frame')</b> : {{ $artwork->outer_frame ? __('Yes') : __('No') }}
+                            </p>
+                            <p class="mt-2">
+                                <b>@lang('Painting dimensions (CM)')</b> : {!! nl2br(e($artwork->dimensions)) !!}
+                            </p>
+                            @if (!empty($artwork->location))
+                                <p class="mt-2">
+                                    <b>@lang('Artwork location')</b> : {!! nl2br(e($artwork->location)) !!}
+                                </p>
+                            @endif
+                            <p class="mt-2">
+                                <b>@lang('Painting status')</b> : {{ $artwork->status_text }}
+                            </p>
+                        </div>
                         <h3 class="text-primary py-3">{{ price_format($artwork->price) }}
                             <small><sup>@lang(config('app.currency'))</sup></small></h3>
 
@@ -47,49 +60,13 @@
                 </div>
             </div>
             <div class="p-4">
-                <div class="row border-top">
-                    <div class="col-md-6 col-lg-7 border-end border-md-none pt-3">
-                        <div>
-                            <h3>@lang('Details'):</h3>
-                            @if (!empty($artwork->materials_used))
-                                <p class="mt-2">
-                                    <b>@lang('Materials used')</b> : {!! nl2br(e($artwork->materials_used)) !!}
-                                </p>
-                            @endif
-                            @if (!empty($artwork->tools))
-                                <p class="mt-2">
-                                    <b>@lang('Tools')</b> : {!! nl2br(e($artwork->tools)) !!}
-                                </p>
-                            @endif
-                            <p class="mt-2">
-                                <b>@lang('Outer frame')</b> : {{ $artwork->outer_frame ? __('Yes') : __('No') }}
-                            </p>
-                            <p class="mt-2">
-                                <b>@lang('Painting dimensions (CM)')</b> : {!! nl2br(e($artwork->dimensions)) !!}
-                            </p>
-                            <p class="mt-2">
-                                <b>@lang('Covered with glass')</b> : {{ $artwork->covered_with_glass ? __('Yes') : __('No') }}
-                            </p>
-                            @if (!empty($artwork->tools))
-                                <p class="mt-2">
-                                    <b>@lang('Artwork location')</b> : {!! nl2br(e($artwork->location)) !!}
-                                </p>
-                            @endif
-                            <p class="mt-2">
-                                <b>@lang('Painting status')</b> : {{ $artwork->status_text }}
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-5 pt-3">
-                        <h3>@lang('Painting description'):</h3>
-                        <p>{{$artwork->description}}</p>
-                    </div>
+                <div class="row">
                     <div class="col-12 border-top">
                         <div class="container py-md-5 py-3 border-bottom">
                             <div class="d-flex overflow-hidden">
                                 <div class="me-md-5 me-3">
                                     <div class="avatar-150">
-                                        <img src="{{ $artwork->user->avatar_url }}" alt="" class="avatar-150">
+                                        <img src="{{ $artwork->user->avatar_url }}" alt="{{$artwork->user->name}}" class="avatar-150">
                                     </div>
                                 </div>
                                 <div class="artist-profile-info flex-grow-1">
@@ -100,12 +77,12 @@
                                         </div>
                                     </div>
                                     <div class="d-ph-none">
-                                        <p>{{ $artwork->user->profile->bio }}</p>
+                                        <p>{{ $artwork->user->profile?->bio }}</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="d-pc-none mt-3">
-                                <p>{{ $artwork->user->profile->bio }}</p>
+                                <p>{{ $artwork->user->profile?->bio }}</p>
                             </div>
                         </div>
                     </div>

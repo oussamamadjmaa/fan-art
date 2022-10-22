@@ -1,4 +1,5 @@
 .blog-page {
+
     .blog-container {
         .blog-image {
             text-align: center;
@@ -7,6 +8,10 @@
                 max-height: 768px;
             }
             margin-bottom: 1.5rem;
+        }
+
+        .blog-content {
+            word-break: break-word;
         }
     }
 }

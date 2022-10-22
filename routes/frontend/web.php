@@ -7,6 +7,9 @@ use App\Http\Controllers\Frontend\ArtworksController;
 use App\Http\Controllers\Frontend\BlogsController;
 use App\Http\Controllers\Frontend\ExhibitionsController;
 use App\Http\Controllers\Frontend\PageController;
+use App\Http\Controllers\Frontend\ProductsController;
+use App\Http\Controllers\Frontend\StoreProfileController;
+use App\Http\Controllers\Frontend\StoresController;
 use App\Http\Controllers\Frontend\User\AccountController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +27,14 @@ Route::post('/artworks/{artwork}/message', [ArtworksController::class, 'send_mes
 //Artist Profile
 Route::get('/artist/{artist_username}/{profile_page?}', [ArtistProfileController::class, 'index'])->name('artist.profile');
 
+//Store Profile && Stores
+Route::get('/store/{store_username}', [StoreProfileController::class, 'index'])->name('store.profile');
+Route::get('/stores', [StoresController::class, 'index'])->name('stores.index');
+
+//Products
+Route::get('/products/{product}', [ProductsController::class, 'show'])->name('products.show');
+Route::post('/products/{product}/message', [ProductsController::class, 'send_message'])->name('products.send_message');
+
 //Blogs
 Route::get('blogs/', [BlogsController::class, 'index'])->name('blogs.index');
 Route::get('blogs/{blog:slug}', [BlogsController::class, 'show'])->name('blogs.show');
@@ -34,7 +45,7 @@ Route::get('/exhibitions', [ExhibitionsController::class, 'index'])->name('exhib
 Route::get('/exhibitions/{exhibition:slug}', [ExhibitionsController::class, 'show'])->name('exhibitions.show');
 
 //
-Route::group(['middleware' => ['auth', 'verified']], function(){
+Route::group(['middleware' => ['auth']], function(){
     //Account
     Route::controller(AccountController::class)->group(function(){
         Route::post('upload-avatar', 'upload_avatar')->name('account.upload_avatar');

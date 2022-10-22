@@ -22,10 +22,11 @@ class BackendCheck
         abort_if(!auth()->user()->hasRole(['admin', 'artist', 'store']), 404);
 
         if($check == "profile" && auth()->user()->hasRole('artist') && (!auth()->user()->avatar || !auth()->user()->profile()->count())){
+            auth()->user()->profile()->create();
             return to_route('frontend.setup_profile.index', 'my-profile');
         }
 
-        if($check == "subscribed" && auth()->user()->hasRole('artist') && !auth()->user()->subscription()->active()->count()){
+        if($check == "subscribed" && !auth()->user()->subscription()->active()->count()){
             return to_route('backend.subscription.index');
         }
         return $next($request);

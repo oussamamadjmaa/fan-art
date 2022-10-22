@@ -35,6 +35,29 @@ $(function(){
         })
     }
 
+    if($("#storesSlider").length){
+        $('#storesSlider').owlCarousel({
+            rtl:GLOBAL['IS_RTL'],
+            loop:false,
+            dots:false,
+            nav:true,
+            responsive:{
+                0:{
+                    items:1
+                },
+                500:{
+                    items:2
+                },
+                768:{
+                    items:3
+                },
+                1000:{
+                    items:5
+                }
+            }
+        })
+    }
+
     if($('.countdown-timer').length){
         // Update the count down every 1 second
         var x = setInterval(function() {

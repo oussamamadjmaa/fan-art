@@ -101,7 +101,7 @@ class ArtworkController extends Controller
     public function toggle_status(Request $request, Artwork $artwork){
         abort_if(Gate::denies('update', $artwork), 404);
         $request->validate([
-            'status' => 'required|in:0,1,2'
+            'status' => 'required|in:1,2'
         ]);
         $artwork->status = $request->status;
         $artwork->save();

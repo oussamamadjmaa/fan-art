@@ -9,12 +9,15 @@
         <div class="d-flex">
             <div class="artwork-sender-image me-2">
                 <div class="avatar-50">
-                    <img src="{{ $message->sender?->avatar_url ?: storage_url($artwork->image) }}"
-                        alt="{{ $message->sender?->name ?: $artwork->title }}" class="avatar-50">
+                    <img src="{{ $message->sender?->avatar_url ?: storage_url($message->messageable->image) }}"
+                        alt="{{ $message->sender?->name ?: $message->messageable->title }}" class="avatar-50">
                 </div>
             </div>
             <div class="artwork-message-info">
                 <h6 class="artwork-message-from mb-0">{{ $name_ }}</h6>
+                @if (isset($show_artwork_title))
+                <small class="text-secondary d-block">{{$message->messageable->title}}</small>
+                @endif
                 <small class="artwork-message-shortbody mb-0">{!! nl2br(e($message->body)) !!}</small>
                 <div class="artwork-message-contact-info mt-1">
                     <ul class="d-flex p-0 text-secondary mb-0 flex-wrap"

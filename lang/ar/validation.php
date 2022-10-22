@@ -197,6 +197,7 @@ return [
         "logo"                  => 'الشعار',
         "registration_url"      => 'رابط التسجيل',
         "sponsor_id"            => 'الراعي',
+        'category_id'           => 'التصنيف',
         "bank_transfer_receipt" => 'إيصال التحويل البنكي',
         "bio"                   => 'السيرة الذاتية'
     ],

@@ -1,6 +1,7 @@
 @props([
     'title' => 'Modal Title',
-    'onclick' => '_s.submitCreate(this)'
+    'onclick' => '_s.submitCreate(this)',
+    'submit_btn_text' => 'Save'
 ])
 <div class="modal fade" id="formModalId" tabindex="-1" role="dialog" aria-labelledby="modalTitleformModalId" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -17,7 +18,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@lang('Close')</button>
                 <button type="button" class="btn btn-primary" onclick="{{ $onclick }}">
-                    <span>@lang('Save')</span>
+                    <span>@lang($submit_btn_text)</span>
                 </button>
             </div>
         </div>

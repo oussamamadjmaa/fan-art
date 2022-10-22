@@ -18,7 +18,7 @@
     <x-form.input name="text" label="Carousel text" inputAttributes="required" :value="($carousel->text ?? '')" />
     <x-form.input name="secondary_text" :value="($carousel->secondary_text ?? '')" />
 
-    <x-form.select2 name="action" label="Action Type" inputAttributes="required">
+    <x-form.select2 name="action" label="Action Type" required="required">
         <option value="button_link" @selected($carousel?->action == "button_link")>@lang('Button Link')</option>
         <option value="countdown" @selected($carousel?->action == "countdown")>@lang('Countdown')</option>
         <option value="nothing" @selected($carousel?->action == "nothing")>@lang('No thing')</option>

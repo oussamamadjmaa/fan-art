@@ -78,6 +78,14 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(News::class)->latest();
     }
 
+    public function products(){
+        return $this->hasMany(Product::class);
+    }
+
+    public function categories(){
+        return $this->hasMany(Category::class);
+    }
+
     public function activeSubscription(){
         return $this->hasOne(Subscription::class)->active();
     }
@@ -87,11 +95,19 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function notifications(){
-        return $this->hasMany(Notification::class, 'to_user_id');
+        return $this->hasMany(Notification::class, 'to_user_id')->whereHas('notifiable');
     }
 
     public function payments(){
         return $this->hasMany(Payment::class);
+    }
+
+    public function visits(){
+        return $this->morphMany(Visit::class, 'visitable');
+    }
+
+    public function support_tickets(){
+        return $this->hasMany(SupportTicket::class);
     }
 
     //Artist Relations
@@ -134,10 +150,16 @@ class User extends Authenticatable implements MustVerifyEmail
         return $q->whereNotNull('users.email_verified_at');
     }
     public function scopeSubscribed($q){
-        return $q->whereHas('profile')->whereHas('subscription', fn($q) => $q->active());
+        return $q->whereHas('subscription', fn($q) => $q->active());
     }
 
     public function scopeActiveSubscribedArtist($q) {
-        return $q->active()->verified()->subscribed();
+        //return $q->active()->verified()->subscribed()->whereHas('profile');
+        return $q->active()->subscribed();
+    }
+
+    public function scopeActiveVerifiedSubscribed($q) {
+        //return $q->active()->verified()->subscribed();
+        return $q->active()->subscribed();
     }
 }

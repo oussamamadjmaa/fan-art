@@ -16,6 +16,7 @@
     <section class="exhibition-page bg-white py-5">
         <div class="container">
             <div class="row">
+                @if ($exhibition->sponsor)
                 <div class="col-lg-7 col-md-6 mb-5">
                     <div class="d-flex">
                         <div class="pe-3">
@@ -63,6 +64,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
                 <div class="col-lg-5 col-md-6">
                     <div class="table-responsive">
                         <table class="table" width="100%">
@@ -90,6 +92,7 @@
 
                     </div>
                 </div>
+
             </div>
         </div>
     </section>

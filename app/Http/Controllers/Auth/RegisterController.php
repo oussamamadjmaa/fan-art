@@ -51,6 +51,7 @@ class RegisterController extends Controller
         if($role != 'customer') {
             $user->assignRole($role);
             $plan = Plan::where('key', 'free_trial')->first();
+            $profile = $user->profile()->create();
             if($plan) {
                 event(new SubscriptionPayment($payment = $this->createFreeTrialPayment($user, $plan)));
             }
@@ -75,7 +76,7 @@ class RegisterController extends Controller
             'user_id' =>  $user->id,
             'payment_method' => 'free_trial',
             'payment_data' => [
-                'duration' => 180,
+                'duration' => config('app.subscription.free_trial_days'),
                 'duration_method' => 'addDays',
                 'duration_type' => 'days',
             ],

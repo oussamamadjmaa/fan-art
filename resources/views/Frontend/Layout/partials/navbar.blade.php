@@ -1,10 +1,8 @@
 <div class="_navbar" id="navbar">
     <div class="_navbar-container">
-        <div class="_navbar-logo">
-            <a href="{{route('frontend.home')}}">
-                <img src="{{ storage_url(config('app.logo')) }}" alt="{{ config("app.name") }}">
-            </a>
-        </div>
+        <a class="_navbar-logo" href="{{route('frontend.home')}}">
+            <img src="{{ storage_url(config('app.logo')) }}" alt="{{ config("app.name") }}">
+        </a>
         <div class="_navbar-menus">
             <div class="_navbar-top__menu">
                 <ul class="_navbar-social_media">
@@ -48,7 +46,7 @@
                     <li><a href="{{route('frontend.artists.index')}}">@lang('Artists')</a></li>
                     <li><a href="{{route('frontend.artworks.index')}}">@lang('Paintings and artwork')</a></li>
                     <li><a href="{{route('frontend.exhibitions.index')}}">@lang('Exhibitions and meetings')</a></li>
-                    <li><a href="#">@lang('Stores')</a></li>
+                    <li><a href="{{route('frontend.stores.index')}}">@lang('Stores')</a></li>
                     <li><a href="{{route('frontend.blogs.index')}}">@lang('Artist blog')</a></li>
                     <li><a href="#">@lang('Contact us')</a></li>
                 </ul>

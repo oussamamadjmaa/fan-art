@@ -41,7 +41,7 @@
                 <div>
                   <select class="form-control toggle_status" id="status" data-id="{{$artwork?->id}}">
                     <option value="1" @selected($artwork?->status === App\Models\Artwork::READY)>@lang('Ready for delivery')</option>
-                    <option value="0" @selected($artwork?->status === App\Models\Artwork::NOT_READY)>@lang('In preparation')</option>
+                    {{-- <option value="0" @selected($artwork?->status === App\Models\Artwork::NOT_READY)>@lang('In preparation')</option> --}}
                     <option value="2" @selected($artwork?->status === App\Models\Artwork::SOLD)>@lang('Sold')</option>
                   </select>
                 </div>

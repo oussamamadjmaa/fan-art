@@ -17,7 +17,7 @@ class ArtistsController extends Controller
         ]);
 
         $artists = User::role('artist')->activeSubscribedArtist()
-            ->latest('email_verified_at')
+            ->latest()
             ->paginate(16);
 
         if ($artists->currentPage() > $artists->lastPage()) {

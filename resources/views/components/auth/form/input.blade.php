@@ -18,6 +18,7 @@ $icons = [
     'instagram'             => 'fab fa-instagram',
     'twitter'               => 'fab fa-twitter',
     'linkedin'              => 'fab fa-linkedin',
+    'whatsapp'              => 'fab fa-whatsapp',
     'bio'                   => 'fas fa-address-card',
     'address'               => 'fa fa-map-marker-alt'
 ];

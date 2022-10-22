@@ -6,13 +6,16 @@ use App\Http\Controllers\Backend\Admin\WebsiteSettingsController;
 use App\Http\Controllers\Backend\ArtworkController;
 use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\CarouselController;
+use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\ExhibitionController;
 use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\NotificationsController;
 use App\Http\Controllers\Backend\PagesManagerController;
+use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SponsorController;
 use App\Http\Controllers\Backend\SubscriptionController;
+use App\Http\Controllers\Backend\SupportTicketController;
 use App\Http\Controllers\Backend\UpdateController;
 use App\Http\Controllers\Backend\UploadFilesController;
 use Illuminate\Support\Facades\Route;
@@ -78,6 +81,17 @@ Route::group(['middleware' => ['role:admin|artist', 'backend-check:subscribed']]
     Route::resource('blogs', BlogController::class)->except(['show']);
 });
 
+Route::group(['middleware' => ['role:admin|store', 'backend-check:subscribed']], function(){
+        //Categories
+        Route::delete('categories', [CategoryController::class, 'multiple_delete'])->name('categories.multiple_delete');
+        Route::resource('categories', CategoryController::class)->except(['show']);
+
+        //Products
+        Route::delete('products', [ProductController::class, 'multiple_delete'])->name('products.multiple_delete');
+        Route::get('products/messages/{product}', [ProductController::class, 'messages'])->name('products.messages');
+        Route::resource('products', ProductController::class)->except(['show']);
+});
+
 Route::middleware('role:artist|store')->group(function(){
     Route::get('subscription', [SubscriptionController::class, 'index'])->name('subscription.index');
     Route::get('subscription/payments/history', [SubscriptionController::class, 'payment_history'])->name('subscription.payment_history');
@@ -99,6 +113,16 @@ Route::controller(AccountController::class)->prefix('account')->as('account.')->
     Route::get('password', 'password')->name('password');
     Route::get('artist-profile', 'artist_profile')->middleware('role:artist')->name('artist_profile');
     Route::put('save/{tab}', 'save')->name('save');
+});
+
+Route::controller(SupportTicketController::class)->as('support_tickets.')->prefix('support/tickets')->group(function(){
+    Route::get('/', 'index')->name('index');
+    Route::post('/', 'store')->name('store');
+    Route::get('/create', 'create')->name('create');
+    Route::get('/{support_ticket}', 'show')->name('show');
+    Route::post('/{support_ticket}', 'send_message')->name('send_message');
+    Route::put('/{support_ticket}/close', 'close_ticket')->name('close_ticket');
+
 });
 
 //Upload

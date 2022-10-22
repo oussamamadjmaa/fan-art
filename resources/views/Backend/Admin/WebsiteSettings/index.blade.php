@@ -3,14 +3,17 @@
 @php
     $settings_list = [
         'general' => [
-            'title' => 'الإعدادات العامة',
+            'title' => __('General Settings'),
             'icon' => 'bi bi-gear',
         ],'bank' => [
-            'title' => 'معلومات الحساب البنكي',
+            'title' => __('Bank Settings'),
             'icon' => 'bi bi-bank',
         ],'smtp' => [
             'title' => __('Smtp Settings'),
             'icon' => 'bi bi-envelope',
+        ],'ads' => [
+            'title' => __('Advertisements'),
+            'icon' => 'bi bi-badge-ad',
         ]
     ]
 @endphp

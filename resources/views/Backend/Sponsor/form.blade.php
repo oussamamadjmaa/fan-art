@@ -11,7 +11,7 @@
 
     <x-form.input name="website" inputAttributes="required" label="Website url" :value="$sponsor->website ?? ''" />
 
-    <x-form.select2 name="country" label="Country" inputAttributes="required">
+    <x-form.select2 name="country" label="Country" required="required">
         <option value="">@lang('Select Country')...</option>
         @foreach ($countries as $countryCode => $country)
             <option value="{{ $countryCode }}" @selected($countryCode == old('country', $sponsor?->country ?: strtolower(auth()->user()->country)))>@lang(country($countryCode)->getName())</option>

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('exhibitions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete();
-            $table->foreignId('sponsor_id')->references('id')->on('sponsors')->cascadeOnDelete();
+            $table->foreignId('sponsor_id')->nullable()->references('id')->on('sponsors')->cascadeOnDelete();
             $table->string('slug')->unique();
             $table->string('name');
             $table->date('from_date');

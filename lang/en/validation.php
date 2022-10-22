@@ -176,7 +176,8 @@ return [
         "action_data.url"       => "Button url",
         "action_data.color"     => "Button color",
         "action_data.countdown_date" => "Countdown date",
-        "sponsor_id"            => 'Sponsor'
+        "sponsor_id"            => 'Sponsor',
+        "category_id"           => 'Category'
     ],
 
 ];

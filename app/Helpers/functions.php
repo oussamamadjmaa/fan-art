@@ -156,7 +156,7 @@ if (!function_exists('cleanHtml')) {
         $xpath = new DOMXPath($dom);
         $nodes = $xpath->query('//@*');
         foreach ($nodes as $node) {
-            if ($node->nodeName != "style" && $node->nodeName != "href" && $node->nodeName != "target") {
+            if(!in_array($node->nodeName, ['style', 'href', 'target'])){
                 $node->parentNode->removeAttribute($node->nodeName);
             }
         }

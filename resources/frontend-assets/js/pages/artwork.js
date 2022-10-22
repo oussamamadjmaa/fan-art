@@ -1,9 +1,11 @@
 $(function(){
-    $("#artwork_img_01").ezPlus({
-        scrollZoom: true,
-        tint: true,
-        tintColour: '#000', tintOpacity: 0.5
-    });
+    if(!(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))) {
+        $("#artwork_img_01").ezPlus({
+            scrollZoom: true,
+            tint: true,
+            tintColour: '#000', tintOpacity: 0.5
+        });
+    }
 
     $(document).on('submit', '#artwork_message_form', function(e) {
         e.preventDefault();

@@ -19,7 +19,7 @@ class UploadFilesController extends Controller
         }
 
         if(auth()->user()->hasRole('store')){
-            $paths = ['confirmation_pictures'];
+            $paths = ['confirmation_pictures', 'products'];
         }
 
         $paths = implode(',', $paths);
