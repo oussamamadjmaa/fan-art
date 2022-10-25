@@ -29,11 +29,11 @@
     &:hover{
         color: #fff;
         opacity: .95;
-        box-shadow: -5px 4px 13px 0px #f268226e;
+        box-shadow: -5px 4px 13px 0px #0e2a4aab;
     }
     &:active{
         opacity: .85;
-        box-shadow: -5px 4px 8px 0px #f268226e;
+        box-shadow: -5px 4px 8px 0px #0e2a4aab;
     }
     &:disabled {
         opacity: .9;
@@ -44,7 +44,7 @@
 .icon-button{
     @extend .button;
     & > i {
-        background-color: #c75217a3;
+        background-color: #0e2a4aab;
         border-radius: 50%;
         width: 23px;
         height: 23px;

@@ -105,6 +105,15 @@ class WebsiteSettingsController extends Controller
         ];
     }
 
+    //Bank settings
+    private function whos_us_settings()
+    {
+        return [
+            $this->field_data(['type' => 'textarea', 'title' => 'من نحن', 'name' => 'app__whos_us[text]', 'id' => 'app__whos_us__text', 'value' => config('app.whos_us.text'), 'inputAttributes' => 'dir=rtl rows=5']),
+            $this->field_data(['type' => 'textarea', 'title' => 'Video embed code', 'name' => 'app__whos_us[video]', 'id' => 'app__whos_us__video', 'value' => config('app.whos_us.video'), 'inputAttributes' => 'dir=ltr rows=5']),
+        ];
+    }
+
 
     //Function to set default field data
     private function field_data(array $field_data)

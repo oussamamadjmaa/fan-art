@@ -3,12 +3,33 @@
     {{-- Carousels --}}
     @include('Frontend.partials.home.carousel')
 
+    {{-- Who's us --}}
+    <section class="whos_us bg-white painting-border pt-4 pb-2">
+        <div class="container pb-3 pt-5">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center">
+                    <div class="col-md-10">
+                        <h1 class="mb-3 fs-2 fw-bold">من نحن</h1>
+                        <p style="font-size:17px;font-weight:200;">{{config('app.whos_us.text')}}</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="youtube-iframe">{!! config('app.whos_us.video') !!}</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     {{-- Latest Artists --}}
     @if ($latest_artists->count())
     <section class="latest_artists bg-white painting-border pt-4 pb-2">
         <div class="container pb-1 pt-3">
              <h1 class="mb-2 fs-2"><a href="{{route('frontend.artists.index')}}">@lang('Joined us'):</a></h1>
              @include('Frontend.partials.home.latest_artists')
+
+             <div class="text-center mt-4">
+                <a href="{{ route('frontend.artists.index') }}" class="primary-btn">@lang('Show all artists')</a>
+            </div>
         </div>
      </section>
     @endif

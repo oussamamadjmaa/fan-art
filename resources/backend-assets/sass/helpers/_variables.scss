@@ -1,12 +1,13 @@
-$bg-color1:#121d2f;
-$bg-color2:#16263f;
-$thm-primary-color: #f26822;
+$bg-color1:#000000;
+$bg-color2:#1c1c1c;
+$secondary-color: #f26822;
+$thm-primary-color: #034ea2;
 $avatar_sizes: 30, 40, 50, 100, 120, 150, 200, 250, 300, 500;
 
 :root{
     --sidebar-width:256px;
     --navbar-height:56px;
-    --bs-primary-rgb:242,104,34;
-    --thm-primary-color: #f26822;
+    --bs-primary-rgb:3, 78, 162;
+    --thm-primary-color: #034ea2;
     --thm-font:'Roboto', 'Opan Sans', sans-serif;;
 }

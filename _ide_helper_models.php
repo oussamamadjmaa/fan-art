@@ -19,6 +19,7 @@ namespace App\Models{
  * @property string $slug
  * @property string $title
  * @property int $price
+ * @property string|null $type
  * @property string $image
  * @property bool $outer_frame
  * @property string|null $dimensions
@@ -27,7 +28,6 @@ namespace App\Models{
  * @property string|null $url
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null $type
  * @property-read mixed $price_format
  * @property-read mixed $status_text
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Message[] $messages
@@ -126,7 +126,7 @@ namespace App\Models{
  *
  * @property int $id
  * @property int $user_id
- * @property int|null $sponsor_id
+ * @property int $sponsor_id
  * @property string $slug
  * @property string $name
  * @property \Illuminate\Support\Carbon $from_date
@@ -137,7 +137,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read mixed $from_to_date
- * @property-read \App\Models\Sponsor|null $sponsor
+ * @property-read \App\Models\Sponsor $sponsor
  * @property-read \App\Models\User $user
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Visit[] $visits
  * @property-read int|null $visits_count
@@ -166,10 +166,10 @@ namespace App\Models{
  * App\Models\Message
  *
  * @property int $id
- * @property string|null $sender_type
  * @property int|null $sender_id
- * @property string $messageable_type
+ * @property string|null $sender_type
  * @property int $messageable_id
+ * @property string $messageable_type
  * @property string $body
  * @property object|null $data
  * @property \Illuminate\Support\Carbon|null $seen_at
@@ -240,8 +240,8 @@ namespace App\Models{
  * @property int $id
  * @property int|null $from_user_id
  * @property int|null $to_user_id
- * @property string|null $notifiable_type
  * @property int|null $notifiable_id
+ * @property string|null $notifiable_type
  * @property string $type
  * @property \Illuminate\Support\Carbon|null $seen_at
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -302,8 +302,8 @@ namespace App\Models{
  *
  * @property int $id
  * @property int $user_id
- * @property string $paymentable_type
  * @property int $paymentable_id
+ * @property string $paymentable_type
  * @property string|null $transaction_id
  * @property string|null $payment_method
  * @property string|null $confirmation_picture
@@ -553,6 +553,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $last_seen_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @property string|null $artist_type
  * @property-read \App\Models\Subscription|null $activeSubscription
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Artwork[] $artworks
  * @property-read int|null $artworks_count
@@ -598,6 +599,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User subscribed()
  * @method static \Illuminate\Database\Eloquent\Builder|User verified()
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereArtistType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAvatar($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCountry($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
@@ -659,7 +661,7 @@ namespace App\Models{
  * @property string|null $visitable_type
  * @property int|null $visitable_id
  * @property int $count
- * @property \Illuminate\Support\Carbon $visits_date
+ * @property \Illuminate\Support\Carbon|null $visits_date
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $sender

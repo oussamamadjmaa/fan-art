@@ -11,38 +11,39 @@
                 </ol>
             </nav>
 
-            <div class="artists-list">
+            <div>
+                <div class="d-flex flex-wrap justify-content-end">
+                    <div class="dropdown open mb-4">
+                        <a class="bg-light d-block text-dark p-2 pb-1" href="javascript:;" type="button" id="artistType" data-bs-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                   <i class="bi bi-filter"></i> @lang('Artist type'): @lang($getByArtistTypeList[$currentArtistType] ?? 'all')
+                                </a>
+                        <div class="dropdown-menu" aria-labelledby="artistType">
+                            @foreach ($getByArtistTypeList as $artistTypeKey => $artistTypeTxt)
+                                <a class="dropdown-item" href="{{request()->fullUrlWithQuery(['artist_type' => $artistTypeKey])}}">@lang($artistTypeTxt)</a>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="artists-list row">
                 @forelse ($artists as $artist)
-                <div class="artists-list-item mb-5">
-                    <div class="row">
-                        <div class="col-md-3 mb-3 mb-md-0">
-                            <div class="artist-information">
-                                <div>
-                                    <a class="artist-showcase_ text-dark" href="{{ route('frontend.artist.profile', $artist->username) }}">
-                                        <div class="artist-showcase_-avatar mb-3 avatar-150 mx-auto">
-                                            <img src="{{ $artist->avatar_url }}" alt="{{ $artist->name }}" class="avatar-150">
-                                        </div>
-                                        <div class="artist-showcase_-info text-center">
-                                            <h5>{{ str($artist->name)->limit(30) }}</h5>
-                                            <h6>{{ __(country($artist->country)->getName()) }}</h6>
-                                        </div>
-                                    </a>
-                                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                    <div class="artists-list-item mb-5">
+                        <div class="artist-information">
+                            <div>
+                                <a class="artist-showcase_ text-dark" href="{{ route('frontend.artist.profile', $artist->username) }}">
+                                    <div class="artist-showcase_-avatar mb-3 avatar-120 mx-auto">
+                                        <img src="{{ $artist->avatar_url }}" alt="{{ $artist->name }}" class="avatar-120">
+                                    </div>
+                                    <div class="artist-showcase_-info text-center">
+                                        <h6 class="mb-0">{{ str($artist->name)->limit(30) }}</h6>
+                                        <small class="text-secondary">{{ __(country($artist->country)->getName()) }} (@lang($artist->artist_type))</small>
+                                    </div>
+                                </a>
                             </div>
                         </div>
-                        @forelse ($artist->artworks()->latest()->limit(3)->get() as $artwork)
-                            <div class="col-md-3 col-sm-6 @if(!$loop->first) d-none d-sm-block @endif">
-                                <div>
-                                    @include('Frontend.partials.artwork.single')
-                                </div>
-                            </div>
-                        @empty
-                            <div class="col">
-                                <div class="text-center h-100 d-flex align-items-center justify-content-center">
-                                    <h6>@lang("This artist didn't post any artwork yet")</h6>
-                                </div>
-                            </div>
-                        @endforelse
                     </div>
                 </div>
                 @empty

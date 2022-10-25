@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\AccountController;
+use App\Http\Controllers\Backend\Admin\ContactArtistsController;
 use App\Http\Controllers\Backend\Admin\SubscriptionsController;
 use App\Http\Controllers\Backend\Admin\WebsiteSettingsController;
 use App\Http\Controllers\Backend\ArtworkController;
@@ -55,6 +56,11 @@ Route::group(['middleware' => 'role:admin'], function(){
         Route::put('subscriptions-management/review/payment/{payment}/{status}', 'payment_status_action')->name('payment_status_action');
     });
 
+    //Contact artists
+    Route::controller(ContactArtistsController::class)->as('contact_artists.')->group(function(){
+        Route::get('contact-artists', 'index')->name('index');
+        Route::post('contact-artists', 'send')->name('send');
+    });
     //Update
     Route::get('update/{v}', [UpdateController::class, 'update']);
 });

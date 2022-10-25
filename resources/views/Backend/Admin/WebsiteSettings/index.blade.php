@@ -14,6 +14,9 @@
         ],'ads' => [
             'title' => __('Advertisements'),
             'icon' => 'bi bi-badge-ad',
+        ],'whos_us' => [
+            'title' => __('من نحن'),
+            'icon' => 'bi bi-question-diamond',
         ]
     ]
 @endphp

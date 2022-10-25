@@ -67,6 +67,11 @@
             'cond' => true,
             'href' => route('backend.support_tickets.index')
         ],[
+            'title' => 'Contact artists',
+            'icon' => 'far fa-envelope',
+            'cond' => true,
+            'href' => route('backend.contact_artists.index')
+        ],[
             'title' => 'My account',
             'icon' => 'far fa-user',
             'cond' => true,
@@ -106,11 +111,11 @@
                     @role('admin')
                     مدير الموقع
                     @elserole('artist')
-                    فنان
+                    @lang(auth()->user()->artist_type)
                     @elserole('store')
-                    متجر متخصص
+                    @lang('Store')
                     @elserole('financial')
-                    متجر متخصص
+                    @lang('Financial')
                     @endrole
                 </span>
                 <a href="{{route('frontend.home')}}" target="_blank" class="__ bg-secondary">@lang('Go to website') <span class="link-icon"><i class="bi bi-chevron-left"></i></span></a>

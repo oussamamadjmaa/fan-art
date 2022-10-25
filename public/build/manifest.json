@@ -8,7 +8,7 @@
     "src": "resources/frontend-assets/assets/images/bgs/paint.png"
   },
   "resources/backend-assets/js/app.js": {
-    "file": "assets/app.c49efff4.js",
+    "file": "assets/app.c393aeb8.js",
     "src": "resources/backend-assets/js/app.js",
     "isEntry": true,
     "imports": [
@@ -16,7 +16,7 @@
     ]
   },
   "resources/backend-assets/js/guest.js": {
-    "file": "assets/guest.84fcce38.js",
+    "file": "assets/guest.1f769a25.js",
     "src": "resources/backend-assets/js/guest.js",
     "isEntry": true,
     "imports": [
@@ -24,17 +24,17 @@
     ]
   },
   "resources/backend-assets/js/pages/artist_dashboard.js": {
-    "file": "assets/artist_dashboard.f94097c2.js",
+    "file": "assets/artist_dashboard.f08e7abc.js",
     "src": "resources/backend-assets/js/pages/artist_dashboard.js",
     "isEntry": true
   },
   "resources/backend-assets/js/pages/store_dashboard.js": {
-    "file": "assets/store_dashboard.68dbf95a.js",
+    "file": "assets/store_dashboard.11805033.js",
     "src": "resources/backend-assets/js/pages/store_dashboard.js",
     "isEntry": true
   },
   "resources/frontend-assets/js/app.js": {
-    "file": "assets/app.6b964635.js",
+    "file": "assets/app.96888489.js",
     "src": "resources/frontend-assets/js/app.js",
     "isEntry": true,
     "imports": [
@@ -42,17 +42,17 @@
     ]
   },
   "resources/frontend-assets/js/pages/home.js": {
-    "file": "assets/home.5306b8b8.js",
+    "file": "assets/home.c1b7a32a.js",
     "src": "resources/frontend-assets/js/pages/home.js",
     "isEntry": true
   },
   "resources/frontend-assets/js/pages/artwork.js": {
-    "file": "assets/artwork.ac624141.js",
+    "file": "assets/artwork.a175c5fa.js",
     "src": "resources/frontend-assets/js/pages/artwork.js",
     "isEntry": true
   },
   "resources/frontend-assets/js/pages/product.js": {
-    "file": "assets/product.f68dcd52.js",
+    "file": "assets/product.05b19a5f.js",
     "src": "resources/frontend-assets/js/pages/product.js",
     "isEntry": true
   },
@@ -60,12 +60,12 @@
     "file": "assets/jquery.55e95f45.js"
   },
   "resources/backend-assets/sass/app.scss": {
-    "file": "assets/app.b1defc29.css",
+    "file": "assets/app.6594e0fb.css",
     "src": "resources/backend-assets/sass/app.scss",
     "isEntry": true
   },
   "resources/frontend-assets/sass/app.scss": {
-    "file": "assets/app.19a37996.css",
+    "file": "assets/app.4b194073.css",
     "src": "resources/frontend-assets/sass/app.scss",
     "isEntry": true
   }

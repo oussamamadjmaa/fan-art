@@ -36,6 +36,7 @@ class RegisterRequest extends FormRequest
         $rules = [
             //Artist registration rules
             'artist' => [
+                'artist_type'   => ['required', 'in:'.implode(',', config('app.artist_types', []))],
                 'username'      => ['required', 'string', 'alpha_dash', 'between:3,60', 'unique:users'],
                 'name'          => ['required', 'string', 'max:191'],
                 'nationality'   => ['required', 'string', 'in:'.implode(',', array_keys(__('nationalities')))],
@@ -45,7 +46,6 @@ class RegisterRequest extends FormRequest
                 'phone'         => ['nullable', 'regex:/[0-9]/', 'not_regex:/[A-z]/', 'between:8,30',],
                 'email'         => ['required', 'string', $email_rule, 'max:191', 'unique:users'],
                 'password'      => ['required', 'string', 'min:8', 'confirmed'],
-
             ],
             'store' => [
                 'username'      => ['required', 'string', 'alpha_dash', 'between:3,60', 'unique:users'],

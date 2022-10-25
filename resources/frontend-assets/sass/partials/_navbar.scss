@@ -199,10 +199,10 @@
                 align-items: center;
                 justify-content: center;
 
-                .rtl & { border-bottom: solid 35px var(--thm-primary-color);
-                    border-left: solid 17px $bg-color1; }
-                .ltr & { border-bottom: solid 35px var(--thm-primary-color);
-                    border-right: solid 17px $bg-color1; }
+                .rtl & { border-bottom: solid 35px $bg-color1;
+                    border-left: solid 17px var(--thm-primary-color); }
+                .ltr & { border-bottom: solid 35px  $bg-color1;
+                    border-right: solid 17px var(--thm-primary-color); }
                 z-index: 0;
             }
 

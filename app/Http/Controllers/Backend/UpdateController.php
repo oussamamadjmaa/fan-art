@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Artisan;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Http\Request;
@@ -29,6 +30,19 @@ class UpdateController extends Controller
             }else{
                 echo $msg;
             }
+        }else if($v == "1.0.1"){
+            if(!Schema::hasTable('jobs')) {
+                Artisan::call('queue:table');
+            }
+
+            if(($msg = $this->migrateAndOptimize()) == true){
+                $updated = true;
+            }else{
+                echo $msg;
+            }
+
+            $artists = User::role('artist')->whereNull('artist_type')->get(['id']);
+            User::whereIn('id', $artists->pluck('id')->toArray())->update(['artist_type' => 'artist']);
         }
 
         if($updated == true){

@@ -41,7 +41,7 @@ class RegisterController extends Controller
         $data['password'] = bcrypt($data['password']);
 
         if($role == "artist") {
-            $data['avatar'] = config('app.artist_default_avatar.'.$data['gender'] ?? 'male');
+            $data['avatar'] = config('app.artist_default_avatar.'.($data['gender'] ?? 'male'));
         }else if($role == "store") {
             $data['avatar'] = config('app.store_default_avatar');
         }

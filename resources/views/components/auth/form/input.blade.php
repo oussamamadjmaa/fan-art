@@ -20,7 +20,8 @@ $icons = [
     'linkedin'              => 'fab fa-linkedin',
     'whatsapp'              => 'fab fa-whatsapp',
     'bio'                   => 'fas fa-address-card',
-    'address'               => 'fa fa-map-marker-alt'
+    'address'               => 'fa fa-map-marker-alt',
+    'artist_type'           => 'fa fa-palette'
 ];
 $icon = $icons[$attributes->get('name')] ?? 'fas fa-question-circle';
 @endphp

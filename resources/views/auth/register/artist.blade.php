@@ -14,6 +14,15 @@
                         @csrf
                         <div class="inputs">
                             <div class="row">
+                                <div class="col-md-12">
+                                    <x-auth.form.input type="select" name="artist_type" id="artist_type">
+                                        <option value="">@lang('Artist type')...</option>
+                                        @foreach (config('app.artist_types', []) as $artist_type)
+                                            <option value="{{$artist_type}}" @selected($artist_type == old('artist_type'))>@lang($artist_type)</option>
+                                        @endforeach
+                                    </x-auth.form.input>
+                                </div>
+
                                 <div class="col-md-6">
                                     <x-auth.form.input type="text" class="{{$errors->has('name') ? 'is-invalid' : ''}}"
                                         name="name" id="name" placeholder="{{ __('Triple name') }}"

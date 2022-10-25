@@ -23,6 +23,20 @@ return [
         ],
         'subscription' => [
             'free_trial_days' => 90
+        ],
+        /**
+         *
+         */
+        'artist_types' => [
+            'artist', 'calligrapher'
+        ],
+
+        /**
+         *
+         */
+        'whos_us' => [
+            'text' => ' متجر فن ارت أُسس في عام ٢٠٢٢ وانطلق بشغف ليخدم الرسامين والخطاطين والمبدعين ليصنع عالماً مليئاً بالجمال عبر تمكين المستخدم من بيع وشراء الأعمال الفنية بسهولة',
+            'video' => '<iframe width="560" height="315" src="https://www.youtube.com/embed/novideo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
         ]
     ]
 ];

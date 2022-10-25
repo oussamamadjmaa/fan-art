@@ -11,8 +11,9 @@
                 <div class="artist-profile-info flex-grow-1">
                     <div class="d-md-flex flex-wrap py-2" style="gap: 1.6rem;">
                         <div>
-                            <h5 class="artist-name">{{ $artist->name }}</h5>
+                            <h5 class="artist-name">{{ $artist->name }} </h5>
                             <h6>{{ __(country($artist->country)->getName()) }}, {{ __($artist->nationality) }}</h6>
+                            <h6 class="mt-3 text-primary">@lang($artist->artist_type)</h6>
                         </div>
                     </div>
                     <div class="d-ph-none">

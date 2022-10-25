@@ -205,8 +205,8 @@ textarea.is-invalid ~ .tox-tinymce {
 
 .dashboard-stat-box {
     border-radius: 30px;
-    box-shadow: 7px 5px 14px 1px #16263f;
-    background: linear-gradient(54deg, #16263f, #f26822);
+    box-shadow: 7px 5px 14px 1px $bg-color1;
+    background: linear-gradient(54deg, $bg-color1, $thm-primary-color);
     color:#fff;
     p{
         margin-bottom: 0;

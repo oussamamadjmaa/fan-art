@@ -206,27 +206,27 @@ textarea.is-invalid~.tox-tinymce {
 }
 
 //Owl
-div#artistsSlider .owl-nav>button {
+div#artistsSlider .owl-nav>button, div#storesSlider .owl-nav>button {
     font-size: 72px;
     color: black;
     position: absolute;
-    top: 146px;
+    top: 85px;
     transform: translatey(-50%);
-    left: 0rem;
+    left: -1rem;
     padding: 35px;
     transition: all .21s ease-in-out;
 }
 
-div#artistsSlider .owl-nav>button.disabled {
+div#artistsSlider .owl-nav>button.disabled,div#storesSlider .owl-nav>button.disabled {
     opacity: 0 !important;
 }
 
-div#artistsSlider .owl-nav>button.owl-prev {
-    right: 0rem;
+div#artistsSlider .owl-nav>button.owl-prev,div#storesSlider .owl-nav>button.owl-prev {
+    right: -1rem;
     left: unset;
 }
 
-div#artistsSlider .owl-nav>button:hover {
+div#artistsSlider .owl-nav>button:hover,div#storesSlider .owl-nav>button:hover {
     background-color: transparent;
     opacity: .8;
 }
@@ -317,4 +317,17 @@ p {
 
 .fs-7{
     font-size: 13px;
+}
+
+
+.youtube-iframe {
+    position: relative;
+    padding-top: 56.25%;
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%!important;
+        height: 100%!important;
+    }
 }
