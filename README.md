@@ -1,12 +1,12 @@
 # Change Log
-## [https://github.com/oussamamadjmaa/fan-art/commit/ce32eeb2aac5ec0e793ee3cff8855c4aff5292c0](29/10/2022)
+## [29/10/2022](https://github.com/oussamamadjmaa/fan-art/commit/ce32eeb2aac5ec0e793ee3cff8855c4aff5292c0)
 
 ### Changed
 - Removed `blogs` from navbar links and home page
 - Disabled `blogs` routes
 - Changed `contact us` navbar link
 
-## [https://github.com/oussamamadjmaa/fan-art/commit/a632b163a8e68099defe7af0fbd595fb6ff78194](v1.0.1 - 25/10/2022)
+## [v1.0.1 - 25/10/2022](https://github.com/oussamamadjmaa/fan-art/commit/a632b163a8e68099defe7af0fbd595fb6ff78194)
 
 ### Added
 - Added **who's us** on home page
