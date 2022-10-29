@@ -13,7 +13,7 @@ class ArtistProfileController extends Controller
     public function __construct()
     {
         $this->middleware(function(Request $request, Closure $next){
-            abort_if(!empty($request->route('profile_page')) && !in_array($request->route('profile_page'), ['blogs']), 404);
+            abort_if(!empty($request->route('profile_page')) && !in_array($request->route('profile_page'), []), 404);
             return $next($request);
         });
     }

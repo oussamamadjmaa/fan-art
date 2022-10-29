@@ -105,7 +105,7 @@ class WebsiteSettingsController extends Controller
         ];
     }
 
-    //Bank settings
+    //Who's us settings
     private function whos_us_settings()
     {
         return [

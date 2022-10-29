@@ -77,7 +77,9 @@
         <div class="container tabs__">
             <ul class="list-unstyled d-flex">
                 <li @class(['active' => $profile_page == "artworks"])><a href="{{ route('frontend.artist.profile',$artist->username) }}"> <i class="bi bi-palette"></i> @lang('Artworks')</a></li>
+                @if (Route::has('frontend.blogs.index'))
                 <li @class(['active' => $profile_page == "blogs"])><a href="{{ route('frontend.artist.profile',[$artist->username, 'blogs']) }}"> <i class="bi bi-quote"></i> @lang('Blog')</a></li>
+                @endif
             </ul>
         </div>
     </section>

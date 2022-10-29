@@ -53,7 +53,7 @@
     </section>
 
     {{-- Latest Blogs from artists --}}
-    @if ($artists_with_last_blog->count())
+    @if ($artists_with_last_blog->count() && Route::has('frontend.blogs.index'))
     <section class="blogs-page bg-white pt-2 pb-2">
         <div class="container pb-1 pt-3">
             <h1 class="mb-3 fs-3"><a href="{{route('frontend.artworks.index')}}">@lang('Artist blog'):</a></h1>

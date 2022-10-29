@@ -1,4 +1,10 @@
 # Change Log
+## 29/10/2022
+
+### Changed
+- Removed `blogs` from header links and home page
+- Disabled `blogs` routes
+- Changed `contact us` navbar link
 
 ## v1.0.1 - 25/10/2022
 

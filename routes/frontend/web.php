@@ -36,8 +36,8 @@ Route::get('/products/{product}', [ProductsController::class, 'show'])->name('pr
 Route::post('/products/{product}/message', [ProductsController::class, 'send_message'])->name('products.send_message');
 
 //Blogs
-Route::get('blogs/', [BlogsController::class, 'index'])->name('blogs.index');
-Route::get('blogs/{blog:slug}', [BlogsController::class, 'show'])->name('blogs.show');
+//Route::get('blogs/', [BlogsController::class, 'index'])->name('blogs.index');
+//Route::get('blogs/{blog:slug}', [BlogsController::class, 'show'])->name('blogs.show');
 
 
 //Exhibitions

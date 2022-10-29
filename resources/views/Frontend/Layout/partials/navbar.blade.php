@@ -47,8 +47,10 @@
                     <li><a href="{{route('frontend.artworks.index')}}">@lang('Paintings and artwork')</a></li>
                     <li><a href="{{route('frontend.exhibitions.index')}}">@lang('Exhibitions and meetings')</a></li>
                     <li><a href="{{route('frontend.stores.index')}}">@lang('Stores')</a></li>
-                    <li><a href="{{route('frontend.blogs.index')}}">@lang('Artist blog')</a></li>
-                    <li><a href="#">@lang('Contact us')</a></li>
+                    @if (Route::has('frontend.blogs.index'))
+                        <li><a href="{{route('frontend.blogs.index')}}">@lang('Artist blog')</a></li>
+                    @endif
+                    <li><a href="{{ url('p/contact-us') }}">@lang('Contact us')</a></li>
                 </ul>
             </div>
         </div>
