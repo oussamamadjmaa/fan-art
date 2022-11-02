@@ -1,9 +1,10 @@
 # Change Log
 
-## [02/11/2022](#)
+## [02/11/2022](https://github.com/oussamamadjmaa/fan-art/commit/b95b5c81a03dde9ebd509bf0513e6b08f283a143)
 
 ### Added
 - VueJs
+- Added API Controller and Resource for artists
 
 ### Changed
 - Changed home hero slider from blade to vuejs component

@@ -19,4 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('artists', ArtistsController::class)->only(['index', 'show']);
+Route::apiResource('artists', ArtistsController::class)->only(['index']);
