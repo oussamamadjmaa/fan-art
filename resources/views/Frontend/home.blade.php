@@ -22,7 +22,7 @@
     </section>
 
     {{-- Latest Artists --}}
-    <joined-us></joined-us>
+    <joined-us :artists_route="`{{route('frontend.artists.index')}}`"></joined-us>
 
     {{-- Latest Artworks --}}
     @if ($latest_artworks->count())
