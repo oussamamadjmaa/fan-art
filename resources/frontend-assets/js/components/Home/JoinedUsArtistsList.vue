@@ -51,7 +51,9 @@ const modules = [Navigation]
 const getLatestArtists = () => {
     axios.get('/api/artists')
         .then((res) => {
-            latest_artists.value.loaded = true;
+            setTimeout(() => {
+                latest_artists.value.loaded = true;
+            }, 1500);
             latest_artists.value.data = res.data.data;
         })
         .catch((error) => {
