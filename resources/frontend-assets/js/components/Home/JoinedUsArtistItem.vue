@@ -1,5 +1,5 @@
 <template>
-    <a class="artist-showcase_ text-center text-dark" :href="$app_data.APP_URL+'/artist/oussamatuber'">
+    <a class="artist-showcase_ text-center text-dark" :href="$app_data.APP_URL+'/artist/'+artist.username">
         <div class="artist-showcase_-avatar mb-3 avatar-100 mx-auto text-center">
             <img :src="artist.avatar_url" alt="artist name" class="avatar-100">
         </div>
