@@ -53,7 +53,7 @@ const getLatestArtists = () => {
         .then((res) => {
             setTimeout(() => {
                 latest_artists.value.loaded = true;
-            }, 1500);
+            }, 500);
             latest_artists.value.data = res.data.data;
         })
         .catch((error) => {
