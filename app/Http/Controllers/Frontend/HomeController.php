@@ -41,6 +41,6 @@ class HomeController extends Controller
         //    return User::role('store')->active()->verified()->whereHas('subscription', fn ($q) => $q->active())->latest()->limit(8)->get();
         //});
         $latest_stores = User::role('store')->active()->whereHas('subscription', fn ($q) => $q->active())->latest()->limit(8)->get();
-        return view('Frontend.home', compact('carousels', 'latest_artists', 'latest_artworks', 'artists_with_last_blog', 'latest_stores'));
+        return view('Frontend.home', compact('carousels', 'latest_artworks', 'artists_with_last_blog', 'latest_stores'));
     }
 }
