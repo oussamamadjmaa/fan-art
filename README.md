@@ -5,6 +5,8 @@
 ### Added
 - VueJs
 - Added API Controller and Resource for artists
+- Added STORAGE_URL to GLOBAL js const
+
 
 ### Changed
 - Changed home hero slider from blade to vuejs component
