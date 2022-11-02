@@ -1,7 +1,8 @@
 @extends('Frontend.Layout.app')
 @section('content')
     {{-- Carousels --}}
-    @include('Frontend.partials.home.carousel')
+    <home-hero-slider :sliders="{{ json_encode($carousels) }}"></home-hero-slider>
+
 
     {{-- Who's us --}}
     <section class="whos_us bg-white painting-border pt-4 pb-2">
@@ -21,18 +22,7 @@
     </section>
 
     {{-- Latest Artists --}}
-    @if ($latest_artists->count())
-    <section class="latest_artists bg-white painting-border pt-4 pb-2">
-        <div class="container pb-1 pt-3">
-             <h1 class="mb-2 fs-2"><a href="{{route('frontend.artists.index')}}">@lang('Joined us'):</a></h1>
-             @include('Frontend.partials.home.latest_artists')
-
-             <div class="text-center mt-4">
-                <a href="{{ route('frontend.artists.index') }}" class="primary-btn">@lang('Show all artists')</a>
-            </div>
-        </div>
-     </section>
-    @endif
+    <joined-us></joined-us>
 
     {{-- Latest Artworks --}}
     @if ($latest_artworks->count())

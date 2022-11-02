@@ -34,6 +34,7 @@ if (!function_exists('app_json_data')) {
     {
         $data = [
             "APP_URL" =>  URL('/'),
+            "STORAGE_URL" => storage_url('/'),
             "CSRF_TOKEN" => csrf_token(),
             "LANG" => app()->getLocale(),
             "PAGE_URL" => request()->url(),

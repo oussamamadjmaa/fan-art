@@ -1,4 +1,14 @@
 # Change Log
+
+## [02/11/2022](#)
+
+### Added
+- VueJs
+
+### Changed
+- Changed home hero slider from blade to vuejs component
+- Changed home joined us from blade to vuejs component 
+
 ## [29/10/2022](https://github.com/oussamamadjmaa/fan-art/commit/ce32eeb2aac5ec0e793ee3cff8855c4aff5292c0)
 
 ### Changed

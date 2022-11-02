@@ -34,15 +34,18 @@
     "isEntry": true
   },
   "resources/frontend-assets/js/app.js": {
-    "file": "assets/app.96888489.js",
+    "file": "assets/app.818b168f.js",
     "src": "resources/frontend-assets/js/app.js",
     "isEntry": true,
     "imports": [
       "_jquery.55e95f45.js"
+    ],
+    "css": [
+      "assets/app.04a6b2f7.css"
     ]
   },
   "resources/frontend-assets/js/pages/home.js": {
-    "file": "assets/home.c1b7a32a.js",
+    "file": "assets/home.82d148e6.js",
     "src": "resources/frontend-assets/js/pages/home.js",
     "isEntry": true
   },
@@ -63,6 +66,10 @@
     "file": "assets/app.6594e0fb.css",
     "src": "resources/backend-assets/sass/app.scss",
     "isEntry": true
+  },
+  "resources/frontend-assets/js/app.css": {
+    "file": "assets/app.04a6b2f7.css",
+    "src": "resources/frontend-assets/js/app.css"
   },
   "resources/frontend-assets/sass/app.scss": {
     "file": "assets/app.4b194073.css",
