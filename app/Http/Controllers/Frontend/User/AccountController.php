@@ -25,7 +25,7 @@ class AccountController extends Controller
 
         Storage::disk('public')->put($file, $image_base64);
 
-        if(auth()->user()->avatar) Storage::disk('public')->delete(auth()->user()->avatar);
+        if(auth()->user()->avatar && !str(auth()->user()->avatar)->contains('defaults')) Storage::disk('public')->delete(auth()->user()->avatar);
 
         auth()->user()->avatar = $file;
         auth()->user()->save();
