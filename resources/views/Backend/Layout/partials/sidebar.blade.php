@@ -69,7 +69,7 @@
         ],[
             'title' => 'Contact artists',
             'icon' => 'far fa-envelope',
-            'cond' => true,
+            'cond' => auth()->user()->hasRole('admin'),
             'href' => route('backend.contact_artists.index')
         ],[
             'title' => 'My account',
