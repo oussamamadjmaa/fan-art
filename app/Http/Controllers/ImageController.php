@@ -34,6 +34,25 @@ class ImageController extends Controller
             })->insert($waterMark, 'bottom-left', 5, 5);
         }, 1440);
 
-        return response($img, 200, ['Content-Type' => 'image/'.$fileExt]);
+        session_cache_limiter('none');
+        header('Content-Type:image/'.$fileExt);
+        header('Cache-Control: max-age='.(60*60*24*365));
+        header('Expires: '.gmdate(DATE_RFC1123, time()+60*60*24*365));
+        header('Last-Modified: '.gmdate(DATE_RFC1123,filemtime($this->storage->path($path))));
+
+        if(isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
+            header('HTTP/1.1 304 Not Modified');
+        }
+
+        echo $img;
     }
 }
+/*
+Accept-Ranges: bytes
+Connection: Keep-Alive
+Date: Mon, 14 Nov 2022 08:38:47 GMT
+ETag: "14e21-5e5e3a1330ad4"
+Keep-Alive: timeout=5, max=100
+Last-Modified: Wed, 10 Aug 2022 14:11:48 GMT
+Server: Apache/2.4.53 (Win64) OpenSSL/1.1.1n PHP/8.0.19
+*/
