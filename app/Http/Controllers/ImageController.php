@@ -47,12 +47,3 @@ class ImageController extends Controller
         echo $img;
     }
 }
-/*
-Accept-Ranges: bytes
-Connection: Keep-Alive
-Date: Mon, 14 Nov 2022 08:38:47 GMT
-ETag: "14e21-5e5e3a1330ad4"
-Keep-Alive: timeout=5, max=100
-Last-Modified: Wed, 10 Aug 2022 14:11:48 GMT
-Server: Apache/2.4.53 (Win64) OpenSSL/1.1.1n PHP/8.0.19
-*/
