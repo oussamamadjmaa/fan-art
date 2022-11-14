@@ -3,7 +3,6 @@ import JoinedUsArtistsList from './JoinedUsArtistsList.vue';
 const props = defineProps({
     artists_route : String
 })
-console.log(props)
 </script>
 <template>
     <section class="latest_artists bg-white painting-border pt-4 pb-2">

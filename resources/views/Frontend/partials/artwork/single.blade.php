@@ -2,7 +2,7 @@
 <div class="artwork-showcase_ text-center text-dark">
     <div class="artwork-showcase_-image mb-3 mx-auto text-center">
         <a class="img_" href="{{route('frontend.artworks.show', $artwork->slug)}}">
-            <img src="{{ storage_url($artwork->image) }}" alt="{{ $artwork->title }}">
+            <img src="{{ route('image_resize', [300, $artwork->image]) }}" alt="{{ $artwork->title }}">
         </a>
 
     </div>

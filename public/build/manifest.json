@@ -34,7 +34,7 @@
     "isEntry": true
   },
   "resources/frontend-assets/js/app.js": {
-    "file": "assets/app.02268587.js",
+    "file": "assets/app.af39488f.js",
     "src": "resources/frontend-assets/js/app.js",
     "isEntry": true,
     "imports": [
@@ -72,7 +72,7 @@
     "src": "resources/frontend-assets/js/app.css"
   },
   "resources/frontend-assets/sass/app.scss": {
-    "file": "assets/app.4b194073.css",
+    "file": "assets/app.cd3acf88.css",
     "src": "resources/frontend-assets/sass/app.scss",
     "isEntry": true
   }

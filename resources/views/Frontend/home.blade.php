@@ -31,6 +31,10 @@
              <h1 class="mb-3 fs-3"><a href="{{route('frontend.artworks.index')}}">@lang('Latest paintings and artworks'):</a></h1>
              @include('Frontend.partials.home.latest_artworks')
         </div>
+
+        <div class="text-center mt-4">
+            <a href="{{ route('frontend.artworks.index') }}" class="primary-btn">عرض كل اللوحات والأعمال الفنية</a>
+        </div>
      </section>
     @endif
 

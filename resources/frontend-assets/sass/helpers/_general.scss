@@ -331,3 +331,32 @@ p {
         height: 100%!important;
     }
 }
+
+div#goToTop {
+    position: fixed;
+    z-index: 999;
+    width: 50px;
+    height: 50px;
+    bottom: 30px;
+    right: 30px;
+    border-radius: 50%;
+    font-size: 28px;
+    color: #fff;
+    background: var(--thm-primary-color);
+    transition: all .2s ease-in-out;
+    opacity: 1;
+    animation: opacityGTT 1.5s;
+    display: none;
+    text-align: center;
+    line-height: 55px;
+    cursor: pointer;
+    &:hover {
+        transform: rotate(-360deg);
+        opacity: .95;
+    }
+    &:active {opacity: .85;}
+    @keyframes opacityGTT {
+        from{opacity: 0;}
+        to{opacity: 1;}
+    }
+}

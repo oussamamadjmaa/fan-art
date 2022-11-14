@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\InstallController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -33,3 +34,6 @@ Route::as('frontend.')->group(function(){
 Route::prefix('panel')->as('backend.')->middleware(['auth', 'backend-check'])->group(function(){
     require_once __DIR__.'/backend/web.php';
 });
+
+//Image Controller
+Route::get('imgs/r/{size}/{path}', [ImageController::class, 'index'])->where('path', '.*')->name('image_resize');

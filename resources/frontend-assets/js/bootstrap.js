@@ -14,6 +14,14 @@ $.ajaxSetup({
         { 'X-CSRF-TOKEN': GLOBAL["CSRF_TOKEN"] }
 });
 
+$(window).scroll(function(e) {
+    if($(document).scrollTop() > 150) $("#goToTop").fadeIn()
+    else  $("#goToTop").fadeOut()
+});
+
+$(document).on('click', "#goToTop", function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+})
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting

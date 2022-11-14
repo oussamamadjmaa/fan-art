@@ -20,7 +20,7 @@ class PageRequest extends FormRequest
     public function prepareForValidation(){
         return $this->merge([
             'slug' => slugme($this->slug),
-            'content' => strip_tags($this->input('content') ?? '', config('app.allowed_html_tags')),
+            'content' => strip_tags($this->input('content') ?? '', [...config('app.allowed_html_tags'), 'a']),
             'status' => $this->status ? 1 : 0,
         ]);
     }

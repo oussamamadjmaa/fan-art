@@ -14,10 +14,10 @@
             <div class="row">
                 <div class="col-md-6 col-lg-7">
                     <div class="artwork-page-image px-md-3 mb-md-0 mb-3">
-                        <img src="{{ storage_url($artwork->image) }}"
+                        <img src="{{ route('image_resize', [900, $artwork->image]) }}"
                             alt="{{ $artwork->title }} - {{ $artwork->user->name }}"
                             style="width:100%;height:100%;object-fit:contain;max-height:600px;"
-                            data-zoom-image="{{ storage_url($artwork->image) }}" id="artwork_img_01">
+                            data-zoom-image="{{ route('image_resize', [900, $artwork->image]) }}" id="artwork_img_01">
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-5">

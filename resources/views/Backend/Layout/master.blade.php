@@ -76,6 +76,13 @@
     <script src="{{ asset('vendors/tinymce/tinymce.min.js') }}" defer></script>
     <script src="{{ asset('vendors/jquery/js/jquery-ui.js') }}" defer></script>
 
+    <script type="module">
+        document.addEventListener('focusin', (e) => {
+            if (e.target.closest(".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root") !== null) {
+                e.stopImmediatePropagation();
+            }
+        });
+    </script>
     <!-- Page Scripts --> @stack('scripts')
 
 </body>

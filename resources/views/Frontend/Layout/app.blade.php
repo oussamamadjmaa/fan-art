@@ -76,6 +76,10 @@ $auth_ = Auth::user();
         <div class="app-content">
             @yield('content')
         </div>
+
+        <div id="goToTop">
+            <i class="fa fa-angle-up"></i>
+        </div>
     </div>
 
     <footer id="footer">
@@ -83,8 +87,9 @@ $auth_ = Auth::user();
             <div class="container">
                 <div class="app-footer-copyrights">
                     <div class="d-flex justify-content-between flex-wrap py-2 text-white">
-                        <p class="mb-0 py-1">جميع الحقوق محفوظة © {{config('app.name')}} {{date('Y')}}</p>
+                        <p class="mb-0 py-1">© {{config('app.name')}} {{date('Y')}}</p>
                         <ul class="footer-footer-links py-1">
+                            <li><a href="{{route('frontend.artists.index')}}">@lang('Artists')</a></li>
                             @foreach (footer_pages() as $footer_page)
                                 <li><a href="{{route('frontend.page', $footer_page->slug)}}">{{$footer_page->title}}</a></li>
                             @endforeach
