@@ -19,7 +19,7 @@
                     <div class="d-ph-none">
                         <p>{{ $artist?->profile?->bio }}</p>
                     </div>
-                    <div>
+                    {{-- <div>
                         <ul class="artist-contact-info list-unstyled">
                             @if ($artist->website)
                             <li>
@@ -64,7 +64,7 @@
                             </li>
                             @endif
                         </ul>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="d-pc-none mt-3">
