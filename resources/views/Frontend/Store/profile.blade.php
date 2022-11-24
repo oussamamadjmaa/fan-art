@@ -18,7 +18,7 @@
                     <div class="d-ph-none">
                         <p>{{ $store->address }}</p>
                     </div>
-                    <div>
+                    {{-- <div>
                         <ul class="store-contact-info list-unstyled">
                             @if ($store->website)
                             <li>
@@ -63,7 +63,7 @@
                             </li>
                             @endif
                         </ul>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="d-pc-none mt-3">

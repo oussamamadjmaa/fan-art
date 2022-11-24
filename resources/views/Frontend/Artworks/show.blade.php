@@ -129,7 +129,7 @@
                     <div class="d-flex text-start">
                         <div>
                             <div class="pic-w100">
-                                <img src="{{ storage_url($artwork->image) }}"
+                                <img src="{{ route('image_resize', [300, $artwork->image]) }}"
                                     alt="{{ $artwork->title }} - {{ $artwork->user->name }}" class="pic-w100">
                             </div>
                         </div>

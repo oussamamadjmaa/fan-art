@@ -14,10 +14,10 @@
             <div class="row">
                 <div class="col-md-6 col-lg-7">
                     <div class="product-page-image px-md-3 mb-md-0 mb-3">
-                        <img src="{{ storage_url($product->image) }}"
+                        <img src="{{ route('image_resize', [900, $product->image]) }}"
                             alt="{{ $product->name }} - {{ $product->user->name }}"
                             style="width:100%;height:100%;object-fit:contain;max-height:600px;"
-                            data-zoom-image="{{ storage_url($product->image) }}" id="product_img_01">
+                            data-zoom-image="{{ route('image_resize', [900, $product->image]) }}" id="product_img_01">
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-5">
@@ -118,7 +118,7 @@
                     <div class="d-flex text-start">
                         <div>
                             <div class="pic-w100">
-                                <img src="{{ storage_url($product->image) }}"
+                                <img src="{{ route('image_resize', [300, $product->image]) }}"
                                     alt="{{ $product->name }} - {{ $product->user->name }}" class="pic-w100">
                             </div>
                         </div>
