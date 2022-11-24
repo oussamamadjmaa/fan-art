@@ -16,7 +16,7 @@
             <div class="d-flex">
                 <div class="me-2">
                     <div class="pic-w150">
-                        <img src="{{ storage_url($product->image) }}" alt="" class="pic-w150">
+                        <img src="{{ route('image_resize', [300, $product->image]) }}" alt="" class="pic-w150">
                     </div>
                 </div>
                 <div>

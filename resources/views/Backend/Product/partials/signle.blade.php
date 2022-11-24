@@ -7,7 +7,7 @@
         </div>
         <div class="product-info d-flex flex-wrap">
             <div class="me-3">
-                <img src="{{ storage_url($product->image) }}" alt=" {{$product->name}}" class="avatar-50">
+                <img src="{{ route('image_resize', [300, $product->image]) }}" alt=" {{$product->name}}" class="avatar-50">
             </div>
             <div>
                 <div class="product-title fs-6 mb-1">
