@@ -1,7 +1,7 @@
 <div class="product-card">
     <div class="product-image-container">
         <a class="product-image" href="{{ route('frontend.products.show', $product->id) }}">
-            <img src="{{ route('image_resize', [300, $product->image]) }}" alt="{{$product->name}}">
+            <img src="{{ route('image_resize', [500, $product->image]) }}" alt="{{$product->name}}">
         </a>
     </div>
     <div class="product-card-details">
