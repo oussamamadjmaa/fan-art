@@ -21,6 +21,7 @@ class ArtworkMessageRequest extends FormRequest
         $phone_plus = (substr(($this->phone ?? ''), 0, 1) == "+") ? "+" : '';
         return $this->merge([
             'phone' => $phone_plus.str_replace(['(', ')', '+', ' ', '-', '_'], '', $this->phone),
+            'whatsapp_number' => $phone_plus.str_replace(['(', ')', '+', ' ', '-', '_'], '', $this->whatsapp_number),
         ]);
     }
 
@@ -42,7 +43,8 @@ class ArtworkMessageRequest extends FormRequest
             'first_name' => ['required', 'string', 'between:3,60'],
             'last_name' => ['required', 'string', 'between:3,60'],
             'email' => ['required', 'string', 'email', 'max:191'],
-            'phone'     => ['required', 'regex:/[0-9]/', 'not_regex:/[A-z]/', 'between:8,20',],
+            'phone'     => ['required', 'regex:/[0-9]/', 'not_regex:/[A-z]/', 'between:8,20'],
+            'whatsapp_number'     => ['required', 'regex:/[0-9]/', 'not_regex:/[A-z]/', 'between:8,20'],
         ];
     }
 }

@@ -91,6 +91,7 @@ class ArtworksController extends Controller
                     'name' => $request->first_name . ' ' . $request->last_name,
                     'email' => $request->email,
                     'phone' => $request->phone,
+                    'whatsapp_number' => $request->whatsapp_number,
                     'ip_address'    => $request->ip(),
                 ],
             ];

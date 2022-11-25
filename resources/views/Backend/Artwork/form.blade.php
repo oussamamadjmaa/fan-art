@@ -44,6 +44,8 @@
         <option value="2" @selected($artwork?->status === App\Models\Artwork::SOLD)>@lang('Sold')</option>
     </x-form.select2>
 
+    <x-form.input name="url" label="Purchase url" :value="($artwork->url ?? '')" />
+
     {{-- <div class="mb-3">
         <label for="description" class="form-label">@lang('Painting description')</label>
         <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description" rows="3" placeholder="@lang('Painting description')" required>{{ ($artwork?->description ?? '') }}</textarea>

@@ -2,6 +2,7 @@
     @php
         $name_ = $message->sender_id ? ($message->sender?->name ?: '') : "{$message->data->first_name} {$message->data->last_name}";
         $phone_ = $message->sender_id ? ($message->sender?->phone ?: '') : $message->data?->phone;
+        $whatsapp_ = $message->sender_id ? ($message->sender?->phone ?: '') : ($message->data?->whatsapp_number ?? '');
         $email_ = $message->sender_id ? ($message->sender?->email ?: '') : $message->data?->email;
     @endphp
     <div class="artwork-message-item p-2 @if(!$message->seen_at) bg-light @endif border-bottom d-block text-dark"
@@ -29,6 +30,12 @@
                             <li>
                                 <i class="me-1 fa fa-phone"></i> <span><a
                                         href="tel:{{ $phone_ }}">{{ $phone_ }}</a></span>
+                            </li>
+                        @endif
+                        @if ($whatsapp_)
+                            <li>
+                                <i class="me-1 fab fa-whatsapp"></i> <span><a
+                                        target="_blank" href="https://wa.me/{{ $whatsapp_ }}">{{ $whatsapp_ }}</a></span>
                             </li>
                         @endif
                         @if ($email_)

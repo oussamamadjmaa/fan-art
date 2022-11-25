@@ -29,6 +29,7 @@ class Artwork extends Model
        // 'covered_with_glass',
         'location',
         'status',
+        'url',
     ];
 
     protected $casts = [

@@ -50,12 +50,20 @@
                         <h3 class="text-primary py-3">{{ price_format($artwork->price) }}
                             <small><sup>@lang(config('app.currency'))</sup></small></h3>
 
-                        @if (!auth()->check() || auth()->id() != $artwork->user_id)
-                        <div class="buttons">
-                            <a href="javascript:;" class="primary-btn" data-bs-toggle="modal"
-                                data-bs-target="#artworkContactModal">@lang('Contact artist')</a>
+                        <div class="d-flex flex-wrap justify-content-center" style="gap: 1rem;">
+                            @if (!auth()->check() || auth()->id() != $artwork->user_id)
+                            <div class="buttons">
+                                <a href="javascript:;" class="primary-btn" data-bs-toggle="modal"
+                                    data-bs-target="#artworkContactModal">@lang('Contact artist')</a>
+                            </div>
+                            @endif
+
+                            @if($artwork->url)
+                            <div class="buttons">
+                                <a href="{{ $artwork->url }}" target="_blank" class="primary-btn">@lang('شراء')</a>
+                            </div>
+                            @endif
                         </div>
-                        @endif
                     </div>
                 </div>
             </div>
@@ -174,11 +182,20 @@
                                     placeholder="@lang('Email Address')" required>
                                     <div class="invalid-feedback"></div>
                             </div>
-                            <div class="mb-3">
-                                <label for="phone" class="form-label">@lang('Phone')</label>
-                                <input type="text" class="form-control" name="phone" id="phone" required
-                                    placeholder="@lang('Phone')">
-                                    <div class="invalid-feedback"></div>
+                            <div class="row">
+                                <div class="mb-3 col-md-6">
+                                    <label for="phone" class="form-label">@lang('Phone')</label>
+                                    <input type="text" class="form-control" name="phone" id="phone" required
+                                        placeholder="@lang('Phone')">
+                                        <div class="invalid-feedback"></div>
+                                </div>
+
+                                <div class="mb-3 col-md-6">
+                                    <label for="whatsapp_number" class="form-label">@lang('رقم هاتف واتساب')</label>
+                                    <input type="text" class="form-control" name="whatsapp_number" id="whatsapp_number" dir="ltr" required
+                                        placeholder="@lang('رقم هاتف واتساب')">
+                                        <div class="invalid-feedback"></div>
+                                </div>
                             </div>
                             @endguest
 

@@ -27,7 +27,7 @@ _s.handleFailure = function (fail, elem) {
             if (jsonRes.errors) {
                 $.each(jsonRes.errors, function (input, error) {
                     input = input.replaceAll('.', '__');
-                    $(elem).find("*[name=" + input + "], #"+input).addClass('is-invalid').parent().find('.invalid-feedback').text(error);
+                    $(elem).find("*[name=" + input + "], #"+input).addClass('is-invalid').parent().find('.invalid-feedback').text(error[0]);
                 });
             }
         }

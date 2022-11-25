@@ -35,18 +35,27 @@ class ArtworkRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'                     => ['required', 'string', 'max:191'],
+            'title'                     => ['required', 'string', 'max:255'],
             'price'                     => ['required', 'integer'],
             'image'                     => ['required', new ValidateFileRule('artworks', ['png', 'jpeg', 'jpg', 'webp'])],
            // 'materials_used'            => ['nullable', 'string', 'max:400'],
            // 'tools'                     => ['nullable', 'string', 'max:400'],
-            'type'                      => ['required', 'string', 'max:191'],
+            'type'                      => ['required', 'string', 'max:255'],
             'outer_frame'               => ['boolean'],
-            'dimensions'                => ['required', 'string', 'max:191'],
+            'dimensions'                => ['required', 'string', 'max:255'],
           //  'covered_with_glass'        => ['boolean'],
             'location'                  => ['required', 'string', 'max:300'],
             'status'                    => ['required', 'in:1,2'],
           //  'description'               => ['required', 'string', 'max:700'],
+            'url'                       => ['nullable', 'url', 'max:255'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'url.url' => 'صيغة رابط الشراء غير صحيحة',
+            'url.max' => 'الرابط طويل  جدا, الرجاء اختصاره',
         ];
     }
 }

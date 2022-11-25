@@ -28,7 +28,7 @@ return new class extends Migration
             $table->text('location')->nullable();
             //$table->longText('description')->nullable();
             $table->boolean('status')->default(1);
-            $table->string('url')->nullable();
+            $table->tinyText('url')->nullable();
             $table->timestamps();
         });
     }

@@ -16,9 +16,11 @@ trait AppServiceProviderTrait{
         $configs =  $db_config = [];
         $default_config = config('configs', []);
 
-        if(Schema::hasTable('site_configs')){
-            $db_config = Cache::rememberForever('db_config', function(){ return SiteConfig::get(['key', 'value'])->pluck('value', 'key')->toArray(); });
-        }
+        try {
+            if(Schema::hasTable('site_configs')){
+                $db_config = Cache::rememberForever('db_config', function(){ return SiteConfig::get(['key', 'value'])->pluck('value', 'key')->toArray(); });
+            }
+        } catch (\Exception $e) {}
 
         $configs = array_merge($default_config, $db_config);
 
