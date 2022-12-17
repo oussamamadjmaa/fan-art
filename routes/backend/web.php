@@ -63,6 +63,8 @@ Route::group(['middleware' => 'role:admin'], function(){
     });
     //Update
     Route::get('update/{v}', [UpdateController::class, 'update']);
+
+    Route::get('test-email', [UpdateController::class, 'testEmail']);
 });
 
 //Artist Routes

@@ -8,6 +8,7 @@ use Artisan;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
+use Mail;
 
 class UpdateController extends Controller
 {
@@ -76,5 +77,11 @@ class UpdateController extends Controller
         }
 
         return true;
+    }
+
+    public function testEmail() {
+        dd(Mail::raw('Test', function ($message) {
+            $message->to('oussama@madjmaa.com');
+         }));
     }
 }
