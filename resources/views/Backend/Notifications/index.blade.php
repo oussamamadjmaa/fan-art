@@ -5,7 +5,7 @@
     <div class="card-header py-3 d-flex justify-content-between align-items-center flex-wrap">
         <div class="d-flex mb-3 mb-md-0">
             <div class="d-flex flex-wrap">
-                <h5 class="mb-0"><i class="bi bi-bell"></i> @lang('Notifications')</h5> <span class="text-secondary ms-2">
+                <h5 class="mb-0"><i class="bi bi-bell"></i> @lang('Notifications')</h5>
             </div>
         </div>
         <div class="actions flex-grow">

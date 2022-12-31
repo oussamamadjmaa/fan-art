@@ -23,7 +23,11 @@ class HandleSubscriptionPayment
         $payment_data =  $event->payment->payment_data;
         if ($event->payment->status == Payment::CONFIRMED) {
             if(isset($payment_data['type']) && $payment_data['type'] == "renew_plan"){
-                $expires_at = $event->payment->user->subscription->expires_at->{$payment_data['duration_method']}($payment_data['duration']);
+                if(now()->gt($event->payment->user->subscription->expires_at)) {
+                    $expires_at = now()->{$payment_data['duration_method']}($payment_data['duration']);
+                }else {
+                    $expires_at = $event->payment->user->subscription->expires_at->{$payment_data['duration_method']}($payment_data['duration']);
+                }
             }else{
                 $expires_at = now()->{$payment_data['duration_method']}($payment_data['duration']);
             }
