@@ -34,6 +34,7 @@ class UpdateController extends Controller
         }else if($v == "1.0.1"){
             if(!Schema::hasTable('jobs')) {
                 Artisan::call('queue:table');
+                echo nl2br(Artisan::output());
             }
 
             if(($msg = $this->migrateAndOptimize()) == true){

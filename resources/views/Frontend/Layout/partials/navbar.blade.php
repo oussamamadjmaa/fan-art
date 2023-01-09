@@ -12,10 +12,17 @@
                 </ul>
                 <div class="_navbar-auth_buttons">
                     @auth
+                    @role('admin|artist|store')
                     <a href="{{ route('backend.dashboard') }}" class="_auth_btn _login_btn">
                         <i class="fas fa-tachometer-alt"></i>
                         @lang('Dashboard')
                     </a>
+                    @else
+                    <a href="#" class="_auth_btn _login_btn">
+                        <i class="fas fa-tachometer-alt"></i>
+                        @lang('My orders')
+                    </a>
+                    @endrole
                     <a href="#" class="_auth_btn _login_btn" onclick="document.getElementById('logoutForm').submit()">
                         <i class="fas fa-sign-out-alt"></i>
                         @lang('Logout')

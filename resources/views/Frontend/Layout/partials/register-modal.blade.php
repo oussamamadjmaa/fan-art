@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
                 <div class="row register-links">
-                    <a class="col-md-4 register_role" href="javascript:;{{-- {{ route('register', 'customer') }} --}}">
+                    <a class="col-md-4 register_role" href="{{ route('register', 'customer') }}">
                         <h1><i class="fas fa-user"></i></h1>
                         <h5>@lang('Customer')</h5>
                     </a>
