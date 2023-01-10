@@ -7,19 +7,23 @@ $(function(){
         });
     }
 
-    $(document).on('submit', '#artwork_message_form', function(e) {
+    $(document).on('submit', '#artwork_message_form, #artwork_order_form', function(e) {
         e.preventDefault();
         if(!_s.validateForm(this)) return false;
 
-        let formData = $(this).serialize();
+        let formData = new FormData(this);
         let url = $(this).data('action');
+        $(this).find('button').prop('disabled', true);
         $.ajax({
             method:"POST",
             data:formData,
             url:url,
-            dataType:"JSON"
+            dataType:"JSON",
+            contentType:false,
+            cache:false,
+            processData:false
         }).always((data) => {
-            $(this).find('#send_btn').prop('disabled', false);
+            $(this).find('button').prop('disabled', false);
         }).done((data) => {
             $(this).trigger('reset');
             $("#artworkContactModal").modal('hide');

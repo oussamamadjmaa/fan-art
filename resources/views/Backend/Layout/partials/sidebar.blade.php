@@ -26,6 +26,11 @@
             'cond' => auth()->user()->can('viewAny', App\Models\Artwork::class),
             'href' => route('backend.artworks.index')
         ],[
+            'title' => 'Orders',
+            'icon' => 'far fa-store',
+            'cond' => auth()->user()->hasRole('admin'),
+            'href' => route('backend.orders.index')
+        ],[
             'title' => 'Sponsors',
             'icon' => 'far fa-handshake',
             'cond' => auth()->user()->can('viewAny', App\Models\Sponsor::class),

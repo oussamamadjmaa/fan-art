@@ -4,16 +4,28 @@ footer#footer{
     left: 0;
     right: 0;
     width: 100%;
-    background-color: var(--thm-primary-color);
+    background-color: #202124;
+
+    .footer-logo img {
+        width: 100px;
+        max-width: 100%;
+    }
 
     .footer-footer-links {
         list-style: none;
         display: flex;
         gap: 1rem;
         flex-wrap: wrap;
+        flex-direction: column;
         justify-content: flex-end;
         a {
             color: #fff;
         }
+    }
+
+    .maarof-number {
+        display: block;
+        font-size: 26px;
+        color: #238c82;
     }
 }

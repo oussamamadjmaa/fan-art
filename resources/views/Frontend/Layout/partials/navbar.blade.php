@@ -17,11 +17,6 @@
                         <i class="fas fa-tachometer-alt"></i>
                         @lang('Dashboard')
                     </a>
-                    @else
-                    <a href="#" class="_auth_btn _login_btn">
-                        <i class="fas fa-tachometer-alt"></i>
-                        @lang('My orders')
-                    </a>
                     @endrole
                     <a href="#" class="_auth_btn _login_btn" onclick="document.getElementById('logoutForm').submit()">
                         <i class="fas fa-sign-out-alt"></i>
@@ -58,6 +53,7 @@
                         <li><a href="{{route('frontend.blogs.index')}}">@lang('Artist blog')</a></li>
                     @endif
                     <li><a href="{{ url('p/contact-us') }}">@lang('Contact us')</a></li>
+                    <li><a href="{{ route('frontend.orders.index') }}">@lang('My Orders')</a></li>
                 </ul>
             </div>
         </div>

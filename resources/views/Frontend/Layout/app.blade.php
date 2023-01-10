@@ -18,8 +18,8 @@ $auth_ = Auth::user();
     <title>{{ $title }}</title>
 
     <meta name="title"  content="{{$title}}">
-    <meta name="description"  content="{{$meta?->description ?? config('app.seo.description')}}">
-    <meta name="keywords"  content="{{$meta?->keywords ?? config('app.seo.keywords')}}">
+    <meta name="description" content="{{$meta?->description ?? config('app.seo.description')}}">
+    <meta name="keywords" content="{{$meta?->keywords ?? config('app.seo.keywords')}}">
 
     <!--  Essential META Tags -->
 
@@ -82,23 +82,7 @@ $auth_ = Auth::user();
         </div>
     </div>
 
-    <footer id="footer">
-        <div class="app-footer">
-            <div class="container">
-                <div class="app-footer-copyrights">
-                    <div class="d-flex justify-content-between flex-wrap py-2 text-white">
-                        <p class="mb-0 py-1">© {{config('app.name')}} {{date('Y')}}</p>
-                        <ul class="footer-footer-links py-1">
-                            <li><a href="{{route('frontend.artists.index')}}">@lang('Artists')</a></li>
-                            @foreach (footer_pages() as $footer_page)
-                                <li><a href="{{route('frontend.page', $footer_page->slug)}}">{{$footer_page->title}}</a></li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    @include('Frontend.Layout.partials.footer')
 
     {{-- Register modal --}}
     @include('Frontend.Layout.partials.register-modal')

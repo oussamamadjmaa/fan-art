@@ -10,7 +10,7 @@
                         <p>@lang('Help us get your basic information in the first step')</p>
                     </div>
 
-                    <form action="{{ route('register', $role) }}" method="POST">
+                    <form action="{{ route('register', [$role, 'redirect_to' => request()->get('redirect_to')]) }}" method="POST">
                         @csrf
                         <div class="inputs">
                             <div class="row">

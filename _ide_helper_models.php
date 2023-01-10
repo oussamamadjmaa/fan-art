@@ -34,6 +34,8 @@ namespace App\Models{
  * @property-read int|null $messages_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Notification[] $notifications
  * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $orders
+ * @property-read int|null $orders_count
  * @property-read \App\Models\User $user
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Visit[] $visits
  * @property-read int|null $visits_count
@@ -264,6 +266,51 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Notification whereUpdatedAt($value)
  */
 	class Notification extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Order
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property string|null $orderable_type
+ * @property int|null $orderable_id
+ * @property string|null $payment_method
+ * @property int $amount
+ * @property string|null $bank_transfer_receipt
+ * @property string|null $comment
+ * @property string|null $paid_at
+ * @property string|null $confirmed_at
+ * @property string|null $shipped_at
+ * @property string|null $delivered_at
+ * @property string|null $canceled_at
+ * @property string|null $denied_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $orderable
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|Order newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Order newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Order query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereBankTransferReceipt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereCanceledAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereComment($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereConfirmedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereDeliveredAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereDeniedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereOrderableId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereOrderableType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order wherePaidAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order wherePaymentMethod($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereShippedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereUserId($value)
+ */
+	class Order extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -568,6 +615,8 @@ namespace App\Models{
  * @property-read int|null $news_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Notification[] $notifications
  * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $orders
+ * @property-read int|null $orders_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Payment[] $payments
  * @property-read int|null $payments_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions

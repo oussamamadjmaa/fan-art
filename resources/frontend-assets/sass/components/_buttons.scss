@@ -26,13 +26,18 @@
         border-color: #fff;
         color: #000;
     }
-    &:hover {
+    &:hover:not(:disabled) {
         background-color: var(--thm-primary-color);
         border-color: var(--thm-primary-color);
         color: #fff;
         text-shadow: 0 0 #fff;
         opacity: 1;
         box-shadow: -1px 3px 10px 1px #0000004d;
+    }
+    &:disabled {
+        content: "يرجى الإنتظار...";
+        opacity: .3;
+        cursor: not-allowed;
     }
 }
 

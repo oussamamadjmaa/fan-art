@@ -111,6 +111,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(SupportTicket::class);
     }
 
+    public function orders() {
+        return $this->hasMany(Order::class);
+    }
+
     //Artist Relations
     public function artworks(){
         return $this->hasMany(Artwork::class);

@@ -68,7 +68,7 @@ class RegisterController extends Controller
             'store'     => route('backend.dashboard'),
         ];
 
-        return redirect($routes[$role] ?? RouteServiceProvider::HOME);
+        return redirect()->intended($routes[$role] ?? request()->get('redirect_to', RouteServiceProvider::HOME));
     }
 
     private function createFreeTrialPayment(User $user, Plan $plan){

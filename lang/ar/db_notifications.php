@@ -23,34 +23,52 @@ return [
             'description' =>  'يوجد عملية دفع لإشتراك بباقة بإنتظار الموافقة من طرف <b>:fromUser_name</b>',
             'icon' => 'bi bi-bank',
             'bg_class' => 'bg-info',
-        ],'payment_confirmed' => [
+        ], 'payment_confirmed' => [
             'title' =>  'تم تأكيد عملية الدفع الخاصة بك',
             'description' =>  'مبروك! تم تأكيد عملية الدفع للإشتراك الخاص بك',
             'icon' => 'bi bi-patch-check',
             'bg_class' => 'bg-success',
-        ],'payment_declined' => [
+        ], 'payment_declined' => [
             'title' =>  'تم رفض عملية الدفع الخاصة بك',
             'description' =>  'للأسف! تم رفض عملية الدفع للإشتراك الخاص بك',
             'icon' => 'bi bi-patch-check',
             'bg_class' => 'bg-danger',
         ]
-        ],
-        'support_tickets' => [
-            'new_ticket' => [
-                'title' =>  'تم فتح تذكرة دعم جديدة',
-                'description' =>  'تم فتح تذكرة دعم جديدة من طرف <b>:fromUser_name</b>',
-                'icon' => 'fa fa-life-ring',
-                'bg_class' => 'bg-info',
-            ], 'new_message' => [
-                'title' =>  'رسالة جديدة على تذكرة دعم',
-                'description' =>  'تم ارسال رسالة جديدة على التذكرة رقم <b>:id</b>',
-                'icon' => 'fa fa-life-ring',
-                'bg_class' => 'bg-info',
-            ],'ticket_closed' => [
-                'title' =>  'تم إغلاق تذكرة دعم',
-                'description' =>  'تم اغلاق تذكرة دعم رقم <b>:id</b>',
-                'icon' => 'fa fa-life-ring',
-                'bg_class' => 'bg-info',
-            ],
+    ],
+    'orders' => [
+        'new_artwork_order' => [
+            'title' =>  ' طلب شراء لوحة فنية',
+            'description' =>  'تم طلب شراء لوحة فنية من طرف <b>:fromUser_name</b>',
+            'icon' => '',
+            'bg_class' => 'bg-info',
+        ], 'payment_confirmed' => [
+            'title' =>  'تم تأكيد عملية الدفع الخاصة بك',
+            'description' =>  'مبروك! تم تأكيد عملية الدفع لطلب شراء الخاص بك',
+            'icon' => 'bi bi-patch-check',
+            'bg_class' => 'bg-success',
+        ], 'payment_declined' => [
+            'title' =>  'تم رفض عملية الدفع الخاصة بك',
+            'description' =>  'للأسف! تم رفض عملية الدفع لطلب شراء الخاص بك',
+            'icon' => 'bi bi-patch-check',
+            'bg_class' => 'bg-danger',
         ]
+    ],
+    'support_tickets' => [
+        'new_ticket' => [
+            'title' =>  'تم فتح تذكرة دعم جديدة',
+            'description' =>  'تم فتح تذكرة دعم جديدة من طرف <b>:fromUser_name</b>',
+            'icon' => 'fa fa-life-ring',
+            'bg_class' => 'bg-info',
+        ], 'new_message' => [
+            'title' =>  'رسالة جديدة على تذكرة دعم',
+            'description' =>  'تم ارسال رسالة جديدة على التذكرة رقم <b>:id</b>',
+            'icon' => 'fa fa-life-ring',
+            'bg_class' => 'bg-info',
+        ], 'ticket_closed' => [
+            'title' =>  'تم إغلاق تذكرة دعم',
+            'description' =>  'تم اغلاق تذكرة دعم رقم <b>:id</b>',
+            'icon' => 'fa fa-life-ring',
+            'bg_class' => 'bg-info',
+        ],
+    ]
 ];

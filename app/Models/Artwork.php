@@ -57,6 +57,10 @@ class Artwork extends Model
         return $this->morphMany(Visit::class, 'visitable');
     }
 
+    public function orders() {
+        return $this->morphMany(Order::class, 'orderable');
+    }
+
     /**
      * Scopes
      */

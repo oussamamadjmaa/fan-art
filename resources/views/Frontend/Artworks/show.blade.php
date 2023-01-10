@@ -58,11 +58,13 @@
                             </div>
                             @endif
 
-                            @if($artwork->url)
+                            {{-- @if($artwork->url) --}}
                             <div class="buttons">
-                                <a href="{{ $artwork->url }}" target="_blank" class="primary-btn">@lang('شراء')</a>
+                                {{-- {{ $artwork->url }} --}}
+                                <a href="javascript:;" data-bs-toggle="modal"
+                                data-bs-target="#artworkBuyModal" class="primary-btn">@lang('شراء')</a>
                             </div>
-                            @endif
+                            {{-- @endif --}}
                         </div>
                     </div>
                 </div>
@@ -125,7 +127,7 @@
     </section>
 
     @if (!auth()->check() || auth()->id() != $artwork->user_id)
-    <!-- Modal -->
+    <!-- Contant Modal -->
     <div class="modal fade" id="artworkContactModal" tabindex="-1" role="dialog" aria-labelledby="artworkContactModalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 699px;">
             <div class="modal-content">
@@ -203,6 +205,84 @@
                                 @lang('Send message')
                             </button>
                         </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Buy Modal -->
+    <div class="modal fade" id="artworkBuyModal" tabindex="-1" role="dialog" aria-labelledby="artworkBuyModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 699px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">@lang('Order buy artwork')</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex text-start">
+                        <div>
+                            <div class="pic-w100">
+                                <img src="{{ route('image_resize', [300, $artwork->image]) }}"
+                                    alt="{{ $artwork->title }} - {{ $artwork->user->name }}" class="pic-w100">
+                            </div>
+                        </div>
+                        <div class="ps-3">
+                            <h6><a
+                                    href="{{ route('frontend.artist.profile', $artwork->user->username) }}">{{ $artwork->user->name }}</a>
+                            </h6>
+                            <h6>{{ $artwork->title }}</h6>
+                            <h4 class="text-primary">{{ price_format($artwork->price) }}
+                                <small><sup>@lang(config('app.currency'))</sup></small></h4>
+                        </div>
+                    </div>
+
+                    <div class="mt-3">
+                        @auth
+                            <form data-action="{{route('frontend.artworks.order', $artwork->id)}}" method="POST" id="artwork_order_form">
+                                @csrf
+
+                                <div class="mb-3">
+                                    <label for="bank_transfer_receipt" class="form-label">@lang('Upload bank transfer receipt')</label>
+                                    <input type="file" class="form-control @error('bank_transfer_receipt') is-invalid @enderror" name="bank_transfer_receipt" id="bank_transfer_receipt" aria-describedby="helpReceipt" required>
+                                      @error('bank_transfer_receipt')
+                                          <div class="invalid-feedback">{{ $message }}</div>
+                                      @enderror
+                                      {{-- <small id="helpReceipt">يمكنك حجز طلب ثم رفع الإيصال لاحقا</small> --}}
+                                  </div>
+
+                                  <div class="bg-light p-3 mt-3 mb-2">
+                                    <table width="100%">
+                                        <tr>
+                                            <td width="50%" class="text-secondary">@lang('Bank')</td>
+                                            <td>{{config('app.bank.name', __('Uknown'))}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td width="50%" class="text-secondary">@lang('Account holder')</td>
+                                            <td>{{config('app.bank.account_holder', __('Uknown'))}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-secondary">@lang('Account number')</td>
+                                            <td>{{config('app.bank.account_number', __('Uknown'))}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-secondary">@lang('IBAN number')</td>
+                                            <td>{{config('app.bank.IBAN', __('Uknown'))}}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <button class="primary-btn pt-2 pb-1 px-3" id="order_btn">
+                                    @lang('Order')
+                                </button>
+                            </form>
+                        @else
+                            <div class="d-flex justify-content-center py-4" style="gap: .5rem">
+                                <a href="{{ route('login') }}">@lang('Login')</a>
+                                <p>أو</p>
+                                <a href="{{ route('register', ['customer', 'redirect_to' => request()->fullUrl()]) }}">@lang('Register')</a>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

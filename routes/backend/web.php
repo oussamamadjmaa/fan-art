@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\ExhibitionController;
 use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\NotificationsController;
+use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\PagesManagerController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SponsorController;
@@ -75,6 +76,8 @@ Route::group(['middleware' => ['role:admin|artist', 'backend-check:subscribed']]
     Route::get('artworks/messages/{artwork}', [ArtworkController::class, 'messages'])->name('artworks.messages');
     Route::resource('artworks', ArtworkController::class)->except(['show']);
 
+
+
     //Sponsors
     Route::delete('sponsors', [SponsorController::class, 'multiple_delete'])->name('sponsors.multiple_delete');
     Route::resource('sponsors', SponsorController::class)->except(['show']);
@@ -98,6 +101,11 @@ Route::group(['middleware' => ['role:admin|store', 'backend-check:subscribed']],
         Route::delete('products', [ProductController::class, 'multiple_delete'])->name('products.multiple_delete');
         Route::get('products/messages/{product}', [ProductController::class, 'messages'])->name('products.messages');
         Route::resource('products', ProductController::class)->except(['show']);
+
+        //Orders
+        Route::delete('orders', [OrderController::class, 'multiple_delete'])->name('orders.multiple_delete');
+        Route::put('orders/toggle_status/{order}', [OrderController::class, 'toggle_status'])->name('orders.toggle_status');
+        Route::resource('orders', OrderController::class)->only(['index', 'destroy']);
 });
 
 Route::middleware('role:artist|store')->group(function(){

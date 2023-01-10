@@ -6,6 +6,7 @@ use App\Http\Controllers\Frontend\ArtistsController;
 use App\Http\Controllers\Frontend\ArtworksController;
 use App\Http\Controllers\Frontend\BlogsController;
 use App\Http\Controllers\Frontend\ExhibitionsController;
+use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\PageController;
 use App\Http\Controllers\Frontend\ProductsController;
 use App\Http\Controllers\Frontend\StoreProfileController;
@@ -55,6 +56,11 @@ Route::group(['middleware' => ['auth']], function(){
     Route::middleware('role:artist')->controller(ArtistProfileSetupController::class)->group(function(){
         Route::get('setup_profile/{step}', 'index')->name('setup_profile.index');
         Route::post('setup_profile/{step}', 'save')->name('setup_profile.save');
+    });
+
+    Route::controller(OrderController::class)->group(function()  {
+        Route::get('/orders', 'index')->name('orders.index');
+        Route::post('/artworks/{artwork}/order', 'store')->name('artworks.order')->whereNumber(['artwork']);
     });
 });
 
