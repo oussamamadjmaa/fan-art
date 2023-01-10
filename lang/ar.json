@@ -1271,5 +1271,8 @@
     "Order Shipped Out" : "تم شحن الطلب",
     "Order Delivered" : "تم تسليم",
     "Order date" : "تاريخ الطلب",
-    "Deny" : "رفض"
+    "Deny" : "رفض",
+    "Facility name" : "إسم المنشأة",
+    "Responsible person" : "الشخص المسؤول",
+    "Send Order" : "إرسال الطلب"
 }

@@ -200,6 +200,7 @@ return [
         'category_id'           => 'التصنيف',
         "bank_transfer_receipt" => 'إيصال التحويل البنكي',
         "bio"                   => 'السيرة الذاتية',
-        "artist_type"           => 'تصنيف الفنان'
+        "artist_type"           => 'تصنيف الفنان',
+        "responsible_person"    => 'الشخص المسؤول'
     ],
 ];

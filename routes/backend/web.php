@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\CarouselController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\ExhibitionController;
+use App\Http\Controllers\Backend\HotelArtworksOrderController;
 use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\NotificationsController;
 use App\Http\Controllers\Backend\OrderController;
@@ -62,6 +63,16 @@ Route::group(['middleware' => 'role:admin'], function(){
         Route::get('contact-artists', 'index')->name('index');
         Route::post('contact-artists', 'send')->name('send');
     });
+
+    //Orders
+    Route::delete('orders', [OrderController::class, 'multiple_delete'])->name('orders.multiple_delete');
+    Route::put('orders/toggle_status/{order}', [OrderController::class, 'toggle_status'])->name('orders.toggle_status');
+    Route::resource('orders', OrderController::class)->only(['index', 'destroy']);
+
+    //Hotels artworks Orders
+    Route::delete('hotels-artworks-orders', [HotelArtworksOrderController::class, 'multiple_delete'])->name('hotels-artworks-orders.multiple_delete');
+    Route::resource('hotels-artworks-orders', HotelArtworksOrderController::class)->only(['index', 'destroy']);
+
     //Update
     Route::get('update/{v}', [UpdateController::class, 'update']);
 
@@ -101,11 +112,6 @@ Route::group(['middleware' => ['role:admin|store', 'backend-check:subscribed']],
         Route::delete('products', [ProductController::class, 'multiple_delete'])->name('products.multiple_delete');
         Route::get('products/messages/{product}', [ProductController::class, 'messages'])->name('products.messages');
         Route::resource('products', ProductController::class)->except(['show']);
-
-        //Orders
-        Route::delete('orders', [OrderController::class, 'multiple_delete'])->name('orders.multiple_delete');
-        Route::put('orders/toggle_status/{order}', [OrderController::class, 'toggle_status'])->name('orders.toggle_status');
-        Route::resource('orders', OrderController::class)->only(['index', 'destroy']);
 });
 
 Route::middleware('role:artist|store')->group(function(){

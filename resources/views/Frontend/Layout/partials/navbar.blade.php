@@ -52,6 +52,7 @@
                     @if (Route::has('frontend.blogs.index'))
                         <li><a href="{{route('frontend.blogs.index')}}">@lang('Artist blog')</a></li>
                     @endif
+                    <li><a href="{{route('frontend.artworks.order.hotels')}}">@lang('طلبات خاصة')</a></li>
                     <li><a href="{{ url('p/contact-us') }}">@lang('Contact us')</a></li>
                     <li><a href="{{ route('frontend.orders.index') }}">@lang('My Orders')</a></li>
                 </ul>

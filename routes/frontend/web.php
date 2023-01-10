@@ -6,6 +6,7 @@ use App\Http\Controllers\Frontend\ArtistsController;
 use App\Http\Controllers\Frontend\ArtworksController;
 use App\Http\Controllers\Frontend\BlogsController;
 use App\Http\Controllers\Frontend\ExhibitionsController;
+use App\Http\Controllers\Frontend\HotelArtworksOrderController;
 use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\PageController;
 use App\Http\Controllers\Frontend\ProductsController;
@@ -22,6 +23,8 @@ Route::get('/artists', [ArtistsController::class, 'index'])->name('artists.index
 
 //Artworks
 Route::get('/artworks', [ArtworksController::class, 'index'])->name('artworks.index');
+Route::get('/hotels_requests', [HotelArtworksOrderController::class ,'index'])->name('artworks.order.hotels');
+Route::post('/hotels_requests', [HotelArtworksOrderController::class ,'store']);
 Route::get('/artworks/{artwork:slug}', [ArtworksController::class, 'show'])->name('artworks.show');
 Route::post('/artworks/{artwork}/message', [ArtworksController::class, 'send_message'])->name('artworks.send_message');
 

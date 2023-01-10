@@ -41,6 +41,12 @@ return [
             'description' =>  'تم طلب شراء لوحة فنية من طرف <b>:fromUser_name</b>',
             'icon' => '',
             'bg_class' => 'bg-info',
+        ],
+        'hotel_artworks_order' => [
+            'title' =>  ' طلب لوحات فنية خاصة بالفنادق',
+            'description' =>  'طلب لوحات فنية خاصة بالفنادق',
+            'icon' => '',
+            'bg_class' => 'bg-info',
         ], 'payment_confirmed' => [
             'title' =>  'تم تأكيد عملية الدفع الخاصة بك',
             'description' =>  'مبروك! تم تأكيد عملية الدفع لطلب شراء الخاص بك',

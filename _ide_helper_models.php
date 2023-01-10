@@ -165,6 +165,41 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\HotelArtworksOrder
+ *
+ * @property int $id
+ * @property string|null $facility_name
+ * @property string $city
+ * @property string $responsible_person
+ * @property string|null $email
+ * @property string|null $phone
+ * @property string $quantity
+ * @property string $sizes
+ * @property string|null $idea
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Notification[] $notifications
+ * @property-read int|null $notifications_count
+ * @method static \Illuminate\Database\Eloquent\Builder|HotelArtworksOrder newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|HotelArtworksOrder newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|HotelArtworksOrder query()
+ * @method static \Illuminate\Database\Eloquent\Builder|HotelArtworksOrder whereCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HotelArtworksOrder whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HotelArtworksOrder whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HotelArtworksOrder whereFacilityName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HotelArtworksOrder whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HotelArtworksOrder whereIdea($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HotelArtworksOrder wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HotelArtworksOrder whereQuantity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HotelArtworksOrder whereResponsiblePerson($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HotelArtworksOrder whereSizes($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HotelArtworksOrder whereUpdatedAt($value)
+ */
+	class HotelArtworksOrder extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Message
  *
  * @property int $id

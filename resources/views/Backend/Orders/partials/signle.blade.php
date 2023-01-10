@@ -26,6 +26,16 @@
                         <li>
                             <i class="me-1 bi bi-cash-stack"></i> <span>{{$order->amount}} @lang(config('app.currency'))</span>
                         </li>
+                        @if (!empty($order->user->phone))
+                        <li>
+                            <i class="me-1 bi bi-telephone"></i> <span><a href="tel:{{$order->user->phone}}">{{$order->user->phone}}</a></span>
+                        </li>
+                        @endif
+                        @if (!empty($order->user->email))
+                        <li>
+                            <i class="me-1 bi bi-envelope"></i> <span><a href="mailto:{{$order->user->email}}">{{$order->user->email}}</a></span>
+                        </li>
+                        @endif
                     </ul>
                 </div>
             </div>

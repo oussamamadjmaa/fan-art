@@ -17,7 +17,7 @@ _s.validate_input_number = function(evt) {
     }
 }
 
-$(document).on('keypress', ".number-input", (e) => validate_input_number(e));
+$(document).on('keypress', ".number-input", (e) => window._s.validate_input_number(e));
 
 _s.handleFailure = function (fail) {
     let jsonRes = fail.responseJSON;

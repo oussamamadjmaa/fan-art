@@ -15,7 +15,7 @@
 @endphp
 
 @if($type == "textarea")
-<div class="mb-3">
+<div {{ $attributes->class('mb-3') }}>
     <label for="{{$id}}" class="form-label">{{$label}}</label>
     <textarea
         @class(['form-control', 'is-invalid' => $errors->has($name ?? '')])
@@ -52,7 +52,7 @@
     </div>
 </div>
 @elseif($type=="checkbox")
-<div class="mb-3">
+<div {{ $attributes->class('mb-3') }}>
     <div class="">
         <div class="form-check">
             <input  type="checkbox"
@@ -68,7 +68,7 @@
     </div>
 </div>
 @else
-<div class="mb-3">
+<div {{ $attributes->class('mb-3') }}>
     <label for="{{$id}}" class="form-label">{{$label}}</label>
     <input
         type="{{$type == "number" ? "text" : $type}}"
