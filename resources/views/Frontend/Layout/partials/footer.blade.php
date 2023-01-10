@@ -21,7 +21,6 @@
                         <li><a href="{{route('frontend.artworks.index')}}">@lang('Paintings and artwork')</a></li>
                         <li><a href="{{route('frontend.exhibitions.index')}}">@lang('Exhibitions and meetings')</a></li>
                         <li><a href="{{route('frontend.stores.index')}}">@lang('Stores')</a></li>
-                        <li><a href="{{ url('p/contact-us') }}">@lang('Contact us')</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-3 mb-4">
