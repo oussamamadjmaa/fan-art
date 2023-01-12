@@ -54,7 +54,9 @@
                     @endif
                     <li><a href="{{route('frontend.artworks.order.hotels')}}">@lang('طلبات خاصة')</a></li>
                     <li><a href="{{ url('p/contact-us') }}">@lang('Contact us')</a></li>
-                    <li><a href="{{ route('frontend.orders.index') }}">@lang('My Orders')</a></li>
+                    @auth
+                        <li><a href="{{ route('frontend.orders.index') }}">@lang('My Orders')</a></li>
+                    @endauth
                 </ul>
             </div>
         </div>
